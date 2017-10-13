@@ -1,5 +1,5 @@
 
-# TestVagrant coding round repo for applicants
+# Hiring challenge for applicants
 
 
 ## About the codebase: 
