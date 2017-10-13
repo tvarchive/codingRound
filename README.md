@@ -1,8 +1,9 @@
+
 # TestVagrant coding round repo for applicants
 
 
 ## About the codebase: 
-This is a simple test project for testing a few sceanrios on https://www.cleartrip.com/.
+This is a simple test project for testing a few sceanrios on a sample flight/hotel booking website.
 There are 3 tests in total spread over 3 test classes. Following tech stack has been used to develop the same.
 * JAVA - Programming language
 * Selenium - For driving the browser
