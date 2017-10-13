@@ -1,3 +1,4 @@
+import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +17,7 @@ public class SignInTest {
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
-        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        setDriverPath();
 
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
@@ -36,6 +37,18 @@ public class SignInTest {
             Thread.sleep(durationInMilliSeconds);
         } catch (InterruptedException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
+    private void setDriverPath() {
+        if (PlatformUtil.isMac()) {
+            System.setProperty("webdriver.chrome.driver", "chromedriver");
+        }
+        if (PlatformUtil.isWindows()) {
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        }
+        if (PlatformUtil.isLinux()) {
+            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
     }
 
