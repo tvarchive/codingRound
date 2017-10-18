@@ -14,7 +14,7 @@ public class HotelSearchResultPage extends BasePage{
 	@FindBy(css=".searchSummary Strong")
 	private WebElement label_top_search_result_heading;
 	
-	@FindBy(css= "#ResultContainer_2_1 .hotelsList")
+	@FindBy(xpath= "//div[contains(@id,'ResultContainer')][last()]//nav[@class='hotelsList']")
 	private WebElement hotel_list;
 	
 	public boolean is_user_on_hotel_search_result_page(){
