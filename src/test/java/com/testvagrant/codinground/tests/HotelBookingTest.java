@@ -14,13 +14,13 @@ public class HotelBookingTest {
 	@BeforeClass
 	public void startTest(){
 		test = new Initiator("chrome");
-		test.flightSearchPage.launchApplication("https://www.cleartrip.com");
+		test.homepage.launchApplication("https://www.cleartrip.com");
 	}
 	
 	@Test
 	public void hotel_valid_search(){
 		test.hotelSearchPage = test.homepage.naviagte_to_hotel_search();
-		test.hotelSearchResultPage = test.hotelSearchPage.search_hotels("Jaipur","20/10/2017","21/10/2017","1 room, 2 adults");
+		test.hotelSearchResultPage = test.hotelSearchPage.search_hotels("Jaipur","1 room, 2 adults");
 		Assert.assertTrue(test.hotelSearchResultPage.is_user_on_hotel_search_result_page());
 		Reporter.log("Hotel search passed",true);
 	

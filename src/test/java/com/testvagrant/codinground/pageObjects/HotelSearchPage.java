@@ -1,9 +1,12 @@
 package com.testvagrant.codinground.pageObjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Reporter;
+
+import com.sun.jna.platform.win32.Wdm.KEY_BASIC_INFORMATION;
 
 public class HotelSearchPage extends BasePage{
 
@@ -28,12 +31,14 @@ public class HotelSearchPage extends BasePage{
 	    private WebElement select_travellers;
 	    
 	    
-	    public HotelSearchResultPage search_hotels(String city, String checkin, String checkout, String traveller){
+	    public HotelSearchResultPage search_hotels(String city, String traveller){
 	    	input_hotel_city.sendKeys(city);
 	    	
-	    	input_checkin.sendKeys(checkin);
+	    	input_checkin.click();
+	    	input_checkin.sendKeys(Keys.RETURN);
 	    	
-	    	input_checkout.sendKeys(checkout);
+	    	input_checkout.click();
+	    	input_checkout.sendKeys(Keys.RETURN);
 	    	
 	    	select_by_text(select_travellers,traveller);
 	    	
