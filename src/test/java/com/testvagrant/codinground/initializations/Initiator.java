@@ -23,7 +23,7 @@ public class Initiator {
 	public SignInModal signInModal;
 
 	private DriverCreator drFactory;
-	public ConfigFileReader config;
+	
 	
 	public Initiator(String browser){
 		drFactory = new DriverCreator();
@@ -40,7 +40,6 @@ public class Initiator {
 	
 	private void _initPageObject(){
 		homepage = new HomePage(driver);
-		config = new  ConfigFileReader();
 	}
 	
 }
