@@ -15,6 +15,7 @@ public class FlightBookingTest {
 	@BeforeClass
 	public void startTest(){
 		test = new Initiator("chrome");
+		test.flightSearchPage.launchApplication("https://www.cleartrip.com");
 	}
 	
 	@Test

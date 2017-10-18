@@ -21,7 +21,7 @@ public class FlightSearchPage extends BasePage{
 	@FindBy(css="#ui-id-1 li:nth-child(1) a")
 	private WebElement first_from_city_in_list;
 	
-	@FindBy(id="toTag")
+	@FindBy(id="ToTag")
 	private WebElement input_to_city;
 	
 	@FindBy(css="#ui-id-2 li:nth-child(1) a")
@@ -34,7 +34,7 @@ public class FlightSearchPage extends BasePage{
 	private WebElement btn_search_flights;
 	
 	public FlightSearchResultPage search_flight(String from, String to, String date){
-		wait.explicitWaitForElement(radio_oneWay);
+		
 		radio_oneWay.click();
 		
 		input_from_city.sendKeys(from);
