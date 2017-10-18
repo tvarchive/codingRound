@@ -35,16 +35,6 @@ public class BasePage {
 		driver.get(url);
 	}
 	
-	public Object executeJSCommandWithArguments(String command, Object... args){
-		
-		Object x = (Object) js.executeScript("return "+command, args);
-		return x;
-	}
-	
-	public void executeSimpleJavascript(String command){
-		js.executeScript(command);
-	}
-	
 	public void closeBrowser(){
 		driver.quit();
 	}
@@ -54,7 +44,7 @@ public class BasePage {
 		try{
 			flag = element.isDisplayed();
 		}catch(NoSuchElementException ex ){
-			System.out.println("Element not found on the page");
+			System.out.println(element+ " :- " + "Element not found on the page");
 		}
 		return flag;
 	}

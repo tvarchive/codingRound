@@ -11,10 +11,10 @@ public class FlightSearchResultPage extends BasePage{
 		
 	}
 	
-	@FindBy(css=".searchSummary")
+	@FindBy(css=".searchSummary Strong")
 	private WebElement label_top_search_result_heading;
 	
-	@FindBy(xpath= "//div[@id='ResultContainer_1_2' and contains(@style,'block')]//ul[@class='listView flights']")
+	@FindBy(xpath= "//div[contains(@id,'ResultContainer') and contains(@style,'block')]//ul[@class='listView flights']")
 	private WebElement section_flight_list;
 	
 	public boolean is_user_on_flight_search_result_page(){
