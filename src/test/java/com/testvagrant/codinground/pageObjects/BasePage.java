@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.testvagrant.codinground.utilities.SeleniumUtilities;
 
@@ -48,7 +49,12 @@ public class BasePage {
 		}
 		return flag;
 	}
-
+	
+	
+	public void select_by_text(WebElement element, String text){
+		Select sel = new Select(element);
+		sel.selectByVisibleText(text);
+	}
 	
 	
 }

@@ -18,10 +18,11 @@ public class HotelBookingTest {
 	}
 	
 	@Test
-	public void test1(){
-		test.flighSearchResultPage = test.hotelSearchPage.search_hotel("Jaipur","Mumbai","20/10/2017");
-		Assert.assertTrue(test.flighSearchResultPage.is_user_on_flight_search_result_page());
-		Reporter.log("Flight search passed",true);
+	public void hotel_valid_search(){
+		test.hotelSearchPage = test.homepage.naviagte_to_hotel_search();
+		test.hotelSearchResultPage = test.hotelSearchPage.search_hotels("Jaipur","20/10/2017","21/10/2017","1 room, 2 adults");
+		Assert.assertTrue(test.hotelSearchResultPage.is_user_on_hotel_search_result_page());
+		Reporter.log("Hotel search passed",true);
 	
 	}
 	
