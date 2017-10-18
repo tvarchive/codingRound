@@ -1,11 +1,16 @@
 package com.testvagrant.codinground.pageObjects;
 
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 import com.testvagrant.codinground.utilities.SeleniumUtilities;
+
+import net.bytebuddy.matcher.ElementMatchers;
 
 public class BasePage {
 
@@ -43,6 +48,17 @@ public class BasePage {
 	public void closeBrowser(){
 		driver.quit();
 	}
+	
+	public boolean is_displayed(WebElement element){
+		boolean flag= false;
+		try{
+			flag = element.isDisplayed();
+		}catch(NoSuchElementException ex ){
+			System.out.println("Element not found on the page");
+		}
+		return flag;
+	}
+
 	
 	
 }

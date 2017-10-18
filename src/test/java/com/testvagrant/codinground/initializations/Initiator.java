@@ -5,11 +5,13 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 
 import com.testvagrant.codinground.pageObjects.FlightSearchPage;
+import com.testvagrant.codinground.pageObjects.FlightSearchResultPage;
 
 public class Initiator {
 
 	private WebDriver driver;
 	public FlightSearchPage flightSearchPage;
+	public FlightSearchResultPage flighSearchResultPage;
 
 	private DriverCreator drFactory;
 	
