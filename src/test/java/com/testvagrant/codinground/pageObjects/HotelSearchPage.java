@@ -34,7 +34,7 @@ public class HotelSearchPage extends BasePage{
 		private WebElement first_from_city_in_list;
 	    
 	    
-	    public HotelSearchResultPage search_hotels(String city, String traveller){
+	    public HotelSearchResultPage searchHotels(String city, String traveller){
 	    	input_hotel_city.sendKeys(city);
 	    	wait.explicitWaitForElement(first_from_city_in_list);
 	    	first_from_city_in_list.click();
@@ -45,7 +45,7 @@ public class HotelSearchPage extends BasePage{
 	    	input_checkout.click();
 	    	input_checkout.sendKeys(Keys.RETURN);
 	    	
-	    	select_by_text(select_travellers,traveller);
+	    	selectByText(select_travellers,traveller);
 	    	
 	    	searchButton.click();
 	    	

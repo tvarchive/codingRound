@@ -9,6 +9,7 @@ import com.testvagrant.codinground.pageObjects.FlightSearchResultPage;
 import com.testvagrant.codinground.pageObjects.HomePage;
 import com.testvagrant.codinground.pageObjects.HotelSearchPage;
 import com.testvagrant.codinground.pageObjects.HotelSearchResultPage;
+import com.testvagrant.codinground.pageObjects.SignInModal;
 
 public class Initiator {
 
@@ -18,6 +19,7 @@ public class Initiator {
 	public FlightSearchResultPage flighSearchResultPage;
 	public HotelSearchPage hotelSearchPage;
 	public HotelSearchResultPage hotelSearchResultPage;
+	public SignInModal signInModal;
 
 	private DriverCreator drFactory;
 	

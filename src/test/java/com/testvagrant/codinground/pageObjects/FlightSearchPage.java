@@ -1,5 +1,6 @@
 package com.testvagrant.codinground.pageObjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,7 +34,7 @@ public class FlightSearchPage extends BasePage{
 	@FindBy(id="SearchBtn")
 	private WebElement btn_search_flights;
 	
-	public FlightSearchResultPage search_flight(String from, String to, String date){
+	public FlightSearchResultPage searchFlights(String from, String to){
 		
 		radio_oneWay.click();
 		
@@ -46,7 +47,8 @@ public class FlightSearchPage extends BasePage{
 		wait.explicitWaitForElement(first_to_city_in_list);
 		first_to_city_in_list.click();
 		
-		input_depart_date.sendKeys(date);
+		input_depart_date.click();
+		input_depart_date.sendKeys(Keys.RETURN);
 
 		btn_search_flights.click();
 		

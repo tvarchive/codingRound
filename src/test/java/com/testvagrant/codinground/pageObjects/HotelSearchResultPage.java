@@ -17,12 +17,12 @@ public class HotelSearchResultPage extends BasePage{
 	@FindBy(xpath= "//div[contains(@id,'ResultContainer')][last()]//nav[@class='hotelsList']")
 	private WebElement hotel_list;
 	
-	public boolean is_user_on_hotel_search_result_page(){
+	public boolean isUserOnHotelSearchResultPage(){
 		boolean flag1 = false;
 		boolean flag2 = false;
 		
-		flag1 = is_displayed(label_top_search_result_heading);
-		flag2 = is_displayed(hotel_list);
+		flag1 = isDisplayed(label_top_search_result_heading);
+		flag2 = isDisplayed(hotel_list);
 		
 		return flag1 && flag2;
 	}

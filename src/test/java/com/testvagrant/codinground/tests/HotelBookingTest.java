@@ -19,9 +19,9 @@ public class HotelBookingTest {
 	
 	@Test
 	public void hotel_valid_search(){
-		test.hotelSearchPage = test.homepage.naviagte_to_hotel_search();
-		test.hotelSearchResultPage = test.hotelSearchPage.search_hotels("Jaipur","1 room, 2 adults");
-		Assert.assertTrue(test.hotelSearchResultPage.is_user_on_hotel_search_result_page());
+		test.hotelSearchPage = test.homepage.navigateToHotelSearch();
+		test.hotelSearchResultPage = test.hotelSearchPage.searchHotels("Jaipur","1 room, 2 adults");
+		Assert.assertTrue(test.hotelSearchResultPage.isUserOnHotelSearchResultPage());
 		Reporter.log("Hotel search passed",true);
 	
 	}

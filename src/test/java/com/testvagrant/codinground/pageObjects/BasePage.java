@@ -40,7 +40,7 @@ public class BasePage {
 		driver.quit();
 	}
 	
-	public boolean is_displayed(WebElement element){
+	public boolean isDisplayed(WebElement element){
 		boolean flag= false;
 		try{
 			flag = element.isDisplayed();
@@ -51,9 +51,13 @@ public class BasePage {
 	}
 	
 	
-	public void select_by_text(WebElement element, String text){
+	public void selectByText(WebElement element, String text){
 		Select sel = new Select(element);
 		sel.selectByVisibleText(text);
+	}
+	
+	public void switchToFrame(WebElement frame){
+		driver.switchTo().frame(frame);
 	}
 	
 	
