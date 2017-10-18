@@ -15,7 +15,7 @@ public class SignInTest {
 	
 	@Test
 	public void test1(){
-	
+		test.flightSearchPage.launchApplication("https://www.cleartrip.com/");
 	}
 	
 	@AfterClass
