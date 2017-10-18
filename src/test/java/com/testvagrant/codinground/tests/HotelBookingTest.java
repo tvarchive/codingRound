@@ -1,7 +1,8 @@
 package com.testvagrant.codinground.tests;
-import org.junit.AfterClass;
+
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -28,6 +29,6 @@ public class HotelBookingTest {
 	
 	@AfterClass
 	public void closeSession(){
-		test.flightSearchPage.closeBrowser();
+		test.homepage.closeBrowser();
 	}
 }

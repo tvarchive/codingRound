@@ -13,7 +13,7 @@ public class SignInModal extends BasePage{
 		
 	}
 	
-	@FindBy(id="#ModalFrame #modal_window")
+	@FindBy(css="#ModalFrame #modal_window")
 	private WebElement sign_in_modal_frame;
 	
 	@FindBy(id="signInButton")
@@ -22,11 +22,10 @@ public class SignInModal extends BasePage{
 	@FindBy(xpath="//div[@id='errors1' and contains(@style,'block')]//span")
 	private WebElement section_error_message;
 	
-	public void isSignInModalPresent(){
-		wait.explicitWaitForElement(sign_in_modal_frame);
-	}
-	
+
 	public String blankFormSignIn(){
+		
+		wait.explicitWaitForElement(sign_in_modal_frame);
 		switchToFrame(sign_in_modal_frame);
 		
 		wait.explicitWaitForElement(btn_sign_in);

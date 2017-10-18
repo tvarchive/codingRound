@@ -37,8 +37,8 @@ public class HomePage extends BasePage{
 	
 	public SignInModal openSignInModal(){
 		dropDown_yourTrips.click();
-		wait.explicitWaitForElement(dropDown_yourTrips);
-		dropDown_yourTrips.click();
+		wait.explicitWaitForElement(btn_signIn);
+		btn_signIn.click();
 		return new SignInModal(driver);
 	}
 	
