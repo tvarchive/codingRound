@@ -23,7 +23,7 @@ Problem Statement
 6. Send us the link of your GitHub repo to **careers@testvagrant.com**. Also attach your **resume**.
 
 
-** How is the problem solved:**
+**How is the problem solved:**
 1. Created a multi-tier architecture by separating tests, page objects and utilities. Created an initialization package to connect between all
 2. Used Page Factory approach at the framework level - object of a PO would be created only when it is to be used
 3. Added resources folder to keep all important files other than source code intact and together
