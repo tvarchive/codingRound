@@ -30,9 +30,14 @@ public class HotelSearchPage extends BasePage{
 	    @FindBy(id = "travellersOnhome")
 	    private WebElement select_travellers;
 	    
+	    @FindBy(css="#ui-id-1 li:nth-child(2) a")
+		private WebElement first_from_city_in_list;
+	    
 	    
 	    public HotelSearchResultPage search_hotels(String city, String traveller){
 	    	input_hotel_city.sendKeys(city);
+	    	wait.explicitWaitForElement(first_from_city_in_list);
+	    	first_from_city_in_list.click();
 	    	
 	    	input_checkin.click();
 	    	input_checkin.sendKeys(Keys.RETURN);
