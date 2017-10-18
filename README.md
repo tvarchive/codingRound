@@ -32,5 +32,5 @@ Problem Statement
 6. Applied abstraction - exposing only Initiator to test classes and access to all PO methods through a single object
 7. Applied Reusability - created BasePage PO having all common methods to be used across all other POs, explicit wait also added in a single utility class used across all POs
 8. Applied Maintainability - Code is structured into different packages with loggers and relevant method names making it easier for debugging in the longer run
-9. Checked-in a file called Design_Issues_As_I_See.pdf in Resources folder pointing out various design anomalies or approaches that could be done better 
-10. Execute tests using mvn test command on console
+9. Checked-in a file called Design_Issues_As_I_See.pdf in "Files" folder pointing out various design anomalies or approaches that could be done better 
+10. Execute tests using mvn verify command on console to get HTML reports as well in target folder

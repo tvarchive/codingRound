@@ -18,7 +18,7 @@ public class DriverCreator {
     public WebDriver getDriver(String browserName) {
         browser = browserName;
         
-        if (browser == "chrome"){
+        if (browser.equals("chrome")){
         	 if (PlatformUtil.isMac()) {
              	return getChromeDriver(System.getProperty("user.dir") + File.separator+ "Resources"+ File.separator+ "chromedriver");
              }
@@ -30,8 +30,8 @@ public class DriverCreator {
              }    	
         }
         
-       
-       return new FirefoxDriver(); // if something goes wrong, FF is default browser
+       System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + File.separator+ "Resources"+ File.separator+ "chromedriver");
+       return new ChromeDriver(); // if something goes wrong, Chrome on OSX is default browser
     }
 
     @SuppressWarnings("deprecation")

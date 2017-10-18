@@ -18,6 +18,7 @@ public class FlightBookingTest {
 	@BeforeClass
 	public void startTest(){
 		config = new ConfigFileReader();
+		
 		test = new Initiator(config.getProperty("browser"));
 		test.homepage.launchApplication(config.getProperty("url"));
 	}
