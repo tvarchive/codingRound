@@ -18,14 +18,14 @@ public class FlightBookingTest {
 	@BeforeClass
 	public void startTest(){
 		config = new ConfigFileReader();
-		test = new Initiator(test.config.getProperty("browser"));
-		test.homepage.launchApplication(test.config.getProperty("url"));
+		test = new Initiator(config.getProperty("browser"));
+		test.homepage.launchApplication(config.getProperty("url"));
 	}
 	
 	@Test
 	public void flight_valid_search(){
 		test.flightSearchPage = test.homepage.navigateToFlightSearch();
-		test.flighSearchResultPage = test.flightSearchPage.searchFlights(test.config.getProperty("from_flight"),test.config.getProperty("to_flight"));
+		test.flighSearchResultPage = test.flightSearchPage.searchFlights(config.getProperty("from_flight"),config.getProperty("to_flight"));
 		Assert.assertTrue(test.flighSearchResultPage.isUserOnFlightSearchResultPage());
 		Reporter.log("Flight search passed",true);
 	

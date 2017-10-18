@@ -16,14 +16,14 @@ public class SignInTest {
 	@BeforeClass
 	public void startTest(){
 		config = new ConfigFileReader();
-		test = new Initiator(test.config.getProperty("browser"));
-		test.homepage.launchApplication(test.config.getProperty("url"));
+		test = new Initiator(config.getProperty("browser"));
+		test.homepage.launchApplication(config.getProperty("url"));
 	}
 	
 	@Test
 	public void blank_sign_in_test(){
 		test.signInModal = test.homepage.openSignInModal();
-		Assert.assertEquals(test.signInModal.blankFormSignIn(), test.config.getProperty("error_blank_sign_in"));
+		Assert.assertEquals(test.signInModal.blankFormSignIn(), config.getProperty("error_blank_sign_in"));
 		
 		Reporter.log("Sign In test passed",true);
 	

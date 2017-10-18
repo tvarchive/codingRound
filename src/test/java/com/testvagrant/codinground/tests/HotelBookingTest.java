@@ -17,14 +17,14 @@ public class HotelBookingTest {
 	@BeforeClass
 	public void startTest(){
 		config = new ConfigFileReader();
-		test = new Initiator(test.config.getProperty("browser"));
-		test.homepage.launchApplication(test.config.getProperty("url"));
+		test = new Initiator(config.getProperty("browser"));
+		test.homepage.launchApplication(config.getProperty("url"));
 	}
 	
 	@Test
 	public void hotel_valid_search(){
 		test.hotelSearchPage = test.homepage.navigateToHotelSearch();
-		test.hotelSearchResultPage = test.hotelSearchPage.searchHotels(test.config.getProperty("city_hotel"),test.config.getProperty("travellers"));
+		test.hotelSearchResultPage = test.hotelSearchPage.searchHotels(config.getProperty("city_hotel"),config.getProperty("travellers"));
 		Assert.assertTrue(test.hotelSearchResultPage.isUserOnHotelSearchResultPage());
 		Reporter.log("Hotel search passed",true);
 	
