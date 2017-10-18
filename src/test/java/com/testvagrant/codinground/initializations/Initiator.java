@@ -6,12 +6,16 @@ import org.openqa.selenium.WebDriver;
 
 import com.testvagrant.codinground.pageObjects.FlightSearchPage;
 import com.testvagrant.codinground.pageObjects.FlightSearchResultPage;
+import com.testvagrant.codinground.pageObjects.HomePage;
+import com.testvagrant.codinground.pageObjects.HotelSearchPage;
 
 public class Initiator {
 
 	private WebDriver driver;
+	public HomePage homepage;
 	public FlightSearchPage flightSearchPage;
 	public FlightSearchResultPage flighSearchResultPage;
+	public HotelSearchPage hotelSearchPage;
 
 	private DriverCreator drFactory;
 	
@@ -29,7 +33,7 @@ public class Initiator {
 	}
 	
 	private void _initPageObject(){
-		flightSearchPage = new FlightSearchPage(driver);
+		homepage = new HomePage(driver);
 	}
 	
 }
