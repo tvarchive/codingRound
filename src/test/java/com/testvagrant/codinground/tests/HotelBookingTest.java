@@ -7,7 +7,7 @@ import com.testvagrant.codinground.initializations.Initiator;
 
 public class HotelBookingTest {
 
-Initiator test;
+	Initiator test;
 	
 	@BeforeClass
 	public void startTest(){
