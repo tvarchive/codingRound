@@ -9,7 +9,7 @@ import com.testvagrant.codinground.pageObjects.FlightSearchPage;
 public class Initiator {
 
 	private WebDriver driver;
-	private FlightSearchPage flightSearchPage;
+	public FlightSearchPage flightSearchPage;
 
 	private DriverCreator drFactory;
 	
