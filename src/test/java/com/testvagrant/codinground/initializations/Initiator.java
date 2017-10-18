@@ -10,6 +10,7 @@ import com.testvagrant.codinground.pageObjects.HomePage;
 import com.testvagrant.codinground.pageObjects.HotelSearchPage;
 import com.testvagrant.codinground.pageObjects.HotelSearchResultPage;
 import com.testvagrant.codinground.pageObjects.SignInModal;
+import com.testvagrant.codinground.utilities.ConfigFileReader;
 
 public class Initiator {
 
@@ -22,6 +23,7 @@ public class Initiator {
 	public SignInModal signInModal;
 
 	private DriverCreator drFactory;
+	public ConfigFileReader config;
 	
 	public Initiator(String browser){
 		drFactory = new DriverCreator();
@@ -38,6 +40,7 @@ public class Initiator {
 	
 	private void _initPageObject(){
 		homepage = new HomePage(driver);
+		config = new  ConfigFileReader();
 	}
 	
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.testvagrant.codinground.utilities.ConfigFileReader;
 import com.testvagrant.codinground.utilities.SeleniumUtilities;
 
 import net.bytebuddy.matcher.ElementMatchers;
@@ -19,6 +20,7 @@ public class BasePage {
 	WebDriver driver;
 	private JavascriptExecutor js;
 	SeleniumUtilities wait;
+	
 
 	public BasePage(WebDriver driver){
 		
@@ -29,6 +31,7 @@ public class BasePage {
 		this.driver = driver;
 		wait = new SeleniumUtilities(driver);
 		js = (JavascriptExecutor) driver;
+		
 	}
 	
 	public void launchApplication(String url){
