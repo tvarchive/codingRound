@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FlightBookingTest {
 
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver ;//= new ChromeDriver();
 
 
     @Test
@@ -32,8 +32,8 @@ public class FlightBookingTest {
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
 
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        driver.findElement(By.id("ToTag")).clear();
+        driver.findElement(By.id("ToTag")).sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
 
@@ -42,7 +42,7 @@ public class FlightBookingTest {
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
         destinationOptions.get(0).click();
 
-        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
+        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[2]/table/tbody/tr[3]/td[7]/a")).click();
 
         //all fields filled in. Now click on search
         driver.findElement(By.id("SearchBtn")).click();
@@ -80,10 +80,11 @@ public class FlightBookingTest {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
         if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\a574608\\Documents\\codingRound\\chromedriver.exe");
         }
         if (PlatformUtil.isLinux()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
+        driver = new ChromeDriver();
     }
 }
