@@ -30,9 +30,10 @@ public class FlightBookingTest  extends BaseTest{
         waitFor(2000);
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
-
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        
+       // changed locator from id to xoath
+        driver.findElement(By.xpath("//*[@id=\"ToTag\"]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"ToTag\"]")).sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
 
