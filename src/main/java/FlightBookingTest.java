@@ -10,9 +10,8 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class FlightBookingTest {
+public class FlightBookingTest  extends BaseTest{
 
-    WebDriver driver = new ChromeDriver();
 
 
     @Test

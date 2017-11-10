@@ -10,13 +10,11 @@ import org.testng.annotations.Test;
 
 import static org.openqa.selenium.remote.ErrorCodes.TIMEOUT;
 
-public class SignInTest {
+public class SignInTest  extends BaseTest{
 
-    WebDriver driver = new ChromeDriver();
-    private WebDriverWait wait;
 
     @Test
-    public void shouldThrowAnErrorIfSignInDetailsAreMissing() throws Exception {
+    public void shouldThrowAnErrorIfSignInDetailsAreMissing()  {
 
         setDriverPath();
 
@@ -55,34 +53,5 @@ public class SignInTest {
         }
     }
 
-    /**
-     * this function wail wait for the locator to be visible for 40 sec max.WebDriverWait will call ExpectedCondition every 500 milliseconds until it returns successfully
-     * @param element
-     * @param locator
-     * @return
-     */
 
-    public boolean waitForElementToBeVisible( String element, String locator)
-    {
-        try
-        {
-            wait  = new WebDriverWait(driver, 40);
-            if (locator.equalsIgnoreCase("id"))
-                wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(element))));
-            else if(locator.equalsIgnoreCase("xpath"))
-                wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(element))));
-            else if(locator.equalsIgnoreCase("className"))
-                wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.className(element))));
-            else if(locator.equalsIgnoreCase("cssSelector"))
-                wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(element))));
-
-
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
-
-        return true;
-    }
 }
