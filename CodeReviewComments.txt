@@ -1,0 +1,11 @@
+================ Please provide code comments here ================
+
+
+SignInTest.java ->  The first test was not executing because we had to switch to Frame .Switching from default to frame (modal_window)
+                       In case we want to get back to default screen , do switch to default(switchTo().defaultContent().
+
+
+ HotelBookingTest.java -> Initializing page objects using PageFactory.initElements() method from PageFactory Class.
+
+
+FlightBookingTest.java -> changed locator from id to xpath.
