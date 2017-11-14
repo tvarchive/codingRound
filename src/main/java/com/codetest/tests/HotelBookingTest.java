@@ -1,55 +1,35 @@
 package com.codetest.tests;
 
-import com.sun.javafx.PlatformUtil;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class HotelBookingTest {
+import com.codetest.helper.StartWebDriver;
+import com.codetest.pages.BasePage;
+import com.codetest.pages.HotelPage;
+import com.codetest.pages.SearchResutPage;
 
-    WebDriver driver = new ChromeDriver();
+public class HotelBookingTest extends StartWebDriver{
 
-    @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
-
-    @FindBy(id = "Tags")
-    private WebElement localityTextBox;
-
-    @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
-
-    @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
+    
 
     @Test
-    public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
-
+    public void shouldBeAbleToSearchForHotels()  {
+    	
+    	//capturing logs from reporter class of testNg        
         driver.get("https://www.cleartrip.com/");
-        hotelLink.click();
+        Reporter.log("launching website",true);
+        BasePage bpage= new BasePage(driver);
+        Reporter.log("Homepage",true);
+        HotelPage hpage = bpage.clickOnHotel();
+        Reporter.log("Hotels",true);
+        hpage.entertext("Indiranagar, Bangalore");
+        Reporter.log("entered text",true);
+        hpage.selectdropdown("1 room, 2 adults");
+        Reporter.log("selected dropdown",true);
+        SearchResutPage srpage = hpage.clickonsearch();
+        Assert.assertTrue(srpage.checktitle("Bangalore"));
 
-        localityTextBox.sendKeys("Indiranagar, Bangalore");
-
-        new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
-        searchButton.click();
-
-        driver.quit();
-
-    }
-
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
     }
 
 }
