@@ -1,3 +1,5 @@
+package com.codetest.tests;
+
 import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
