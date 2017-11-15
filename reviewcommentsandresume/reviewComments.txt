@@ -1,0 +1,17 @@
+Review comments are not repeated accross the testcases 
+
+1. Use Implicit  wait / web driver wait for using thread.sleep
+2. Package name should be given appropriatly , so change the package name according to the classfiles in it 
+3. There is no loggin mechanism , use log4J/reporter cllass of testNG
+4. A test case should not contain any of the methods in it 
+5. A test case should contain only the execution steps 
+6. For initializing webDriver @beforeMethod of testNG can be used 
+7. For closing driver instance @afterMethod of testNG can be used / driver.quite should not be placed inside a testcase
+8. Reusable methods can be created to perform actions like selecting an item from a Ajax call , or date picker , wait helper 
+9. driver path should be set before initializing driver to a chrome driver
+10. When using @FindBy we need to call PageFactory.initElements(driver, this);
+11. create a reusable methods for select, alert , switch window operations 
+12. code "localityTextBox.sendKeys("Indiranagar, Bangalore")" does not select anything from list 
+We need to select apropriate value from the list 
+13. No assertions added in "HotelBookingTest"
+14. Switch frame is required to click on signInButton in testcase 

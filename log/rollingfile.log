@@ -1,0 +1,36 @@
+2017-11-14 23:45:26 INFO  FlightBookingTest : 25 -[testThatResultsAppearForAOneWayJourney] launched cleartrip website
+2017-11-14 23:45:28 INFO  FlightBookingTest : 30 -[testThatResultsAppearForAOneWayJourney] Cleared from test field
+2017-11-14 23:45:31 INFO  FlightBookingTest : 33 -[testThatResultsAppearForAOneWayJourney] Entred bangalore in from text field
+2017-11-14 23:45:32 INFO  FlightBookingTest : 42 -[testThatResultsAppearForAOneWayJourney] Select Bangalore from autocomplete list
+2017-11-14 23:45:32 INFO  FlightBookingTest : 45 -[testThatResultsAppearForAOneWayJourney] Wait till destination textbox is available
+2017-11-14 23:45:33 INFO  FlightBookingTest : 48 -[testThatResultsAppearForAOneWayJourney] Typed Delhi
+2017-11-14 23:45:34 INFO  FlightBookingTest : 53 -[testThatResultsAppearForAOneWayJourney] wait till autocomplete feild is available
+2017-11-14 23:45:36 INFO  FlightBookingTest : 56 -[testThatResultsAppearForAOneWayJourney] select delhi from autocomplete dropdown
+2017-11-14 23:45:37 INFO  FlightBookingTest : 80 -[testThatResultsAppearForAOneWayJourney] date Nov 19 is selected from the calander
+2017-11-14 23:45:40 INFO  FlightBookingTest : 84 -[testThatResultsAppearForAOneWayJourney] Clicked on search button
+2017-11-14 23:45:43 INFO  FlightBookingTest : 87 -[testThatResultsAppearForAOneWayJourney] wait till the search summery element isvisible
+2017-11-15 00:27:37 INFO  FlightBookingTest : 25 -[testThatResultsAppearForAOneWayJourney] launched cleartrip website
+2017-11-15 00:27:42 INFO  FlightBookingTest : 30 -[testThatResultsAppearForAOneWayJourney] Cleared from test field
+2017-11-15 00:27:42 INFO  FlightBookingTest : 33 -[testThatResultsAppearForAOneWayJourney] Entred bangalore in from text field
+2017-11-15 00:27:43 INFO  FlightBookingTest : 42 -[testThatResultsAppearForAOneWayJourney] Select Bangalore from autocomplete list
+2017-11-15 00:27:44 INFO  FlightBookingTest : 45 -[testThatResultsAppearForAOneWayJourney] Wait till destination textbox is available
+2017-11-15 00:27:44 INFO  FlightBookingTest : 48 -[testThatResultsAppearForAOneWayJourney] Typed Delhi
+2017-11-15 00:27:45 INFO  FlightBookingTest : 53 -[testThatResultsAppearForAOneWayJourney] wait till autocomplete feild is available
+2017-11-15 00:27:46 INFO  FlightBookingTest : 56 -[testThatResultsAppearForAOneWayJourney] select delhi from autocomplete dropdown
+2017-11-15 00:27:47 INFO  FlightBookingTest : 80 -[testThatResultsAppearForAOneWayJourney] date Nov 19 is selected from the calander
+2017-11-15 00:27:48 INFO  FlightBookingTest : 84 -[testThatResultsAppearForAOneWayJourney] Clicked on search button
+2017-11-15 00:27:50 INFO  FlightBookingTest : 87 -[testThatResultsAppearForAOneWayJourney] wait till the search summery element isvisible
+2017-11-15 14:29:53 INFO  FlightBookingTest : 25 -[testThatResultsAppearForAOneWayJourney] launched cleartrip website
+2017-11-15 14:29:53 INFO  FlightBookingTest : 30 -[testThatResultsAppearForAOneWayJourney] Cleared from test field
+2017-11-15 14:29:54 INFO  FlightBookingTest : 33 -[testThatResultsAppearForAOneWayJourney] Entred bangalore in from text field
+2017-11-15 14:33:23 INFO  FlightBookingTest : 25 -[testThatResultsAppearForAOneWayJourney] launched cleartrip website
+2017-11-15 14:33:23 INFO  FlightBookingTest : 30 -[testThatResultsAppearForAOneWayJourney] Cleared from test field
+2017-11-15 14:33:25 INFO  FlightBookingTest : 33 -[testThatResultsAppearForAOneWayJourney] Entred bangalore in from text field
+2017-11-15 14:33:25 INFO  FlightBookingTest : 42 -[testThatResultsAppearForAOneWayJourney] Select Bangalore from autocomplete list
+2017-11-15 14:33:25 INFO  FlightBookingTest : 45 -[testThatResultsAppearForAOneWayJourney] Wait till destination textbox is available
+2017-11-15 14:33:25 INFO  FlightBookingTest : 48 -[testThatResultsAppearForAOneWayJourney] Typed Delhi
+2017-11-15 14:33:26 INFO  FlightBookingTest : 53 -[testThatResultsAppearForAOneWayJourney] wait till autocomplete feild is available
+2017-11-15 14:33:26 INFO  FlightBookingTest : 56 -[testThatResultsAppearForAOneWayJourney] select delhi from autocomplete dropdown
+2017-11-15 14:33:26 INFO  FlightBookingTest : 80 -[testThatResultsAppearForAOneWayJourney] date Nov 19 is selected from the calander
+2017-11-15 14:33:26 INFO  FlightBookingTest : 84 -[testThatResultsAppearForAOneWayJourney] Clicked on search button
+2017-11-15 14:33:27 INFO  FlightBookingTest : 87 -[testThatResultsAppearForAOneWayJourney] wait till the search summery element isvisible
