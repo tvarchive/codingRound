@@ -4,30 +4,43 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.openqa.selenium.interactions.Actions;
 
 public class SignInTest {
 
-    WebDriver driver = new ChromeDriver();
-
+   static WebDriver driver;
+    String browser="Chrome";
+    @BeforeTest
+    public void browserInstantiation(){
+        if(browser.contentEquals("Firefox)){
+               driver=new FirefoxDriver(); }
+        else if(browser.contentEquals("chrome")){
+        ssetDriverPath();
+        driver=new ChromeDriver();
+        }else
+         {          
+             System.set.Proeprty("webdriver.ie.driver","path of ie driver") 
+         }
+                                 }
     @Test
-    public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
-
-        setDriverPath();
-
+    public void shouldThrowAnErrorIfSignInDetailsAreMissing() throws Exception { 
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
 
-        driver.findElement(By.linkText("Your trips")).click();
-        driver.findElement(By.id("SignIn")).click();
+        WebElement trip=driver.findElement(By.linkText("Your trips"));
+        clickOnElement(trip);
+        WenbElement signIn=driver.findElement(By.id("SignIn"));
+        clickOnElement(signIn);
 
-        driver.findElement(By.id("signInButton")).click();
+       WebElement signInButton= driver.findElement(By.id("signInButton"));
+        clickOnElement(signInButton);
 
         String errors1 = driver.findElement(By.id("errors1")).getText();
         Assert.assertTrue(errors1.contains("There were errors in your submission"));
-        driver.quit();
+        driver.close();
     }
 
-    private void waitFor(int durationInMilliSeconds) {
+    public void waitFor(int durationInMilliSeconds) {
         try {
             Thread.sleep(durationInMilliSeconds);
         } catch (InterruptedException e) {
@@ -35,7 +48,7 @@ public class SignInTest {
         }
     }
 
-    private void setDriverPath() {
+    public void setDriverPath() {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
@@ -46,6 +59,7 @@ public class SignInTest {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
     }
-
-
+    public void clickOnElement(WebElement element){
+        Actions act=new Actions(driver);
+        act.click(element).build().perform();
 }
