@@ -31,7 +31,7 @@ public class HotelBookingTest {
 
         localityTextBox.sendKeys("Indiranagar, Bangalore");
      
-        Select sel= new Select(travellerSelection);//Chanes made we have to Declare Select Class
+        Select sel= new Select(travellerSelection) ; //  Eariler not declared Chanes made we have to Declare Select Class
          sel.selectByVisibleText("1 room, 2 adults");
         searchButton.click();
 
