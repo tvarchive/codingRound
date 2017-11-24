@@ -12,19 +12,22 @@ import java.util.List;
 
 public class FlightBookingTest {
 
-    WebDriver driver = new ChromeDriver();
+  // static WebDriver driver;
 
 
     @Test
-    public void testThatResultsAppearForAOneWayJourney() {
+    public void testThatResultsAppearForAOneWayJourney() throws Exception {
 
-        setDriverPath();
+//         setDriverPath();
+//         driver=new ChromeDriver();
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
-        driver.findElement(By.id("OneWay")).click();
+        WebElement oneWay=driver.findElement(By.id("OneWay"));
+        clickOnElement(oneWay);
 
-        driver.findElement(By.id("FromTag")).clear();
-        driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
+        WebElement fromTag= driver.findElement(By.id("FromTag"));
+        fromTag.clear();
+        fromTag.sendKeys("Bangalore");
 
         //wait for the auto complete options to appear for the origin
 
@@ -32,8 +35,9 @@ public class FlightBookingTest {
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
 
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        WebElement toTag=driver.findElement(By.id("toTag"));
+        toTag.clear();
+        toTag.sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
 
@@ -42,28 +46,30 @@ public class FlightBookingTest {
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
         destinationOptions.get(0).click();
 
-        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
+        WebElement datePicker=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a"));
+        clickOnElement(datePicker);
 
         //all fields filled in. Now click on search
-        driver.findElement(By.id("SearchBtn")).click();
+        WebElement searchButton=driver.findElement(By.id("SearchBtn"));
+        clickOnElement(searchButton);
 
         waitFor(5000);
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
 
         //close the browser
-        driver.quit();
+        driver.close();
 
     }
 
 
-    private void waitFor(int durationInMilliSeconds) {
-        try {
-            Thread.sleep(durationInMilliSeconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
+//     private void waitFor(int durationInMilliSeconds) {
+//         try {
+//             Thread.sleep(durationInMilliSeconds);
+//         } catch (InterruptedException e) {
+//             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//         }
+//     }
 
 
     private boolean isElementPresent(By by) {
@@ -75,15 +81,15 @@ public class FlightBookingTest {
         }
     }
 
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
+//     private void setDriverPath() {
+//         if (PlatformUtil.isMac()) {
+//             System.setProperty("webdriver.chrome.driver", "chromedriver");
+//         }
+//         if (PlatformUtil.isWindows()) {
+//             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+//         }
+//         if (PlatformUtil.isLinux()) {
+//             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
+//         }
     }
 }
