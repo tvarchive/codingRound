@@ -20,10 +20,10 @@ public class FlightBookingTest {
 
         setDriverPath();
         driver.get("https://www.cleartrip.com/");
-        waitFor(2000);
+        waitFor(2000); //Thread.sleep(20);
         driver.findElement(By.id("OneWay")).click();
 
-        driver.findElement(By.id("FromTag")).clear();
+        driver.findElement(By.id("FromTag")).clear(); 
         driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
 
         //wait for the auto complete options to appear for the origin
@@ -32,7 +32,7 @@ public class FlightBookingTest {
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
 
-        driver.findElement(By.id("toTag")).clear();
+        driver.findElement(By.id("toTag")).clear(); //id=ToTag
         driver.findElement(By.id("toTag")).sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
@@ -40,14 +40,17 @@ public class FlightBookingTest {
         waitFor(2000);
         //select the first item from the destination auto complete list
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
+        //
         destinationOptions.get(0).click();
 
         driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
+        //Remove * from xpath give tag name =div]
 
         //all fields filled in. Now click on search
         driver.findElement(By.id("SearchBtn")).click();
 
         waitFor(5000);
+        
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
 
@@ -57,7 +60,8 @@ public class FlightBookingTest {
     }
 
 
-    private void waitFor(int durationInMilliSeconds) {
+    private void waitFor(int durationInMilliSeconds) 
+    {
         try {
             Thread.sleep(durationInMilliSeconds);
         } catch (InterruptedException e) {
@@ -66,18 +70,22 @@ public class FlightBookingTest {
     }
 
 
-    private boolean isElementPresent(By by) {
+    private boolean isElementPresent(By by) //  private boolean isElementPresent(WebElement status)
+    {
         try {
-            driver.findElement(by);
-            return true;
+            driver.findElement(by);                // WebElement element =driver.findelement(By.xpath("")
+            
+            return true;                          // boolean status =element.IsDisplayed
         } catch (NoSuchElementException e) {
             return false;
         }
     }
 
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
+    private void setDriverPath()
+    {
+        if (PlatformUtil.isMac())
+        {
+            System.setProperty("webdriver.chrome.driver", "chromedriver"); //Set path as SigIn class
         }
         if (PlatformUtil.isWindows()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
