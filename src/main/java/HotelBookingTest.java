@@ -10,16 +10,16 @@ public class HotelBookingTest {
 
     WebDriver driver = new ChromeDriver();
 
-    @FindBy(linkText = "Hotels")
+    @FindBy(linkText = "Hotels")// @FindBy(Xpath="//span[contains(text(),'Hotels')]")
     private WebElement hotelLink;
 
-    @FindBy(id = "Tags")
+    @FindBy(id = "Tags")// @FindBy(Xpath="//input[@id='Tags']")
     private WebElement localityTextBox;
 
-    @FindBy(id = "SearchHotelsButton")
+    @FindBy(id = "SearchHotelsButton")// @FindBy(Xpath="//input[@id='SearchHotelsButton']")
     private WebElement searchButton;
 
-    @FindBy(id = "travellersOnhome")
+    @FindBy(id = "travellersOnhome")// @FindBy(Xpath="//select[@id='travellersOnhome']")
     private WebElement travellerSelection;
 
     @Test
@@ -30,8 +30,9 @@ public class HotelBookingTest {
         hotelLink.click();
 
         localityTextBox.sendKeys("Indiranagar, Bangalore");
-
-        new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
+     
+        Select sel= new Select(travellerSelection) ; //  Eariler not declared Chanes made we have to Declare Select Class
+         sel.selectByVisibleText("1 room, 2 adults");
         searchButton.click();
 
         driver.quit();
@@ -40,13 +41,13 @@ public class HotelBookingTest {
 
     private void setDriverPath() {
         if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
+            System.setProperty("webdriver.chrome.driver", "chromedriver");//Mention exact path for chrome Driver as in SigInTest class mentioned
         }
         if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");//Mention exact path for chrome Driver
         }
         if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
+            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");///Mention exact path for chrome Driver
         }
     }
 
