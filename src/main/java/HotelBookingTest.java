@@ -1,53 +1,75 @@
-import com.sun.javafx.PlatformUtil;
-import org.openqa.selenium.WebDriver;
+
+
+import testBase.TestBase;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
-public class HotelBookingTest {
-
-    WebDriver driver = new ChromeDriver();
+public class HotelBookingTest extends TestBase{
+    
 
     @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
+    private static WebElement hotelLink;
 
     @FindBy(id = "Tags")
-    private WebElement localityTextBox;
+    private static WebElement localityTextBox;
 
     @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
+    private static WebElement searchButton;
 
     @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
-
+    private static WebElement travellerSelection;
+    
+    @FindBy(id="ui-id-1")
+    private static WebElement cities;
+    
+    @FindBy(xpath="//*[@id='ui-datepicker-div']/div[1]/div/div")
+    private static WebElement monthYear1;
+    
+    @FindBy(xpath="//*[@id='ui-datepicker-div']/div[2]/div/div")
+    private static WebElement monthYear2;
+    
+    
+    @FindBy(xpath="//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr/td/a")
+    private static List<WebElement> days;
+    
+    @FindBy(xpath="//*[@id='ui-datepicker-div']/div[2]/div/a")
+    private static List<WebElement> datepicker_Nextbtn;
+    
+    @FindBy(xpath="//*[@id='ui-datepicker-div']/div[2]/div/a")
+    private static WebElement next_btn;
+    
     @Test
-    public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
-
-        driver.get("https://www.cleartrip.com/");
+    public void shouldBeAbleToSearchForHotels() throws IOException, InterruptedException {
+  
+    	PageFactory.initElements(driver, HotelBookingTest.class);
         hotelLink.click();
 
         localityTextBox.sendKeys("Indiranagar, Bangalore");
-
+        waitFor(2000);
+        selectcities(cities);
+        
+        datepickers("10-December 2017",monthYear1,monthYear2,days,datepicker_Nextbtn,next_btn);
+        datepickers("12-January 2018",monthYear1,monthYear2,days,datepicker_Nextbtn,next_btn);
         new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
         searchButton.click();
 
-        driver.quit();
+        /*driver.quit();*/
 
     }
-
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
-    }
-
+    
+    public void selectcities(WebElement element) {
+  	  List<WebElement> originOptions =   element.findElements(By.tagName("a"));
+  	  System.out.println(originOptions.get(0).getText());
+        originOptions.get(0).click();
+		
+	}
+   
 }
