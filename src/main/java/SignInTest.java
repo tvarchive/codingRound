@@ -15,6 +15,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /* Login Page Test Cases Scenarios
@@ -34,6 +35,12 @@ public class SignInTest extends TestBase{
 	 @FindBy(id="SignIn")
 	 static WebElement signin_link;
 	 
+	 @FindBy(id="email")
+	 static WebElement email_id;
+	 
+	 @FindBy(id="password")
+	 static WebElement password;
+	 
 	 @FindBy(id="signInButton")
 	 static WebElement signin_Btn;
 	
@@ -44,8 +51,10 @@ public class SignInTest extends TestBase{
 	 static List<WebElement> popup_head_msg;
 	 
 	 int total=0;
-    @Test
-    public void shouldThrowAnErrorIfSignInDetailsAreMissing() throws IOException {
+	 
+	
+    @Test(dataProvider="getTestData")
+    public void shouldThrowAnErrorIfSignInDetailsAreMissing(String data1, String data2) throws IOException {
     	
     	//PageFactory Class has the method called initElements method It will return the all element which u r initialize in given class
         PageFactory.initElements(driver, SignInTest.class);
@@ -55,32 +64,35 @@ public class SignInTest extends TestBase{
         signin_link.click();
        
         waitFor(2000);
-        find_and_IdentifyFrames();
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@src='https://www.cleartrip.com/signin?popup=yes&service=/']")));
+        // validation for email and password fields:
+        email_id.clear();
+        email_id.sendKeys(data1);
+        
+        password.clear();
+        password.sendKeys(data2);
         signin_Btn.click();
         
         String errors1 = error1_msg.getText();
-        Assert.assertTrue(errors1.contains("There were errors in your submission"));
+        	  Assert.assertTrue(errors1.contains("There were errors in your submission"));
         
         // After test is done Switch back to the main page.
         driver.switchTo().defaultContent();
        
     }
 
-    // In this method will find the frames and switched to the frames. 
-	private int find_and_IdentifyFrames() {
+	@DataProvider
+	public Object[][] getTestData(){
 		
-		int size = driver.findElements(By.tagName("iframe")).size();
-		for(total=0; total<=size; total++){
-			driver.switchTo().frame(total);
-			int test =popup_head_msg.size();
-			System.out.println(test);
-			if(test!=0)break;
-			else driver.switchTo().defaultContent();
-			    
-		}
-		return total;
-
+		Object[][] data = new Object[2][2];
 		
+		data[0][0] = "";
+		data[0][1] = "";
+		data[1][0] = "email";
+		data[1][1] = "password";
+		
+		return data;
+	
 	}
 
 }
