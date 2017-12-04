@@ -59,7 +59,6 @@ public class SignInTest extends TestBase{
     	//PageFactory Class has the method called initElements method It will return the all element which u r initialize in given class
         PageFactory.initElements(driver, SignInTest.class);
         /*waitFor(2000);*/
-	        
         your_trips_txt.click();
         signin_link.click();
        
@@ -84,7 +83,7 @@ public class SignInTest extends TestBase{
 	@DataProvider
 	public Object[][] getTestData(){
 		
-		Object[][] data = new Object[2][4];
+		Object[][] data = new Object[4][2];
 		
 		// Both email and password is blank;
 		data[0][0] = "";
