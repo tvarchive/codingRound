@@ -47,6 +47,9 @@ public class SignInTest extends TestBase{
 	 @FindBy(id="errors1")
 	 static WebElement error1_msg;
 	 
+	 @FindBy(xpath="//a[@id='userAccountLink']/span[2]")
+	 static WebElement loginSuccessVerification;
+	 
 	 @FindBy(xpath="//*[@id='ContentFrame']/div/div/h1")
 	 static List<WebElement> popup_head_msg;
 	 
@@ -72,9 +75,12 @@ public class SignInTest extends TestBase{
         password.sendKeys(data2);
         signin_Btn.click();
         
+        waitFor(2000);
         String errors1 = error1_msg.getText();
-        	  Assert.assertTrue(errors1.contains("There were errors in your submission"));
-        
+        if(error1_msg.getText().contains("There were errors in your submission"))
+        		  Assert.assertTrue(errors1.contains("There were errors in your submission"));
+        else if(loginSuccessVerification.getText().equals(data1))
+        		  Assert.assertTrue(loginSuccessVerification.getText().equals(data1));
         // After test is done Switch back to the main page.
         driver.switchTo().defaultContent();
        
@@ -83,7 +89,7 @@ public class SignInTest extends TestBase{
 	@DataProvider
 	public Object[][] getTestData(){
 		
-		Object[][] data = new Object[4][2];
+		Object[][] data = new Object[2][2];
 		
 		// Both email and password is blank;
 		data[0][0] = "";
@@ -102,6 +108,8 @@ public class SignInTest extends TestBase{
 		data[3][1] = "12345678";
 		
 		//Email and password both is valid 
+		data[1][0] = "jayakumarcse07@gmail.com";
+		data[1][1] = "12345678";
 		
 		return data;
 	
