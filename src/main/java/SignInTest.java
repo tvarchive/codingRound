@@ -84,12 +84,25 @@ public class SignInTest extends TestBase{
 	@DataProvider
 	public Object[][] getTestData(){
 		
-		Object[][] data = new Object[2][2];
+		Object[][] data = new Object[2][4];
 		
+		// Both email and password is blank;
 		data[0][0] = "";
 		data[0][1] = "";
-		data[1][0] = "email";
-		data[1][1] = "password";
+		
+		//Email is Blank and Password is filled;
+		data[1][0] = "";
+		data[1][1] = "12345678";
+		
+		//Email is filled and Password is Blank;
+		data[2][0] = "email@yopmail.com";
+		data[2][1] = "";
+		
+		//Email and password both is invalid 
+		data[3][0] = "email@yopmail.com";
+		data[3][1] = "12345678";
+		
+		//Email and password both is valid 
 		
 		return data;
 	
