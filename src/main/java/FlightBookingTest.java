@@ -1,3 +1,4 @@
+
 import com.sun.javafx.PlatformUtil;
 
 import testBase.TestBase;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -52,11 +54,20 @@ public class FlightBookingTest extends TestBase{
 	    
 	    @FindBy(xpath="//*[@id='ui-datepicker-div']/div[2]/div/a")
 	    private static WebElement next_btn;
+	    
+	   @BeforeClass
+	   public void init() throws IOException{
+			 
+			commonsetup();
+			//PageFactory Class has the method called initElements method It will return the all element which u r initialize in given class
+			PageFactory.initElements(driver, FlightBookingTest.class);
+		        /*waitFor(2000);*/
+			 
+		 }
 	
     @Test
     public void testThatResultsAppearForAOneWayJourney() throws IOException {
     	
-    	PageFactory.initElements(driver, FlightBookingTest.class);
         oneway_radio_btn.click();
 
         from_txt_box.clear();

@@ -1,3 +1,5 @@
+
+
 import com.sun.javafx.PlatformUtil;
 import com.sun.jna.Platform;
 
@@ -15,6 +17,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -47,6 +52,9 @@ public class SignInTest extends TestBase{
 	 @FindBy(id="errors1")
 	 static WebElement error1_msg;
 	 
+	 @FindBy(id="errors1")
+	 static List<WebElement> error1_msglist;
+	 
 	 @FindBy(xpath="//a[@id='userAccountLink']/span[2]")
 	 static WebElement loginSuccessVerification;
 	 
@@ -54,17 +62,21 @@ public class SignInTest extends TestBase{
 	 static List<WebElement> popup_head_msg;
 	 
 	 int total=0;
-	 
 	
+	 @BeforeClass
+	 public void init() throws IOException{
+		 
+		 commonsetup();
+		//PageFactory Class has the method called initElements method It will return the all element which u r initialize in given class
+	        PageFactory.initElements(driver, SignInTest.class);
+	        /*waitFor(2000);*/
+	        your_trips_txt.click();
+	        signin_link.click();
+		 
+	 }
     @Test(dataProvider="getTestData")
     public void shouldThrowAnErrorIfSignInDetailsAreMissing(String data1, String data2) throws IOException {
-    	
-    	//PageFactory Class has the method called initElements method It will return the all element which u r initialize in given class
-        PageFactory.initElements(driver, SignInTest.class);
-        /*waitFor(2000);*/
-        your_trips_txt.click();
-        signin_link.click();
-       
+
         waitFor(2000);
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@src='https://www.cleartrip.com/signin?popup=yes&service=/']")));
         // validation for email and password fields:
@@ -76,11 +88,11 @@ public class SignInTest extends TestBase{
         signin_Btn.click();
         
         waitFor(2000);
-        String errors1 = error1_msg.getText();
-        if(error1_msg.getText().contains("There were errors in your submission"))
-        		  Assert.assertTrue(errors1.contains("There were errors in your submission"));
-        else if(loginSuccessVerification.getText().equals(data1))
-        		  Assert.assertTrue(loginSuccessVerification.getText().equals(data1));
+        if(error1_msglist.size()!=0){
+        	if(error1_msg.getText().contains("There were errors in your submission"))
+        		Assert.assertTrue(error1_msg.getText().contains("There were errors in your submission"));
+        } else if(loginSuccessVerification.getText().equals(data1))
+        		Assert.assertTrue(loginSuccessVerification.getText().equals(data1));
         // After test is done Switch back to the main page.
         driver.switchTo().defaultContent();
        
@@ -89,7 +101,7 @@ public class SignInTest extends TestBase{
 	@DataProvider
 	public Object[][] getTestData(){
 		
-		Object[][] data = new Object[2][2];
+		Object[][] data = new Object[5][2];
 		
 		// Both email and password is blank;
 		data[0][0] = "";
@@ -108,8 +120,8 @@ public class SignInTest extends TestBase{
 		data[3][1] = "12345678";
 		
 		//Email and password both is valid 
-		data[1][0] = "jayakumarcse07@gmail.com";
-		data[1][1] = "12345678";
+		data[4][0] = "jayakumarcse07@gmail.com";
+		data[4][1] = "12345678";
 		
 		return data;
 	
