@@ -63,6 +63,7 @@ public class HomePage extends BasePage {
         ONE_WAY, ROUND_TRIP, MULTI_CITY;
 
     }
+
     public HomePage(App app) {
         super(app);
         PageFactory.initElements(getDriver(), this);
@@ -84,7 +85,7 @@ public class HomePage extends BasePage {
     public void openSignInForm() {
         signInLink.click();
         switchToFrame(signInFormFrame);
-        waitForElementVisibility(signInForm,2);
+        waitForElementVisibility(signInForm, 2);
     }
 
     public void openUserAccountMenu() {
@@ -92,27 +93,27 @@ public class HomePage extends BasePage {
     }
 
     public void searchFlights() {
-        clickElement(searchButton);
+        searchButton.click();
     }
 
     public void selectRandomDepartureDate() {
-        clickElement(datePickerText);
+        datePickerText.click();
     }
 
     public void openHotelsSearch() {
-        clickElement(hotelLink);
+        hotelLink.click();
     }
 
     public void selectTripType(TripType tripType) {
         switch (tripType) {
             case ONE_WAY:
-                clickElement(oneWayRadioButton);
+                oneWayRadioButton.click();
                 break;
             case ROUND_TRIP:
-                clickElement(roundTripRadioButton);
+                roundTripRadioButton.click();
                 break;
             case MULTI_CITY:
-                clickElement(multiCityRadioButton);
+                multiCityRadioButton.click();
                 break;
         }
     }
@@ -131,6 +132,6 @@ public class HomePage extends BasePage {
 
     private void selectFirstAutoCompleteOption(List<WebElement> options) {
         waitForElementsVisibility(options, 2);
-        clickElement(options.get(0));
+        options.get(0).click();
     }
 }

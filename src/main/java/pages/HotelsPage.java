@@ -35,6 +35,6 @@ public class HotelsPage extends BasePage {
     }
 
     public void searchHotels() {
-        clickElement(searchButton);
+        searchButton.click();
     }
 }

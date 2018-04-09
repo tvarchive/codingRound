@@ -28,10 +28,6 @@ public abstract class BasePage {
         return wait;
     }
 
-    protected void clickElement(WebElement element) {
-        element.click();
-    }
-
     protected WebElement getElement(By by) {
         return driver.findElement(by);
     }
