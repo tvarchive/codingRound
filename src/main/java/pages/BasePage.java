@@ -28,8 +28,8 @@ public abstract class BasePage {
         return wait;
     }
 
-    protected void clickElement(WebElement hotelLink) {
-        hotelLink.click();
+    protected void clickElement(WebElement element) {
+        element.click();
     }
 
     protected WebElement getElement(By by) {
