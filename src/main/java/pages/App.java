@@ -8,6 +8,14 @@ import java.util.concurrent.TimeUnit;
 
 public class App {
     private WebDriver driver;
+    private static App app;
+
+    public static App getInstance() {
+        if (app == null) {
+            app = new App();
+        }
+        return app;
+    }
 
     public App() {
         setDriverPath();
