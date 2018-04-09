@@ -12,20 +12,17 @@ import pages.ResultsPage;
 
 import java.util.List;
 
-public class FlightBookingTest {
-    private App app;
+public class FlightBookingTest extends BaseTest {
     private HomePage homePage;
     private ResultsPage resultsPage;
 
     public FlightBookingTest() {
-        this.app = new App();
-        homePage = new HomePage(app);
-        resultsPage = new ResultsPage(app);
+        homePage = new HomePage(getApp());
+        resultsPage = new ResultsPage(getApp());
     }
 
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
-        app.launch();
         homePage.selectTripType(HomePage.TripType.ONE_WAY);
         homePage.enterOrigin("Bangalore");
         homePage.enterDestination("Delhi");
@@ -33,8 +30,6 @@ public class FlightBookingTest {
         homePage.searchFlights();
         resultsPage.waitForPageDisplay();
         Assert.assertTrue(resultsPage.isSearchSummaryPresent());
-        app.close();
-
     }
 
 
