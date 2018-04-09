@@ -2,7 +2,7 @@ package tests;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
-import pages.App;
+import application.App;
 
 public class BaseTest {
     private App app;

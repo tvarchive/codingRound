@@ -1,4 +1,4 @@
-package pages;
+package application;
 
 import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.WebDriver;
