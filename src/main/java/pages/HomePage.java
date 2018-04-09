@@ -68,6 +68,11 @@ public class HomePage extends BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
+    @Override
+    WebElement uniquePageIdentifier() {
+        return flightsLink;
+    }
+
     public String getSignInErrorText() {
         return errorText.getText();
     }
@@ -92,11 +97,6 @@ public class HomePage extends BasePage {
 
     public void selectRandomDepartureDate() {
         clickElement(datePickerText);
-    }
-
-    @Override
-    WebElement uniquePageIdentifier() {
-        return flightsLink;
     }
 
     public void openHotelsSearch() {
