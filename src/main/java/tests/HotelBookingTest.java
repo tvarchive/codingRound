@@ -1,3 +1,5 @@
+package tests;
+
 import org.testng.annotations.Test;
 import pages.App;
 import pages.HomePage;
