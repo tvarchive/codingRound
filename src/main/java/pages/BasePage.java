@@ -1,9 +1,13 @@
 package pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public abstract class BasePage {
     private WebDriver driver;
@@ -26,5 +30,24 @@ public abstract class BasePage {
 
     protected void clickElement(WebElement hotelLink) {
         hotelLink.click();
+    }
+
+    protected WebElement getElement(By by) {
+        return driver.findElement(by);
+    }
+
+    protected WebDriverWait waitForElementsVisibility(List<WebElement> element, int duration) {
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(ExpectedConditions.visibilityOfAllElements(element));
+        return wait;
+    }
+
+    protected boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
