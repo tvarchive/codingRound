@@ -42,12 +42,27 @@ public abstract class BasePage {
         return wait;
     }
 
+    protected WebDriverWait waitForElementVisibility(WebElement element, int duration) {
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(ExpectedConditions.visibilityOf(element));
+        return wait;
+    }
+
     protected boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
             return true;
         } catch (NoSuchElementException e) {
             return false;
+        }
+    }
+
+    protected void switchToFrame(WebElement frameElement) {
+        try {
+            driver.switchTo().frame(frameElement);
+        }
+        catch (Exception e) {
+            System.out.println("No such Frame found");
         }
     }
 }

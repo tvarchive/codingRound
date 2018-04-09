@@ -41,13 +41,49 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")
     private WebElement datePickerText;
 
+    @FindBy(linkText = "Your trips")
+    private WebElement userAccountMenu;
+
+    @FindBy(id = "SignIn")
+    private WebElement signInLink;
+
+    @FindBy(id = "signinForm")
+    private WebElement signInForm;
+
+    @FindBy(id = "modal_window")
+    private WebElement signInFormFrame;
+
+    @FindBy(id = "signInButton")
+    private WebElement signInButton;
+
+    @FindBy(id = "errors1")
+    private WebElement errorText;
+
     public enum TripType {
         ONE_WAY, ROUND_TRIP, MULTI_CITY;
-    }
 
+    }
     public HomePage(App app) {
         super(app);
         PageFactory.initElements(getDriver(), this);
+    }
+
+    public String getSignInErrorText() {
+        return errorText.getText();
+    }
+
+    public void clickSignIn() {
+        signInButton.click();
+    }
+
+    public void openSignInForm() {
+        signInLink.click();
+        switchToFrame(signInFormFrame);
+        waitForElementVisibility(signInForm,2);
+    }
+
+    public void openUserAccountMenu() {
+        userAccountMenu.click();
     }
 
     public void searchFlights() {
