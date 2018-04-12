@@ -29,28 +29,7 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        //This initElements method will create all WebElements
     }
-
-    //Set user name in textbox
-
-    /*
-    public void setUserName(String strUserName){
-
-        user99GuruName.sendKeys(strUserName);
-    }
-
-
-
-    //Set password in password textbox
-
-    public void setPassword(String strPassword){
-
-        password99Guru.sendKeys(strPassword);
-
-    }
-*/
-
 
     //Click on login button
     public void clickLogin() {
@@ -66,19 +45,7 @@ public class LoginPage {
     }
 
     public void login() {
-
-       /* //Fill user name
-
-        this.setUserName(strUserName);
-
-        //Fill password
-
-        this.setPassword(strPasword);
-*/
-        //Click Login button
-
         this.clickLogin();
-
     }
 
     public String fetchErrors() {
