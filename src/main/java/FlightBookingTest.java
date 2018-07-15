@@ -1,9 +1,12 @@
 import com.sun.javafx.PlatformUtil;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,7 +14,9 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class FlightBookingTest {
-
+	
+	
+	
     WebDriver driver = new ChromeDriver();
 
 
@@ -22,9 +27,10 @@ public class FlightBookingTest {
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
         driver.findElement(By.id("OneWay")).click();
-
+        waitFor(2000);
         driver.findElement(By.id("FromTag")).clear();
-        driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
+        waitFor(2000);
+        driver.findElement(By.name("origin")).sendKeys("Bangalore");
 
         //wait for the auto complete options to appear for the origin
 
@@ -32,8 +38,8 @@ public class FlightBookingTest {
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
 
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        driver.findElement(By.id("ToTag")).clear();
+        driver.findElement(By.id("ToTag")).sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
 
