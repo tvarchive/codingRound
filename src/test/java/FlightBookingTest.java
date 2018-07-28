@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class FlightBookingTest {
+	/*
 
     WebDriver driver = new ChromeDriver();
 
@@ -86,4 +87,5 @@ public class FlightBookingTest {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
     }
+    */
 }

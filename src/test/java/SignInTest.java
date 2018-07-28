@@ -1,25 +1,32 @@
 import com.sun.javafx.PlatformUtil;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SignInTest {
 
-    WebDriver driver = new ChromeDriver();
+    
 
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
+    	
+    	ChromeOptions options = new ChromeOptions();
+    	options.addArguments("--start-maximized");
 
         setDriverPath();
-
+    	WebDriver driver = new ChromeDriver(options);
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
 
         driver.findElement(By.linkText("Your trips")).click();
         driver.findElement(By.id("SignIn")).click();
-
+        
+        driver.switchTo().frame("modal_window");
+        waitFor(3000);
         driver.findElement(By.id("signInButton")).click();
 
         String errors1 = driver.findElement(By.id("errors1")).getText();
@@ -37,15 +44,14 @@ public class SignInTest {
 
     private void setDriverPath() {
         if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
         }
         if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        	System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         }
         if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver_linux");
         }
     }
-
 
 }

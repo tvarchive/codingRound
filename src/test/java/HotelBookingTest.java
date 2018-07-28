@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class HotelBookingTest {
-
+/*
     WebDriver driver = new ChromeDriver();
 
     @FindBy(linkText = "Hotels")
@@ -49,5 +49,5 @@ public class HotelBookingTest {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
     }
-
+*/
 }
