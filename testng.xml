@@ -3,8 +3,6 @@
 	<test name="codingTests">
 		<classes>
 			<class name="SignInTest"/>
-			<class name="FlightBookingTest"/>
-			<class name="HotelBookingTest"/>
 		</classes>
 	</test>
 </suite>
