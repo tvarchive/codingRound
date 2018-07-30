@@ -1,8 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="codingRound">
-	<test name="codingTests">
+<suite name="testsuite-codingRound" verbose="1">
+	<listeners>
+		<listener class-name="test.java.framework.TestListener" />
+	</listeners>
+	<test name="codingTests" verbose="1">
 		<classes>
-			<class name="SignInTest"/>
+			<class name="test.java.testcase.SignInTest"/>
+			<class name="test.java.testcase.FlightBookingTest"/>
+			<class name="test.java.testcase.HotelBookingTest" />
 		</classes>
 	</test>
 </suite>
