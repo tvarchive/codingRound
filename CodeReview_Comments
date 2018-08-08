@@ -1,0 +1,23 @@
+Framework Refactored to Page Object Model and Page factory for achieving Abstraction and Maintenance
+
+Common Changes made :
+
+1. Following methods setDriverPath() and waitFor(int durationInMilliSeconds) are written in all the tests, Created codingRound/src/main/java/page/base and added the common reusable methods to this class, the test or pages class which require this method will extend this class and use it. This is for reusability 
+2. waitFor(int durationInMilliSeconds) - this method internally used Thread.sleep() command which is not the good practise to follow, test tend to wait more time than required. So changed to wait till the element appears.  
+3. Have added codingRound/testdata.properties file which has all the test data used in the tests (This added for Maintenance) 
+
+Refactored existing code :
+
+codingRound/src/main/java/SignInTest.java
+1. Have made changes to follow POM, Created codingRound/src/main/java/page/SignInPage which has all the objects and actions methods.
+2. In the actual code, SignInButton is present in iframe, So we need to switch to iframe before interacting with that element, Have updated to switch to that frame before operating on that and test is passing after that fix. 
+
+codingRound/src/main/java/HotelBookingTest.java
+1. Have made changes to follow POM, Created codingRound/src/main/java/page/HotelBookingPage which has all the objects and actions methods.  
+2. In the actual code, it was written to follow page factory but didn't initialised the elements using PageFactory.initElements() which leads to NullPointerException. Have updated this initElements() statement in page class and the test is passing after fix 
+
+codingRound/src/main/java/FlightBookingTest.java
+1. Have made changes to follow POM, Created codingRound/src/main/java/page/FlightBookingPage which has all the objects and actions methods.  
+2. In the actual code, follow id is not correct "toTag", Have updated to correct id "ToTag" and the test is passing after this fix.
+
+
