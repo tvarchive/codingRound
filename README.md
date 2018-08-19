@@ -14,7 +14,7 @@ Problem Statement
 2. Review and point out design issues with the current codebase/framework, if any.
 3. Improve/refactor the code to implement your suggestions.
 
-**What we want:**
+**Expectation:**
 1. Create a GitHub account if not existing already.
 2. Fork this repo (DO NOT CLONE).
 3. Fix the errors and refactor the code, consider **abstractions, reusability and maintenance.**
