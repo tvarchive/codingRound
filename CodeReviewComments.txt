@@ -1,0 +1,10 @@
+Had to remove chromedriver for linux - Preventing chromedriver to be initialized
+Moved the test cases out of the default package and organized in logical packages
+Created ServiceInitializer class
+chrome driver had to be upgraded to 2.36 from 2.33 as it was throwing the following error - unknown error: call function result missing 'value' for
+driver.findElement(By.id("FromTag")).clear();
+
+Code review
+Added
+wait.until(ExpectedConditions.visibilityOfAllElements(originOptions));
+Changed id from toTag to ToTag
