@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="codingRoundTest">
+	<test name="testngTestFlight">
+		<classes>
+			<class name="com.test.testcases.FlightBookingTest" />
+		</classes>
+	</test>
+	<test name="testngTestHotel">
+		<classes>
+			<class name="com.test.testcases.HotelBookingTest" />
+		</classes>
+	</test>
+	<test name="testngTestSignIn">
+		<classes>
+			<class name="com.test.testcases.SignInTest" />
+		</classes>
+	</test>
+</suite>
