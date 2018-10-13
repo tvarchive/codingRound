@@ -1,16 +1,28 @@
-Framework comments:
+Framework comments/enhancements:
+1. Removed chromedriver for Mac - Preventing chromedriver to be initialized.
+2. Moved the test cases out of the default package and organized in logically grouped packages.
+3. Chrome driver had to be upgraded to 2.36 from 2.42 as it was throwing the following error - unknown error: call function result missing 'value'.
+4. Added config.properties for easy maintainability. This is a single point of control for the commonly used parameters like the URL and Browser type.
+5. Created a ServiceInitializer class which does the following. This creates a level of abstraction and is a common class for all tests.
+	a. Loads the config.properties from where url and browser type is fetched.
+	b. Checks of the Platform on which the test are running is Windows, Mac or Linux.
+	c. Initializes the driver object and sets the required property based on the browser type.
+	d. Opens the browser and maximizes the window before starting the test case.
+6. Created a Page Object class called HomePage. (Technically it is not a Home Page!)
+7. Created a BrowserType enum to fix the possible browsers which can be used.
 
-Code comments:
+Code review comments:
 
+FlightBookingTest.java
+1. Locator ID for "To" (Destination) field on the "https://www.cleartrip.com/" home page was incorrect.Changed from "toTag" to "ToTag".
+2. Added explicit wait for the drop down when user enters the FromTag for improved performance.
+3. Added explicit wait for searchSummary webelement to be displayed
 
+HotelBookingTest.java
+1. Moved the pageobjects and locators to a pageobject class - HomePage in the package - "com.test.pageobjects"
+2. Using Pagefactory, initialized the page objects
+3. Added explicit wait for searchSummary webelement to be displayed
 
-Had to remove chromedriver for linux - Preventing chromedriver to be initialized
-Moved the test cases out of the default package and organized in logical packages
-Created ServiceInitializer class
-chrome driver had to be upgraded to 2.36 from 2.33 as it was throwing the following error - unknown error: call function result missing 'value' for
-driver.findElement(By.id("FromTag")).clear();
-
-Code review
-Added
-wait.until(ExpectedConditions.visibilityOfAllElements(originOptions));
-Changed id from toTag to ToTag
+SignInTest.java
+1. Test case was failing as the control was not switching the frame when user clicked on SignIn. Added the following line to fix it - 
+driver.switchTo().frame("modal_window");
