@@ -25,7 +25,7 @@ import com.sun.javafx.PlatformUtil;
 
 public class ServiceInitializer {
 
-	public static WebDriver driver;
+	public WebDriver driver;
 	static Properties properties;
 	static ServiceInitializer service;
 	WebDriverWait wait;

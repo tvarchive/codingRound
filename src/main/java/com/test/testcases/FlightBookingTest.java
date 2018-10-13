@@ -15,27 +15,29 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.util.List;
 
 public class FlightBookingTest {
 
-	static WebDriver driver = null;
+	WebDriver driver = null;
 	CommonUtils commonutils = new CommonUtils();
 	WebDriverWait wait;
 
-	@BeforeSuite
+	@BeforeTest
 	public void setup() {
-		System.out.println("Starting Setup");
 		ServiceInitializer service = new ServiceInitializer();
 		driver = service.getDriver();
 		wait = new WebDriverWait(driver, 10);
-		System.out.println("Setup Completed");
 	}
 
 	@Test
 	public void testThatResultsAppearForAOneWayJourney() {
+
+		commonutils.waitFor(2000);
 
 		driver.findElement(By.id("OneWay")).click();
 		driver.findElement(By.id("FromTag")).clear();
@@ -61,6 +63,7 @@ public class FlightBookingTest {
 		List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
 		destinationOptions.get(0).click();
 
+		//selecting the date from date picker
 		driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
 
 		// all fields filled in. Now click on search
@@ -70,10 +73,9 @@ public class FlightBookingTest {
 		wait.until(ExpectedConditions.visibilityOf(searchSummary));
 		// verify that result appears for the provided journey search
 		Assert.assertTrue(commonutils.isElementPresent(driver, By.className("searchSummary")));
-
 	}
 
-	@AfterSuite
+	@AfterTest
 	public void closeBrowser() {
 		// close the browser
 		driver.quit();

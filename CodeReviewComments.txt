@@ -1,3 +1,9 @@
+Framework comments:
+
+Code comments:
+
+
+
 Had to remove chromedriver for linux - Preventing chromedriver to be initialized
 Moved the test cases out of the default package and organized in logical packages
 Created ServiceInitializer class

@@ -45,7 +45,7 @@ public class HomePage {
 	public void shouldBeAbleToSearchForHotels() {
 
 		commonutils.waitFor(5000);
-		hotelLink.click(); //click on Hotels
+		hotelLink.click(); // click on Hotels
 
 		localityTextBox.sendKeys("Indiranagar, Bangalore");
 
@@ -53,12 +53,13 @@ public class HomePage {
 		WebElement whereDropDown = driver.findElement(By.id("ui-id-1"));
 		wait.until(ExpectedConditions.visibilityOf(whereDropDown));
 		List<WebElement> whereOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
-		System.out.println(whereOptions);
 		whereOptions.get(3).click();
 
+		//selecting the date from date picker
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-datepicker-div")));
 		driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
 
+		//selecting the date from date picker
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-datepicker-div")));
 		driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[4]/td[3]/a")).click();
 
