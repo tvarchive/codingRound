@@ -20,6 +20,8 @@ public class SignInTest {
         setDriverPath();
         closeNotification();
 
+        driver.manage().window().maximize();
+        
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
 

@@ -8,23 +8,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class HotelBookingTest {
+	public WebDriver driver;
 
-	public  WebDriver driver;
-
-	/*
-	 * @FindBy(linkText = "Hotels") public WebElement hotelLink;
-	 * 
-	 * @FindBy(id = "Tags") private WebElement localityTextBox;
-	 * 
-	 * @FindBy(id = "SearchHotelsButton") private WebElement searchButton;
-	 * 
-	 * @FindBy(id = "travellersOnhome") private WebElement travellerSelection;
-	 */
 	@Test
 	public void shouldBeAbleToSearchForHotels() {
 		setDriverPath();
@@ -33,16 +22,12 @@ public class HotelBookingTest {
 		driver.manage().window().maximize();
 		driver.get("https://www.cleartrip.com/");
 		driver.findElement(By.linkText("Hotels")).click();
-		// hotelLink.click();
 		driver.findElement(By.id("Tags")).sendKeys("Indiranagar, Bangalore");
-		;
-		// localityTextBox.sendKeys("Indiranagar, Bangalore");
 
 		WebElement travellerSelection = driver.findElement(By.id("travellersOnhome"));
 		new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
 
 		driver.findElement(By.id("SearchHotelsButton")).click();
-		/// searchButton.click();
 
 		driver.quit();
 

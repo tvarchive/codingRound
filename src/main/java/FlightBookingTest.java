@@ -22,6 +22,8 @@ public class FlightBookingTest {
 
 		setDriverPath();
 		closeNotification();
+		
+		driver.manage().window().maximize();
 		driver.get("https://www.cleartrip.com/");
 		// implicitlyWait for the auto complete
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
