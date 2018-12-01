@@ -13,16 +13,20 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>3.6.0</version>
-      <scope>compile</scope>
-    </dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>3.141.59</version>
+    </dependency> 
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>6.11</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+	<groupId>net.java.openjfx.backport</groupId>
+	<artifactId>openjfx-78-backport</artifactId>
+	<version>1.8.0-ea-b96.1</version>
+   </dependency>
   </dependencies>
 </project>
