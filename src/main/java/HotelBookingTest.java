@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 public class HotelBookingTest {
 
-	private WebDriver driver;
+	public  WebDriver driver;
 
 	/*
 	 * @FindBy(linkText = "Hotels") public WebElement hotelLink;

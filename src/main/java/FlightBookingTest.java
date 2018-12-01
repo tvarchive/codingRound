@@ -45,7 +45,7 @@ public class FlightBookingTest {
 		List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
 		destinationOptions.get(0).click();
 
-		driver.findElement(By.id("DepartDate")).sendKeys("05/12/2018");
+		driver.findElement(By.id("DepartDate")).sendKeys("08/12/2018");
 
 		// all fields filled in. Now click on search
 		driver.findElement(By.id("SearchBtn")).click();

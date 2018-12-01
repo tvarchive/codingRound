@@ -63,7 +63,7 @@ public class SignInTest {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         }
         if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
+            System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
     }
 
