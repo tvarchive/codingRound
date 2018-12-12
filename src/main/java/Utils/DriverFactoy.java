@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import com.sun.javafx.PlatformUtil;
 
@@ -46,5 +48,11 @@ public class DriverFactoy {
 	            return false;
 	        }
 	    }
-
+	  
+	 
+	  @AfterTest
+	  public void quitDriver() {
+		  //close the browser
+	        driver.quit();
+	  }
 }
