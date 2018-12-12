@@ -1,0 +1,5 @@
+-->Driver initialization is done at test case level(can use driverFactory model for code reusablity)
+-->Driver methods can be moved to driverFactory and tests should inherit those properties
+-->WebElements are initialized differntly in the three tests(can use POM model for a better design)
+-->HardCodings can be removed according to usability
+-->Driver Path should be set before driver initialization

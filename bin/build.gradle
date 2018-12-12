@@ -1,0 +1,17 @@
+group 'com.testvagrant.codingRound'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.6.0'
+    compile group: 'org.testng', name: 'testng', version: '6.11'
+}
