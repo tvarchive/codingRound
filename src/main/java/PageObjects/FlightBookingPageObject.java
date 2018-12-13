@@ -11,11 +11,6 @@ import Utils.DriverFactoy;
 
 public class FlightBookingPageObject extends DriverFactoy {
 
-	@BeforeTest
-	public void launchApplication() {
-		driver.get("https://www.cleartrip.com/");
-		waitFor(2000);
-	}
 
 	public void clickoneWay() {
 		driver.findElement(By.id("OneWay")).click();
@@ -23,10 +18,10 @@ public class FlightBookingPageObject extends DriverFactoy {
 	}
 
 	public void fillFromField(String fromCity) {
-		//driver.findElement(By.cssSelector("#FromTag")).clear();
-		driver.findElement(By.cssSelector("FromTag")).sendKeys(fromCity);
-		waitFor(2000);
-
+		driver.findElement(By.id("FromTag")).clear();
+		driver.findElement(By.id("FromTag")).sendKeys(fromCity);
+		
+		waitFor(5000);
 		// wait for the auto complete options to appear for the origin
 
 		List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
@@ -40,7 +35,7 @@ public class FlightBookingPageObject extends DriverFactoy {
 		driver.findElement(By.cssSelector("#ToTag")).sendKeys(toCity);
 		// wait for the auto complete options to appear for the destination
 
-		waitFor(2000);
+		waitFor(5000);
 		// select the first item from the destination auto complete list
 		List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
 		destinationOptions.get(0).click();

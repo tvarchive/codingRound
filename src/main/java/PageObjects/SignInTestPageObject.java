@@ -16,6 +16,8 @@ public class SignInTestPageObject extends DriverFactoy {
 	public void clickOnSignInButton() {
 		// TODO Auto-generated method stub
 		driver.findElement(By.id("SignIn")).click();
+		waitFor(2000);
+		driver.switchTo().frame("modal_window");
 		driver.findElement(By.id("signInButton")).click();
 
 	}
@@ -26,10 +28,5 @@ public class SignInTestPageObject extends DriverFactoy {
 
 	}
 
-	@BeforeTest
-	public void launchApplication() {
-		driver.get("https://www.cleartrip.com/");
-		waitFor(2000);
-	}
-
+	
 }
