@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="com.coding.test.SignInTest">
+        <methods>
+          <include name="setup"/>
+          <include name="shouldThrowAnErrorIfSignInDetailsAreMissing"/>
+          <include name="createTestResult"/>
+          <include name="TerminateTest"/>
+          <include name="end"/>
+          <include name="endTestResult"/>
+          <include name="start"/>
+        </methods>
+      </class> <!-- com.coding.test.SignInTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

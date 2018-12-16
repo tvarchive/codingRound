@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [Suite Module]">
+  <test thread-count="2" name="Test Module(failed)">
+    <parameter name="VERSION" value="71"/>
+    <parameter name="BROWSERTYPE" value="CHROME"/>
+    <classes>
+      <class name="com.coding.test.FlightBookingTest">
+        <methods>
+          <include name="setup"/>
+          <include name="createTestResult"/>
+          <include name="testThatResultsAppearForAOneWayJourney"/>
+          <include name="TerminateTest"/>
+          <include name="end"/>
+          <include name="endTestResult"/>
+          <include name="start"/>
+        </methods>
+      </class> <!-- com.coding.test.FlightBookingTest -->
+    </classes>
+  </test> <!-- Test Module(failed) -->
+</suite> <!-- Failed suite [Suite Module] -->

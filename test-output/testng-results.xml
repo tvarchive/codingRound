@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="8" total="11" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite Module" duration-ms="197720" started-at="2018-12-16T19:29:45Z" finished-at="2018-12-16T19:33:03Z">
+    <groups>
+    </groups>
+    <test name="Test Module" duration-ms="197720" started-at="2018-12-16T19:29:45Z" finished-at="2018-12-16T19:33:03Z">
+      <class name="com.coding.test.HotelBookingTest">
+        <test-method status="PASS" signature="start(java.lang.reflect.Method)[pri:0, instance:com.coding.test.HotelBookingTest@47c62251]" name="start" is-config="true" duration-ms="1" started-at="2018-12-16T19:32:20Z" finished-at="2018-12-16T19:32:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.coding.test.HotelBookingTest.testThatResultsAppearForAOneWayJourney() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- start -->
+        <test-method status="PASS" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:com.coding.test.HotelBookingTest@47c62251]" name="testThatResultsAppearForAOneWayJourney" duration-ms="42172" started-at="2018-12-16T19:32:20Z" description="Fill Details and Search Hotels" finished-at="2018-12-16T19:33:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testThatResultsAppearForAOneWayJourney -->
+        <test-method status="PASS" signature="end()[pri:0, instance:com.coding.test.HotelBookingTest@47c62251]" name="end" is-config="true" duration-ms="0" started-at="2018-12-16T19:33:02Z" finished-at="2018-12-16T19:33:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- com.coding.test.HotelBookingTest -->
+      <class name="com.coding.test.SignInTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.coding.test.SignInTest@27efef64]" name="setup" is-config="true" duration-ms="54" started-at="2018-12-16T19:29:45Z" finished-at="2018-12-16T19:29:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="createTestResult(java.lang.String, java.lang.String)[pri:0, instance:com.coding.test.SignInTest@27efef64]" name="createTestResult" is-config="true" duration-ms="21561" started-at="2018-12-16T19:29:45Z" finished-at="2018-12-16T19:30:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[CHROME]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[71]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createTestResult -->
+        <test-method status="PASS" signature="start(java.lang.reflect.Method)[pri:0, instance:com.coding.test.SignInTest@27efef64]" name="start" is-config="true" duration-ms="2" started-at="2018-12-16T19:30:07Z" finished-at="2018-12-16T19:30:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.coding.test.SignInTest.shouldThrowAnErrorIfSignInDetailsAreMissing() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- start -->
+        <test-method status="PASS" signature="shouldThrowAnErrorIfSignInDetailsAreMissing()[pri:0, instance:com.coding.test.SignInTest@27efef64]" name="shouldThrowAnErrorIfSignInDetailsAreMissing" duration-ms="84192" started-at="2018-12-16T19:30:07Z" description="Login without credientials" finished-at="2018-12-16T19:31:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldThrowAnErrorIfSignInDetailsAreMissing -->
+        <test-method status="PASS" signature="end()[pri:0, instance:com.coding.test.SignInTest@27efef64]" name="end" is-config="true" duration-ms="1" started-at="2018-12-16T19:31:31Z" finished-at="2018-12-16T19:31:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+        <test-method status="PASS" signature="endTestResult()[pri:0, instance:com.coding.test.SignInTest@27efef64]" name="endTestResult" is-config="true" duration-ms="820" started-at="2018-12-16T19:33:02Z" finished-at="2018-12-16T19:33:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endTestResult -->
+        <test-method status="PASS" signature="TerminateTest()[pri:0, instance:com.coding.test.SignInTest@27efef64]" name="TerminateTest" is-config="true" duration-ms="1" started-at="2018-12-16T19:33:03Z" finished-at="2018-12-16T19:33:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TerminateTest -->
+      </class> <!-- com.coding.test.SignInTest -->
+      <class name="com.coding.test.FlightBookingTest">
+        <test-method status="PASS" signature="start(java.lang.reflect.Method)[pri:0, instance:com.coding.test.FlightBookingTest@6f7fd0e6]" name="start" is-config="true" duration-ms="1" started-at="2018-12-16T19:31:31Z" finished-at="2018-12-16T19:31:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.coding.test.FlightBookingTest.testThatResultsAppearForAOneWayJourney() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- start -->
+        <test-method status="PASS" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:com.coding.test.FlightBookingTest@6f7fd0e6]" name="testThatResultsAppearForAOneWayJourney" duration-ms="48931" started-at="2018-12-16T19:31:31Z" description="Fill Details and Search Flights" finished-at="2018-12-16T19:32:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testThatResultsAppearForAOneWayJourney -->
+        <test-method status="PASS" signature="end()[pri:0, instance:com.coding.test.FlightBookingTest@6f7fd0e6]" name="end" is-config="true" duration-ms="0" started-at="2018-12-16T19:32:20Z" finished-at="2018-12-16T19:32:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- com.coding.test.FlightBookingTest -->
+    </test> <!-- Test Module -->
+  </suite> <!-- Suite Module -->
+</testng-results>

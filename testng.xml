@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite Module" parallel="none" thread-count="2">
+
+	<test name="Test Module">
+		<parameter name="BROWSERTYPE" value="CHROME" />
+		<parameter name="VERSION" value="71" />
+		<classes>
+			<class name="com.coding.test.SignInTest" />
+			<class name="com.coding.test.FlightBookingTest" />
+			<class name="com.coding.test.HotelBookingTest" />
+		</classes>
+	</test>
+
+</suite>
