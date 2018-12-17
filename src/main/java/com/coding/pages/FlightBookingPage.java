@@ -15,16 +15,16 @@ public class FlightBookingPage extends BaseExecution {
 	public void fillDetailsSearchFlight() throws Exception {
 		click.buttonClick(FlightBookingOR.flightLink);
 		wait.waitforPageLoad();
-		if (wait.findElement(FlightBookingOR.labelFlightSearch) !=null) {
+		if (wait.findElement(FlightBookingOR.labelFlightSearch) != null) {
 			assertEqual(textbox.getTextValue(FlightBookingOR.labelFlightSearch),
 					getProperties().getProperty("labelFlightSearch"));
 		}
 		click.buttonClick(FlightBookingOR.OneWay);
 		textbox.setTextValue(FlightBookingOR.inputFrom, getProperties().getProperty("flightFrom"));
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		click.buttonClick(FlightBookingOR.fromDropDownList, 0);
 		textbox.setTextValue(FlightBookingOR.inputTo, getProperties().getProperty("flightTo"));
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		click.buttonClick(FlightBookingOR.toDropDownList, 0);
 		click.buttonClick(FlightBookingOR.inputDepartDate);
 		wait.waitForElementToDisplay(FlightBookingOR.datePicker);

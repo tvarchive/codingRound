@@ -21,8 +21,8 @@ public class SignInPage extends BaseExecution {
 		wait.waitForElementToDisplay(SignInOR.btn_signIn);
 		click.buttonClick(SignInOR.btn_signIn);
 		assertEqual(textbox.getTextValue(SignInOR.error_message), getProperties().getProperty("errorMessage"));
+		getDriver().switchTo().defaultContent();
 		click.buttonClick(SignInOR.btn_close);
 		Loggers.info("Click on cross Icon");
-		getDriver().switchTo().defaultContent();
 	}
 }

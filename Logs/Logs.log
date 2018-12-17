@@ -163,3 +163,74 @@
 [17 Dec 2018 01:03:02] [main] [INFO] [1] com.coding.base.BaseExecution.endTestResult(BaseExecution.java:55) - QUIT BROWSER :CHROME_71
 [17 Dec 2018 01:03:02] [main] [INFO] [1] com.coding.base.BaseExecution.closeAllOpenedWindows(BaseExecution.java:95) - Closing All Instance of the Browser
 [17 Dec 2018 01:03:03] [main] [INFO] [1] com.coding.base.BaseExecution.TerminateTest(BaseExecution.java:82) - Closing TestSuite.....
+[17 Dec 2018 11:33:15] [main] [INFO] [1] com.coding.base.BaseExecution.createTestResult(BaseExecution.java:44) - Starting Browser with config--->CHROME-71
+[17 Dec 2018 11:33:15] [main] [INFO] [1] com.coding.browser.LaunchBrowser.setDriver(LaunchBrowser.java:29) - Chrome_71 browser is selected
+[17 Dec 2018 11:33:46] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:33:46] [main] [INFO] [1] com.coding.base.BaseExecution.start(BaseExecution.java:67) - Starting Test shouldThrowAnErrorIfSignInDetailsAreMissing -- With Description-- Login without credientials
+[17 Dec 2018 11:33:46] [main] [INFO] [1] com.coding.pages.SignInPage.loginInVerifyErrorMessage(SignInPage.java:17) - Click on User Profile Link
+[17 Dec 2018 11:34:34] [main] [INFO] [1] com.coding.pages.SignInPage.loginInVerifyErrorMessage(SignInPage.java:19) - Click on SignIn Link
+[17 Dec 2018 11:34:35] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : There were errors in your submission -- Expected : There were errors in your submission
+[17 Dec 2018 11:34:35] [main] [INFO] [1] com.coding.pages.SignInPage.loginInVerifyErrorMessage(SignInPage.java:26) - Click on cross Icon
+[17 Dec 2018 11:34:54] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:34:55] [main] [INFO] [1] com.coding.base.BaseExecution.switchToHomePage(BaseExecution.java:115) - Switch back to Home page
+[17 Dec 2018 11:34:55] [main] [INFO] [1] com.coding.base.BaseExecution.start(BaseExecution.java:67) - Starting Test testThatResultsAppearForAOneWayJourney -- With Description-- Fill Details and Search Flights
+[17 Dec 2018 11:35:29] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:35:29] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : Search flights -- Expected : Search flights
+[17 Dec 2018 11:35:35] [main] [ERROR] [1] com.coding.uicontroller.Click.buttonClick(Click.java:30) - Click Button Web Element Not Located : By.cssSelector: ul#ui-id-2>li>a
+[17 Dec 2018 11:35:54] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:35:54] [main] [INFO] [1] com.coding.base.BaseExecution.switchToHomePage(BaseExecution.java:115) - Switch back to Home page
+[17 Dec 2018 11:35:54] [main] [INFO] [1] com.coding.base.BaseExecution.start(BaseExecution.java:67) - Starting Test testThatResultsAppearForAOneWayJourney -- With Description-- Fill Details and Search Hotels
+[17 Dec 2018 11:36:33] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:36:33] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : Search for hotels -- Expected : Search for hotels
+[17 Dec 2018 11:36:35] [main] [ERROR] [1] com.coding.uicontroller.Click.buttonClick(Click.java:30) - Click Button Web Element Not Located : By.cssSelector: ul#ui-id-1>li>a
+[17 Dec 2018 11:36:56] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:36:56] [main] [INFO] [1] com.coding.base.BaseExecution.switchToHomePage(BaseExecution.java:115) - Switch back to Home page
+[17 Dec 2018 11:36:56] [main] [INFO] [1] com.coding.base.BaseExecution.endTestResult(BaseExecution.java:55) - QUIT BROWSER :CHROME_71
+[17 Dec 2018 11:36:56] [main] [INFO] [1] com.coding.base.BaseExecution.closeAllOpenedWindows(BaseExecution.java:95) - Closing All Instance of the Browser
+[17 Dec 2018 11:36:57] [main] [INFO] [1] com.coding.base.BaseExecution.TerminateTest(BaseExecution.java:82) - Closing TestSuite.....
+[17 Dec 2018 11:50:06] [main] [INFO] [1] com.coding.base.BaseExecution.createTestResult(BaseExecution.java:44) - Starting Browser with config--->CHROME-71
+[17 Dec 2018 11:50:06] [main] [INFO] [1] com.coding.browser.LaunchBrowser.setDriver(LaunchBrowser.java:29) - Chrome_71 browser is selected
+[17 Dec 2018 11:50:27] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:50:27] [main] [INFO] [1] com.coding.base.BaseExecution.start(BaseExecution.java:67) - Starting Test shouldThrowAnErrorIfSignInDetailsAreMissing -- With Description-- Login without credientials
+[17 Dec 2018 11:50:27] [main] [INFO] [1] com.coding.pages.SignInPage.loginInVerifyErrorMessage(SignInPage.java:17) - Click on User Profile Link
+[17 Dec 2018 11:50:30] [main] [INFO] [1] com.coding.pages.SignInPage.loginInVerifyErrorMessage(SignInPage.java:19) - Click on SignIn Link
+[17 Dec 2018 11:50:30] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : There were errors in your submission -- Expected : There were errors in your submission
+[17 Dec 2018 11:51:30] [main] [ERROR] [1] com.coding.uicontroller.Click.buttonClick(Click.java:17) - Click Button Web Element Not Located : By.cssSelector: a#close
+[17 Dec 2018 11:51:47] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:51:47] [main] [INFO] [1] com.coding.base.BaseExecution.switchToHomePage(BaseExecution.java:115) - Switch back to Home page
+[17 Dec 2018 11:51:47] [main] [INFO] [1] com.coding.base.BaseExecution.start(BaseExecution.java:67) - Starting Test testThatResultsAppearForAOneWayJourney -- With Description-- Fill Details and Search Flights
+[17 Dec 2018 11:52:05] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:52:05] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : Search flights -- Expected : Search flights
+[17 Dec 2018 11:52:13] [main] [ERROR] [1] com.coding.uicontroller.Click.buttonClick(Click.java:30) - Click Button Web Element Not Located : By.cssSelector: ul#ui-id-1>li>a
+[17 Dec 2018 11:52:32] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:52:32] [main] [INFO] [1] com.coding.base.BaseExecution.switchToHomePage(BaseExecution.java:115) - Switch back to Home page
+[17 Dec 2018 11:52:32] [main] [INFO] [1] com.coding.base.BaseExecution.start(BaseExecution.java:67) - Starting Test testThatResultsAppearForAOneWayJourney -- With Description-- Fill Details and Search Hotels
+[17 Dec 2018 11:52:58] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:52:58] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : Search for hotels -- Expected : Search for hotels
+[17 Dec 2018 11:53:00] [main] [ERROR] [1] com.coding.uicontroller.Click.buttonClick(Click.java:30) - Click Button Web Element Not Located : By.cssSelector: ul#ui-id-1>li>a
+[17 Dec 2018 11:54:47] [main] [INFO] [1] com.coding.base.BaseExecution.createTestResult(BaseExecution.java:44) - Starting Browser with config--->CHROME-71
+[17 Dec 2018 11:54:47] [main] [INFO] [1] com.coding.browser.LaunchBrowser.setDriver(LaunchBrowser.java:29) - Chrome_71 browser is selected
+[17 Dec 2018 11:55:09] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:55:09] [main] [INFO] [1] com.coding.base.BaseExecution.start(BaseExecution.java:67) - Starting Test shouldThrowAnErrorIfSignInDetailsAreMissing -- With Description-- Login without credientials
+[17 Dec 2018 11:55:09] [main] [INFO] [1] com.coding.pages.SignInPage.loginInVerifyErrorMessage(SignInPage.java:17) - Click on User Profile Link
+[17 Dec 2018 11:55:12] [main] [INFO] [1] com.coding.pages.SignInPage.loginInVerifyErrorMessage(SignInPage.java:19) - Click on SignIn Link
+[17 Dec 2018 11:55:13] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : There were errors in your submission -- Expected : There were errors in your submission
+[17 Dec 2018 11:55:13] [main] [INFO] [1] com.coding.pages.SignInPage.loginInVerifyErrorMessage(SignInPage.java:26) - Click on cross Icon
+[17 Dec 2018 11:55:31] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:55:31] [main] [INFO] [1] com.coding.base.BaseExecution.switchToHomePage(BaseExecution.java:115) - Switch back to Home page
+[17 Dec 2018 11:55:31] [main] [INFO] [1] com.coding.base.BaseExecution.start(BaseExecution.java:67) - Starting Test testThatResultsAppearForAOneWayJourney -- With Description-- Fill Details and Search Flights
+[17 Dec 2018 11:55:48] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:55:48] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : Search flights -- Expected : Search flights
+[17 Dec 2018 11:55:55] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : true -- Expected : true
+[17 Dec 2018 11:55:55] [main] [INFO] [1] com.coding.pages.FlightBookingPage.fillDetailsSearchFlight(FlightBookingPage.java:35) - Seach Summary is Present
+[17 Dec 2018 11:56:13] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:56:13] [main] [INFO] [1] com.coding.base.BaseExecution.switchToHomePage(BaseExecution.java:115) - Switch back to Home page
+[17 Dec 2018 11:56:13] [main] [INFO] [1] com.coding.base.BaseExecution.start(BaseExecution.java:67) - Starting Test testThatResultsAppearForAOneWayJourney -- With Description-- Fill Details and Search Hotels
+[17 Dec 2018 11:56:33] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:56:33] [main] [INFO] [1] com.coding.base.BaseExecution.assertEqual(BaseExecution.java:107) - --Actual : Search for hotels -- Expected : Search for hotels
+[17 Dec 2018 11:56:35] [main] [ERROR] [1] com.coding.uicontroller.Click.buttonClick(Click.java:30) - Click Button Web Element Not Located : By.cssSelector: ul#ui-id-1>li>a
+[17 Dec 2018 11:56:53] [main] [INFO] [1] com.coding.uicontroller.Wait.waitforPageLoad(Wait.java:62) - pageState iscompletewith counter1
+[17 Dec 2018 11:56:53] [main] [INFO] [1] com.coding.base.BaseExecution.switchToHomePage(BaseExecution.java:115) - Switch back to Home page
+[17 Dec 2018 11:56:53] [main] [INFO] [1] com.coding.base.BaseExecution.endTestResult(BaseExecution.java:55) - QUIT BROWSER :CHROME_71
+[17 Dec 2018 11:56:53] [main] [INFO] [1] com.coding.base.BaseExecution.closeAllOpenedWindows(BaseExecution.java:95) - Closing All Instance of the Browser
+[17 Dec 2018 11:56:54] [main] [INFO] [1] com.coding.base.BaseExecution.TerminateTest(BaseExecution.java:82) - Closing TestSuite.....

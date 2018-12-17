@@ -22,7 +22,7 @@ public class HotelBookingPage extends BaseExecution {
 					getProperties().getProperty("labelHotelSearch"));
 		}
 		textbox.setTextValue(HotelBookingOR.localityTextBox, getProperties().getProperty("hotellocation"));
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		click.buttonClick(HotelBookingOR.fromDropDownList, 0);
 		select.selectElementByText(HotelBookingOR.travellerSelection, getProperties().getProperty("travellerCount"));
 		click.buttonClick(HotelBookingOR.searchButton);
