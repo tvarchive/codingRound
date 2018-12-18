@@ -20,7 +20,7 @@ public class FlightBookingTest extends FlightBookingPage {
 	public void testThatResultsAppearForAOneWayJourney() {
 		String toCity = "Bangalore";
 		String fromCity = "Delhi";
-
+		
 		FlightBookingPage.clickoneWay();
 		FlightBookingPage.fillFromField(toCity);
 		FlightBookingPage.fillToField(fromCity);
