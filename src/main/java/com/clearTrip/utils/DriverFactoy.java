@@ -1,12 +1,17 @@
-package Utils;
+package com.clearTrip.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import com.clearTrip.pages.SignInTestPage;
 import com.sun.javafx.PlatformUtil;
 
 public class DriverFactoy {
@@ -17,8 +22,13 @@ public class DriverFactoy {
 		driver = new ChromeDriver();
 	}
 
-	protected WebDriver driver;
-
+	protected  static WebDriver driver;
+	
+	public static  WebDriver getDriver() {
+		return driver;
+	};
+	
+	
 	private void setDriverPath() {
 		if (PlatformUtil.isMac()) {
 			System.setProperty("webdriver.chrome.driver", "chromedriver");
@@ -31,10 +41,11 @@ public class DriverFactoy {
 		}
 	}
 
-	public void waitFor(int durationInMilliSeconds) {
+	public static void waitFor(WebElement element) {
 		try {
-			Thread.sleep(durationInMilliSeconds);
-		} catch (InterruptedException e) {
+			WebDriverWait wait= new WebDriverWait(getDriver(),5000);
+			wait.until(ExpectedConditions.visibilityOf(element));
+		} catch (Exception e) {
 			e.printStackTrace(); // To change body of catch statement use File | Settings | File Templates.
 		}
 	}
@@ -51,7 +62,6 @@ public class DriverFactoy {
 	@BeforeTest
 	public void launchApplication() {
 		driver.get("https://www.cleartrip.com/");
-		waitFor(2000);
 	}
 
 	@AfterTest
