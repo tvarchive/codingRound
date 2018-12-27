@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Coding Round Test">
+
+	<test name="Booking Tests">
+
+		<classes>
+			<class name="FlightBookingTest" />
+			<class name="HotelBookingTest" />
+			<class name="SignInTest" />
+
+		</classes>
+	</test>
+</suite>
