@@ -4,9 +4,10 @@
 	<test name="Booking Tests">
 
 		<classes>
+			<class name="SignInTest" />
 			<class name="FlightBookingTest" />
 			<class name="HotelBookingTest" />
-			<class name="SignInTest" />
+
 
 		</classes>
 	</test>
