@@ -4,7 +4,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class FlightBookingTest {
 
 	WebDriver driver;
+	WebDriverWait oWait;
 
 	@Test
 	public void testThatResultsAppearForAOneWayJourney() {
@@ -22,29 +24,34 @@ public class FlightBookingTest {
 		setDriverPath();
 		driver = new ChromeDriver();
 		driver.get("https://www.cleartrip.com/");
-		waitFor(2000);
+		oWait = new WebDriverWait(driver, 100);
+		oWait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id("OneWay"))));
 		driver.findElement(By.id("OneWay")).click();
 
 		driver.findElement(By.id("FromTag")).clear();
 		driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
 
 		// wait for the auto complete options to appear for the origin
-
-		waitFor(2000);
+		waitFor(4000);
 		List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
+
+		System.out.println(originOptions);
+
 		originOptions.get(0).click();
 
-		driver.findElement(By.id("toTag")).clear();
-		driver.findElement(By.id("toTag")).sendKeys("Delhi");
+		oWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ToTag' and @name='destination']")));
+		driver.findElement(By.xpath("//input[@id='ToTag' and @name='destination']")).clear();
+		driver.findElement(By.xpath("//input[@id='ToTag' and @name='destination']")).sendKeys("Delhi");
 
 		// wait for the auto complete options to appear for the destination
+		waitFor(4000);
+		oWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By.tagName("li"))));
 
-		waitFor(2000);
 		// select the first item from the destination auto complete list
 		List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
 		destinationOptions.get(0).click();
 
-		driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
+		driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[4]/td[5]/a")).click();
 
 		// all fields filled in. Now click on search
 		driver.findElement(By.id("SearchBtn")).click();
