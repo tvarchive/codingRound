@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="21936" started-at="2018-12-27T05:09:07Z" finished-at="2018-12-27T05:09:29Z">
+  <suite name="Default suite" duration-ms="57212" started-at="2018-12-27T05:33:35Z" finished-at="2018-12-27T05:34:33Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="21936" started-at="2018-12-27T05:09:07Z" finished-at="2018-12-27T05:09:29Z">
-      <class name="SignInTest">
-        <test-method status="PASS" signature="shouldThrowAnErrorIfSignInDetailsAreMissing()[pri:0, instance:SignInTest@7c16905e]" name="shouldThrowAnErrorIfSignInDetailsAreMissing" duration-ms="21893" started-at="2018-12-27T10:39:08Z" finished-at="2018-12-27T10:39:29Z">
+    <test name="Default test" duration-ms="57212" started-at="2018-12-27T05:33:35Z" finished-at="2018-12-27T05:34:33Z">
+      <class name="HotelBookingTest">
+        <test-method status="PASS" signature="shouldBeAbleToSearchForHotels()[pri:0, instance:HotelBookingTest@7c16905e]" name="shouldBeAbleToSearchForHotels" duration-ms="57134" started-at="2018-12-27T11:03:36Z" finished-at="2018-12-27T11:04:33Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldThrowAnErrorIfSignInDetailsAreMissing -->
-      </class> <!-- SignInTest -->
+        </test-method> <!-- shouldBeAbleToSearchForHotels -->
+      </class> <!-- HotelBookingTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

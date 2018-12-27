@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
@@ -28,7 +29,7 @@ public class HotelBookingTest {
 	public void shouldBeAbleToSearchForHotels() {
 		setDriverPath();
 		driver = new ChromeDriver();
-
+		PageFactory.initElements(driver, this);
 		driver.get("https://www.cleartrip.com/");
 		hotelLink.click();
 
