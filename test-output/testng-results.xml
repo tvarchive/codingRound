@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="52371" started-at="2018-12-27T06:29:44Z" finished-at="2018-12-27T06:30:36Z">
+  <suite name="Default suite" duration-ms="42283" started-at="2018-12-27T16:52:32Z" finished-at="2018-12-27T16:53:15Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="52371" started-at="2018-12-27T06:29:44Z" finished-at="2018-12-27T06:30:36Z">
+    <test name="Default test" duration-ms="42283" started-at="2018-12-27T16:52:32Z" finished-at="2018-12-27T16:53:15Z">
       <class name="FlightBookingTest">
-        <test-method status="PASS" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:FlightBookingTest@482f8f11]" name="testThatResultsAppearForAOneWayJourney" duration-ms="52301" started-at="2018-12-27T11:59:44Z" finished-at="2018-12-27T12:00:36Z">
+        <test-method status="PASS" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:FlightBookingTest@39aeed2f]" name="testThatResultsAppearForAOneWayJourney" duration-ms="42256" started-at="2018-12-27T22:22:32Z" finished-at="2018-12-27T22:23:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testThatResultsAppearForAOneWayJourney -->

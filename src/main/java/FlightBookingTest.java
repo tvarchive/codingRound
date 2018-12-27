@@ -1,17 +1,20 @@
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.sun.jna.Platform;
-
-import java.util.List;
 
 public class FlightBookingTest {
 
@@ -32,7 +35,9 @@ public class FlightBookingTest {
 		driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
 
 		// wait for the auto complete options to appear for the origin
-		waitFor(4000);
+		Wait<WebDriver> newwait = new FluentWait<>(driver).withTimeout(200, TimeUnit.SECONDS)
+				.pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+		newwait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul[@id='ui-id-1']/li/a")));
 		List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
 
 		System.out.println(originOptions);
@@ -44,8 +49,9 @@ public class FlightBookingTest {
 		driver.findElement(By.xpath("//input[@id='ToTag' and @name='destination']")).sendKeys("Delhi");
 
 		// wait for the auto complete options to appear for the destination
-		waitFor(4000);
-		oWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By.tagName("li"))));
+		newwait = new FluentWait<>(driver).withTimeout(200, TimeUnit.SECONDS).pollingEvery(2, TimeUnit.SECONDS)
+				.ignoring(NoSuchElementException.class);
+		newwait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul[@id='ui-id-2']/li/a")));
 
 		// select the first item from the destination auto complete list
 		List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
@@ -56,8 +62,6 @@ public class FlightBookingTest {
 		// all fields filled in. Now click on search
 		driver.findElement(By.id("SearchBtn")).click();
 
-		waitFor(5000);
-		// verify that result appears for the provided journey search
 		Assert.assertTrue(isElementPresent(By.className("searchSummary")));
 
 		// close the browser
