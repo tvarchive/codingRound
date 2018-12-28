@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Coding Round Test]">
-  <test name="Booking Tests(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="SignInTest">
+      <class name="HotelBookingTest">
         <methods>
-          <include name="shouldThrowAnErrorIfSignInDetailsAreMissing"/>
           <include name="setup"/>
           <include name="tearDown"/>
+          <include name="shouldBeAbleToSearchForHotels"/>
         </methods>
-      </class> <!-- SignInTest -->
+      </class> <!-- HotelBookingTest -->
     </classes>
-  </test> <!-- Booking Tests(failed) -->
-</suite> <!-- Failed suite [Coding Round Test] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

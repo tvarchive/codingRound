@@ -15,7 +15,7 @@ public class FlightBookingTest extends TestBase {
 	public void testThatResultsAppearForAOneWayJourney() {
 
 		WebElement oneway = driver.findElement(By.id("OneWay"));
-		CommonFunctions.explicitWaitForElement(oneway, 100, driver);
+		CommonFunctions.explicitWaitForElement(oneway, 50, driver);
 
 		CommonFunctions.clickOnElement(oneway);
 
@@ -41,7 +41,7 @@ public class FlightBookingTest extends TestBase {
 		destinationOptions.get(0).click();
 
 		// selecting date on the calendar
-		CommonFunctions.calendarHandling("2/2/2019", driver);
+		CommonFunctions.calendarHandling("02/03/2019", driver);
 		// all fields filled in. Now click on search
 		driver.findElement(By.id("SearchBtn")).click();
 

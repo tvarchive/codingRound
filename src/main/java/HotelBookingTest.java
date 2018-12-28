@@ -3,6 +3,7 @@ import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import testbase.TestBase;
@@ -33,7 +34,9 @@ public class HotelBookingTest extends TestBase {
 
 		CommonFunctions.selectElementOnDropdown(travellerSelection, "1 room, 2 adults");
 
-		CommonFunctions.clickOnElement(searchButton);
+		Assert.assertFalse(searchButton.isEnabled());
+
+		//CommonFunctions.clickOnElement(searchButton);
 
 	}
 

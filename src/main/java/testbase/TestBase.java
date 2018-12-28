@@ -12,7 +12,7 @@ import utils.CommonFunctions;
 public class TestBase {
 
 	public static WebDriver driver;
-	public ChromeOptions options;
+	protected ChromeOptions options;
 
 	@BeforeMethod
 	protected void setup() {
