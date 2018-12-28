@@ -1,0 +1,13 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Review Comments~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+1. Driver can be Initialized at once so to further recreating driver object for better optimization
+2. Static wait can be avoided
+3. Browser Driver version with the code compatibility should be validated before
+4. Method should be mainitained in such a way that those can be reused whenever required
+5. Test can be maintatined seperately and page locators should be kept in different package
+6. Page factory method could be incorporated to every test case given so enhance the readability and reusability
+7. Inheritence should be incorporated to pass the same driver for each of the test case
+8. Xpath should be relative for better reliability should avoid absolute ones
+9. Hardcoded values can be handled in a seperate util file so to update them accordingly
+10. Explicit wait should be used for faster execution
