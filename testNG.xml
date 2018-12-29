@@ -4,8 +4,9 @@
 	<test name="Booking Tests">
 
 		<classes>
-			<class name="SignInTest" />
-	<!-- <class name="FlightBookingTest" /> --><class name="HotelBookingTest" />
+			<class name="testcases.SignInTest" />
+			<class name="testcases.FlightBookingTest" />
+			<class name="testcases.HotelBookingTest" />
 
 
 		</classes>
