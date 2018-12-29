@@ -5,8 +5,7 @@
 
 		<classes>
 			<class name="SignInTest" />
-			<class name="FlightBookingTest" />
-			<class name="HotelBookingTest" />
+	<!-- <class name="FlightBookingTest" /> --><class name="HotelBookingTest" />
 
 
 		</classes>

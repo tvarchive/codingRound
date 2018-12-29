@@ -1,39 +1,30 @@
 
-import org.openqa.selenium.By;
-
-import org.openqa.selenium.WebElement;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import pages.SignInPage;
 import testbase.TestBase;
-import utils.CommonFunctions;
+
+import utils.Constants;
 
 public class SignInTest extends TestBase {
+
+	SignInPage oSignPage;
 
 	@Test
 	public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
-		WebElement YourTrips = driver.findElement(By.linkText("Your trips"));
-		CommonFunctions.explicitWaitForElement(YourTrips, 100, driver);
+		oSignPage = new SignInPage();
 
-		CommonFunctions.clickOnElement(YourTrips);
+		oSignPage.clickOnYourTripsLink();
 
-		WebElement signIn = driver.findElement(By.id("SignIn"));
+		oSignPage.clickSignInLink();
 
-		CommonFunctions.clickOnElement(signIn);
+		oSignPage.switchToFrame();
 
-		CommonFunctions.switchToFrame(1, driver);
+		oSignPage.clickSignInButton();
 
-		WebElement signInbtn = driver.findElement(By.id("signInButton"));
-		CommonFunctions.clickOnElement(signInbtn);
-
-		WebElement errors = driver.findElement(By.id("errors1"));
-		CommonFunctions.explicitWaitForElement(errors, 200, driver);
-
-		String errors1 = errors.getText();
-
-		Assert.assertTrue(errors1.contains("There were errors in your submission"));
+		Assert.assertTrue(oSignPage.verifyErrorDisplayed(Constants.ERROR_STRING_TO_VALIDATE));
 
 	}
 

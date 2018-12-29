@@ -1,13 +1,13 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import testbase.TestBase;
 import utils.CommonFunctions;
 
-public class HotelBookingPage {
+public class HotelBookingPage extends TestBase {
 
 	@FindBy(linkText = "Hotels")
 	private WebElement hotelLink;
@@ -21,7 +21,7 @@ public class HotelBookingPage {
 	@FindBy(id = "travellersOnhome")
 	private WebElement travellerSelection;
 
-	public HotelBookingPage(WebDriver driver) {
+	public HotelBookingPage() {
 		PageFactory.initElements(driver, this);
 	}
 

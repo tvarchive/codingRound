@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="32587" started-at="2018-12-29T06:10:59Z" finished-at="2018-12-29T06:11:32Z">
+  <suite name="Coding Round Test" duration-ms="78522" started-at="2018-12-29T06:45:33Z" finished-at="2018-12-29T06:46:51Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="32587" started-at="2018-12-29T06:10:59Z" finished-at="2018-12-29T06:11:32Z">
-      <class name="HotelBookingTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:HotelBookingTest@457e2f02]" name="setup" is-config="true" duration-ms="16763" started-at="2018-12-29T11:40:59Z" finished-at="2018-12-29T11:41:16Z">
+    <test name="Booking Tests" duration-ms="78522" started-at="2018-12-29T06:45:33Z" finished-at="2018-12-29T06:46:51Z">
+      <class name="SignInTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:SignInTest@5c7fa833]" name="setup" is-config="true" duration-ms="25377" started-at="2018-12-29T12:15:33Z" finished-at="2018-12-29T12:15:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="shouldBeAbleToSearchForHotels()[pri:0, instance:HotelBookingTest@457e2f02]" name="shouldBeAbleToSearchForHotels" duration-ms="14985" started-at="2018-12-29T11:41:16Z" finished-at="2018-12-29T11:41:31Z">
+        <test-method status="PASS" signature="shouldThrowAnErrorIfSignInDetailsAreMissing()[pri:0, instance:SignInTest@5c7fa833]" name="shouldThrowAnErrorIfSignInDetailsAreMissing" duration-ms="8609" started-at="2018-12-29T12:15:58Z" finished-at="2018-12-29T12:16:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldThrowAnErrorIfSignInDetailsAreMissing -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:SignInTest@5c7fa833]" name="tearDown" is-config="true" duration-ms="790" started-at="2018-12-29T12:16:07Z" finished-at="2018-12-29T12:16:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- SignInTest -->
+      <class name="HotelBookingTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:HotelBookingTest@39aeed2f]" name="setup" is-config="true" duration-ms="22170" started-at="2018-12-29T12:16:08Z" finished-at="2018-12-29T12:16:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="shouldBeAbleToSearchForHotels()[pri:0, instance:HotelBookingTest@39aeed2f]" name="shouldBeAbleToSearchForHotels" duration-ms="20775" started-at="2018-12-29T12:16:30Z" finished-at="2018-12-29T12:16:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shouldBeAbleToSearchForHotels -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:HotelBookingTest@457e2f02]" name="tearDown" is-config="true" duration-ms="803" started-at="2018-12-29T11:41:31Z" finished-at="2018-12-29T11:41:32Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:HotelBookingTest@39aeed2f]" name="tearDown" is-config="true" duration-ms="734" started-at="2018-12-29T12:16:51Z" finished-at="2018-12-29T12:16:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- HotelBookingTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Booking Tests -->
+  </suite> <!-- Coding Round Test -->
 </testng-results>

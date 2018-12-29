@@ -13,7 +13,7 @@ public class HotelBookingTest extends TestBase {
 	@Test
 	public void shouldBeAbleToSearchForHotels() {
 
-		oHotelPage = new HotelBookingPage(driver);
+		oHotelPage = new HotelBookingPage();
 
 		oHotelPage.clickonHotelLink();
 		oHotelPage.enterLocality(Constants.LOCALITY);
