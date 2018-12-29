@@ -1,12 +1,10 @@
 package testcases;
 
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pages.HotelBookingPage;
 import testbase.TestBase;
-import utils.Constants;
 
 public class HotelBookingTest extends TestBase {
 
@@ -18,8 +16,8 @@ public class HotelBookingTest extends TestBase {
 		oHotelPage = new HotelBookingPage();
 
 		oHotelPage.clickonHotelLink();
-		oHotelPage.enterLocality(Constants.LOCALITY);
-		oHotelPage.optFortravelselction(Constants.TRAVEL_SELECTION);
+		oHotelPage.enterLocality(oProp.getProperty("LOCALITY"));
+		oHotelPage.optFortravelselction(oProp.getProperty("TRAVEL_SELECTION"));
 
 		Assert.assertFalse(oHotelPage.checkForSearchBtn());
 	}

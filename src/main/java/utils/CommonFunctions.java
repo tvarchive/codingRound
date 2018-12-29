@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -25,7 +26,7 @@ public class CommonFunctions {
 		}
 	}
 
-	// For setting the Driver Path to initialize the driver
+// For setting the Driver Path to initialize the driver
 	public static void setDriverPath() {
 		if (Platform.isMac()) {
 			System.setProperty("webdriver.chrome.driver", "chromedriver");
@@ -57,7 +58,7 @@ public class CommonFunctions {
 		}
 	}
 
-	// to switch between frames
+// to switch between frames
 	public static void switchToFrame(int index, WebDriver driver) {
 		try {
 			driver.switchTo().frame(index);
@@ -122,39 +123,58 @@ public class CommonFunctions {
 		int month = Integer.parseInt(DateArr[1]);
 		int Year = Integer.parseInt(DateArr[2]);
 
+		HashMap<String, Integer> calendarMonths = new HashMap<String, Integer>();
+
+		calendarMonths.put("January", 1);
+		calendarMonths.put("February", 2);
+		calendarMonths.put("March", 3);
+		calendarMonths.put("April", 4);
+		calendarMonths.put("June", 6);
+		calendarMonths.put("July", 7);
+		calendarMonths.put("August", 8);
+		calendarMonths.put("September", 9);
+		calendarMonths.put("October", 10);
+		calendarMonths.put("November", 11);
+		calendarMonths.put("December", 12);
+
 		int retYear;
 
 		try {
 			System.out.println(Day + "-" + month + "-" + Year);
 			do {
-				// return the Year displaying on the application calendar
+// return the Year displaying on the application calendar
 				retYear = Integer.parseInt(driver.findElement(By.xpath(currentReturnedYear)).getText());
 
 				if (retYear < Year) {
-					try {
-						driver.findElement(By.xpath(NextButtonM)).click();
-					} catch (Throwable e) {
-						throw new Exception("Year cannot be more than current year or in negative");
-					}
+//taking calendar to year provided by user
+					driver.findElement(By.xpath(NextButtonM)).click();
+
 				}
 				if (retYear > Year) {
-
-					driver.findElement(By.xpath(PrevButtonM)).click();
+//year less than current year displayed on calendar can be propagated
+					throw new RuntimeException("Year cannot be less than current year");
 
 				}
 
-				// If same checking for the date input by user and comparing with that of
-				// calendar display
+// If same checking for the date input by user and comparing with that of
+// calendar display
+
+				int retmonthcount = 0;
 				if (retYear == Year) {
 					for (int i = 1; i <= 12; i++) {
-						String returnedmonth = driver.findElement(By.xpath(returnedMonth)).getText();
-						int retmonthcount = getMonth(returnedmonth);
 
+// fetching current calendar month displayed
+						String returnedmonth = driver.findElement(By.xpath(returnedMonth)).getText();
+						if (calendarMonths.containsKey(returnedmonth))
+							retmonthcount = calendarMonths.get(returnedmonth);
+
+// propagating to future months as per given input
 						if ((retmonthcount < month) && (driver.findElement(By.xpath(NextButtonM)).isDisplayed())) {
 
 							driver.findElement(By.xpath(NextButtonM)).click();
 
 						}
+//propagating to earlier months as per provided input
 						if ((retmonthcount > month) && (driver.findElement(By.xpath(PrevButtonM))).isDisplayed()) {
 
 							driver.findElement(By.xpath(PrevButtonM)).click();
@@ -162,11 +182,13 @@ public class CommonFunctions {
 						} else if (retmonthcount == month) {
 							try {
 								driver.findElement(By.xpath(
-										"//div[@id='ui-datepicker-div']/descendant::div[@class='monthBlock first']//a[contains(text(),'"
-												+ Day + "')]"))
+										"//div[@id='ui-datepicker-div']/descendant::div[@class='monthBlock first']//a[text()='"
+												+ Day + "']"))
 										.click();
-							} catch (Throwable e) {
-								throw new Exception("You may have entered a Sunday date or Invalid Date");
+								break;
+
+							} catch (Exception e) {
+								throw new Exception("You may have entered a wrong date");
 							}
 						}
 					}
@@ -177,42 +199,10 @@ public class CommonFunctions {
 
 		} catch (Throwable e) {
 			// e.printStackTrace();
-			System.out.println("Invalid input Date as per Site Calendar");
+			System.out.println(e.getMessage());
+			// System.out.println("Invalid input Date as per Site Calendar");
 			// System.out.println());
 		}
-	}
-
-//converting the months displaying on calendar for operation ease
-	public static int getMonth(String monthreturned) {
-
-		if (monthreturned.equalsIgnoreCase("January"))
-			return 1;
-		else if (monthreturned.equalsIgnoreCase("February"))
-			return 2;
-		else if (monthreturned.equalsIgnoreCase("March"))
-			return 3;
-		else if (monthreturned.equalsIgnoreCase("April"))
-			return 4;
-		else if (monthreturned.equalsIgnoreCase("May"))
-			return 5;
-		else if (monthreturned.equalsIgnoreCase("June"))
-			return 6;
-		else if (monthreturned.equalsIgnoreCase("July"))
-			return 7;
-		else if (monthreturned.equalsIgnoreCase("August"))
-			return 8;
-		else if (monthreturned.equalsIgnoreCase("September"))
-			return 9;
-		else if (monthreturned.equalsIgnoreCase("October"))
-			return 10;
-		else if (monthreturned.equalsIgnoreCase("November"))
-			return 11;
-		else if (monthreturned.equalsIgnoreCase("December"))
-			return 12;
-
-		else
-			return -1;
-
 	}
 
 }

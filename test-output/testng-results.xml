@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="43565" started-at="2018-12-29T07:52:02Z" finished-at="2018-12-29T07:52:45Z">
+  <suite name="Default suite" duration-ms="25326" started-at="2018-12-29T13:05:46Z" finished-at="2018-12-29T13:06:11Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="43565" started-at="2018-12-29T07:52:02Z" finished-at="2018-12-29T07:52:45Z">
-      <class name="FlightBookingTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:FlightBookingTest@457e2f02]" name="setup" is-config="true" duration-ms="27060" started-at="2018-12-29T13:22:02Z" finished-at="2018-12-29T13:22:29Z">
+    <test name="Default test" duration-ms="25326" started-at="2018-12-29T13:05:46Z" finished-at="2018-12-29T13:06:11Z">
+      <class name="testcases.FlightBookingTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:testcases.FlightBookingTest@457e2f02]" name="setup" is-config="true" duration-ms="17171" started-at="2018-12-29T18:35:46Z" finished-at="2018-12-29T18:36:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:FlightBookingTest@457e2f02]" name="testThatResultsAppearForAOneWayJourney" duration-ms="15469" started-at="2018-12-29T13:22:29Z" finished-at="2018-12-29T13:22:44Z">
+        <test-method status="PASS" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:testcases.FlightBookingTest@457e2f02]" name="testThatResultsAppearForAOneWayJourney" duration-ms="7407" started-at="2018-12-29T18:36:03Z" finished-at="2018-12-29T18:36:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testThatResultsAppearForAOneWayJourney -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:FlightBookingTest@457e2f02]" name="tearDown" is-config="true" duration-ms="996" started-at="2018-12-29T13:22:44Z" finished-at="2018-12-29T13:22:45Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcases.FlightBookingTest@457e2f02]" name="tearDown" is-config="true" duration-ms="703" started-at="2018-12-29T18:36:10Z" finished-at="2018-12-29T18:36:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- FlightBookingTest -->
+      </class> <!-- testcases.FlightBookingTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

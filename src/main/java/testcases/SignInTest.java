@@ -1,13 +1,10 @@
 package testcases;
 
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pages.SignInPage;
 import testbase.TestBase;
-
-import utils.Constants;
 
 public class SignInTest extends TestBase {
 
@@ -26,7 +23,7 @@ public class SignInTest extends TestBase {
 
 		oSignPage.clickSignInButton();
 
-		Assert.assertTrue(oSignPage.verifyErrorDisplayed(Constants.ERROR_STRING_TO_VALIDATE));
+		Assert.assertTrue(oSignPage.verifyErrorDisplayed(oProp.getProperty("ERROR_STRING_TO_VALIDATE")));
 
 	}
 

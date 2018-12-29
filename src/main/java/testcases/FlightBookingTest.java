@@ -1,13 +1,10 @@
 package testcases;
 
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pages.FlightBookingPage;
 import testbase.TestBase;
-
-import utils.Constants;
 
 public class FlightBookingTest extends TestBase {
 	FlightBookingPage oFlighBooking;
@@ -19,11 +16,11 @@ public class FlightBookingTest extends TestBase {
 
 		oFlighBooking.clickOnOneWayLink();
 
-		oFlighBooking.enterAndSelectFromLocation(Constants.FROM_CITY);
+		oFlighBooking.enterAndSelectFromLocation(oProp.getProperty("FROM_CITY"));
 
-		oFlighBooking.enterAndSelectToLocation(Constants.TO_CITY);
+		oFlighBooking.enterAndSelectToLocation(oProp.getProperty("TO_CITY"));
 
-		oFlighBooking.selectFromDate(Constants.FROM_DATE_IN_DDMMYYYY);
+		oFlighBooking.selectFromDate(oProp.getProperty("FROM_DATE_IN_DDMMYYYY"));
 
 		oFlighBooking.clickOnSearchButton();
 
