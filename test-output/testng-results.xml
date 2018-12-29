@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="47269" started-at="2018-12-28T04:01:43Z" finished-at="2018-12-28T04:02:30Z">
+  <suite name="Default suite" duration-ms="32587" started-at="2018-12-29T06:10:59Z" finished-at="2018-12-29T06:11:32Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="47269" started-at="2018-12-28T04:01:43Z" finished-at="2018-12-28T04:02:30Z">
+    <test name="Default test" duration-ms="32587" started-at="2018-12-29T06:10:59Z" finished-at="2018-12-29T06:11:32Z">
       <class name="HotelBookingTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:HotelBookingTest@457e2f02]" name="setup" is-config="true" duration-ms="24678" started-at="2018-12-28T09:31:43Z" finished-at="2018-12-28T09:32:08Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:HotelBookingTest@457e2f02]" name="setup" is-config="true" duration-ms="16763" started-at="2018-12-29T11:40:59Z" finished-at="2018-12-29T11:41:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="shouldBeAbleToSearchForHotels()[pri:0, instance:HotelBookingTest@457e2f02]" name="shouldBeAbleToSearchForHotels" duration-ms="21689" started-at="2018-12-28T09:32:08Z" finished-at="2018-12-28T09:32:29Z">
+        <test-method status="PASS" signature="shouldBeAbleToSearchForHotels()[pri:0, instance:HotelBookingTest@457e2f02]" name="shouldBeAbleToSearchForHotels" duration-ms="14985" started-at="2018-12-29T11:41:16Z" finished-at="2018-12-29T11:41:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shouldBeAbleToSearchForHotels -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:HotelBookingTest@457e2f02]" name="tearDown" is-config="true" duration-ms="848" started-at="2018-12-28T09:32:29Z" finished-at="2018-12-28T09:32:30Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:HotelBookingTest@457e2f02]" name="tearDown" is-config="true" duration-ms="803" started-at="2018-12-29T11:41:31Z" finished-at="2018-12-29T11:41:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
