@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Coding Round Test" duration-ms="78522" started-at="2018-12-29T06:45:33Z" finished-at="2018-12-29T06:46:51Z">
+  <suite name="Default suite" duration-ms="43565" started-at="2018-12-29T07:52:02Z" finished-at="2018-12-29T07:52:45Z">
     <groups>
     </groups>
-    <test name="Booking Tests" duration-ms="78522" started-at="2018-12-29T06:45:33Z" finished-at="2018-12-29T06:46:51Z">
-      <class name="SignInTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:SignInTest@5c7fa833]" name="setup" is-config="true" duration-ms="25377" started-at="2018-12-29T12:15:33Z" finished-at="2018-12-29T12:15:58Z">
+    <test name="Default test" duration-ms="43565" started-at="2018-12-29T07:52:02Z" finished-at="2018-12-29T07:52:45Z">
+      <class name="FlightBookingTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:FlightBookingTest@457e2f02]" name="setup" is-config="true" duration-ms="27060" started-at="2018-12-29T13:22:02Z" finished-at="2018-12-29T13:22:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="shouldThrowAnErrorIfSignInDetailsAreMissing()[pri:0, instance:SignInTest@5c7fa833]" name="shouldThrowAnErrorIfSignInDetailsAreMissing" duration-ms="8609" started-at="2018-12-29T12:15:58Z" finished-at="2018-12-29T12:16:07Z">
+        <test-method status="PASS" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:FlightBookingTest@457e2f02]" name="testThatResultsAppearForAOneWayJourney" duration-ms="15469" started-at="2018-12-29T13:22:29Z" finished-at="2018-12-29T13:22:44Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldThrowAnErrorIfSignInDetailsAreMissing -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:SignInTest@5c7fa833]" name="tearDown" is-config="true" duration-ms="790" started-at="2018-12-29T12:16:07Z" finished-at="2018-12-29T12:16:08Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- SignInTest -->
-      <class name="HotelBookingTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:HotelBookingTest@39aeed2f]" name="setup" is-config="true" duration-ms="22170" started-at="2018-12-29T12:16:08Z" finished-at="2018-12-29T12:16:30Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="shouldBeAbleToSearchForHotels()[pri:0, instance:HotelBookingTest@39aeed2f]" name="shouldBeAbleToSearchForHotels" duration-ms="20775" started-at="2018-12-29T12:16:30Z" finished-at="2018-12-29T12:16:51Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- shouldBeAbleToSearchForHotels -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:HotelBookingTest@39aeed2f]" name="tearDown" is-config="true" duration-ms="734" started-at="2018-12-29T12:16:51Z" finished-at="2018-12-29T12:16:51Z">
+        </test-method> <!-- testThatResultsAppearForAOneWayJourney -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:FlightBookingTest@457e2f02]" name="tearDown" is-config="true" duration-ms="996" started-at="2018-12-29T13:22:44Z" finished-at="2018-12-29T13:22:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- HotelBookingTest -->
-    </test> <!-- Booking Tests -->
-  </suite> <!-- Coding Round Test -->
+      </class> <!-- FlightBookingTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
