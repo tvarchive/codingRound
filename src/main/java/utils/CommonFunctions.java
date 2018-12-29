@@ -18,14 +18,6 @@ import com.sun.jna.Platform;
 
 public class CommonFunctions {
 
-	public static void waitFor(int durationInMilliSeconds) {
-		try {
-			Thread.sleep(durationInMilliSeconds);
-		} catch (InterruptedException e) {
-			e.printStackTrace(); // To change body of catch statement use File | Settings | File Templates.
-		}
-	}
-
 // For setting the Driver Path to initialize the driver
 	public static void setDriverPath() {
 		if (Platform.isMac()) {
