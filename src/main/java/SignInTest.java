@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SignInTest {
+public class SignInTest extends BaseClass{
 
    
 
@@ -19,11 +19,11 @@ public class SignInTest {
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
         BaseClass.setDriverPath();
-        WebDriver driver = new ChromeDriver();
+        
        
         driver.get("https://www.cleartrip.com/");
         TimeUtil.waitFor(2000);
-        driver.manage().window().maximize();
+        
         driver.findElement(By.linkText("Your trips")).click();
         driver.findElement(By.id("SignIn")).click();
        
