@@ -1,3 +1,9 @@
 build
 .idea
 .gradle
+/target/
+.classpath
+.project
+.settings/
+test-output/
+
