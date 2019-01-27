@@ -1,40 +1,23 @@
 package testPackage.hotelBooking;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
-public class HotelBookingTest {
+import testUtils.TestConfig;
 
-    WebDriver driver = new ChromeDriver();
+public class HotelBookingTest extends TestConfig {
 
-    @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
-
-    @FindBy(id = "Tags")
-    private WebElement localityTextBox;
-
-    @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
-
-    @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
 
     @Test
     public void shouldBeAbleToSearchForHotels() {
 
-        driver.get("https://www.cleartrip.com/");
-        hotelLink.click();
-
-        localityTextBox.sendKeys("Indiranagar, Bangalore");
-
-        new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
-        searchButton.click();
-
-        driver.quit();
-
+    	HotelBookingPageObjects hbo=new HotelBookingPageObjects(getdriver());
+        getdriver().get("https://www.cleartrip.com/");
+        
+        hbo.clickHotelLink();
+        hbo.serachHotelByLocality("Indiranagar, Bangalore");
+        hbo.selectTraveller("1 room, 2 adults");
+        hbo.clickSearchBtn();
+        hbo.checkSearchSummaryAppreard();
+        
     }
 
    

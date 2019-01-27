@@ -28,6 +28,7 @@ public class TestConfig {
 		setDriverPath();
 		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 	}
 
 

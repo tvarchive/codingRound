@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="27158" started-at="2019-01-27T19:33:13Z" finished-at="2019-01-27T19:33:40Z">
+  <suite name="Default suite" duration-ms="41634" started-at="2019-01-27T20:10:19Z" finished-at="2019-01-27T20:11:01Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="27158" started-at="2019-01-27T19:33:13Z" finished-at="2019-01-27T19:33:40Z">
-      <class name="testPackage.flightBooking.FlightBookingTest">
-        <test-method status="PASS" signature="setUpSystem()[pri:0, instance:testPackage.flightBooking.FlightBookingTest@28feb3fa]" name="setUpSystem" is-config="true" duration-ms="3853" started-at="2019-01-28T01:03:09Z" finished-at="2019-01-28T01:03:13Z">
+    <test name="Default test" duration-ms="41634" started-at="2019-01-27T20:10:19Z" finished-at="2019-01-27T20:11:01Z">
+      <class name="testPackage.hotelBooking.HotelBookingTest">
+        <test-method status="PASS" signature="setUpSystem()[pri:0, instance:testPackage.hotelBooking.HotelBookingTest@28feb3fa]" name="setUpSystem" is-config="true" duration-ms="5138" started-at="2019-01-28T01:40:14Z" finished-at="2019-01-28T01:40:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSystem -->
-        <test-method status="PASS" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:testPackage.flightBooking.FlightBookingTest@28feb3fa]" name="testThatResultsAppearForAOneWayJourney" duration-ms="27138" started-at="2019-01-28T01:03:13Z" finished-at="2019-01-28T01:03:40Z">
+        <test-method status="PASS" signature="shouldBeAbleToSearchForHotels()[pri:0, instance:testPackage.hotelBooking.HotelBookingTest@28feb3fa]" name="shouldBeAbleToSearchForHotels" duration-ms="41614" started-at="2019-01-28T01:40:19Z" finished-at="2019-01-28T01:41:01Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testThatResultsAppearForAOneWayJourney -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:testPackage.flightBooking.FlightBookingTest@28feb3fa]" name="afterTest" is-config="true" duration-ms="734" started-at="2019-01-28T01:03:40Z" finished-at="2019-01-28T01:03:41Z">
+        </test-method> <!-- shouldBeAbleToSearchForHotels -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:testPackage.hotelBooking.HotelBookingTest@28feb3fa]" name="afterTest" is-config="true" duration-ms="840" started-at="2019-01-28T01:41:01Z" finished-at="2019-01-28T01:41:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- testPackage.flightBooking.FlightBookingTest -->
+      </class> <!-- testPackage.hotelBooking.HotelBookingTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
