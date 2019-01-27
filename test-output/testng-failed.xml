@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testPackage.SignInTest.SignInTest">
+      <class name="testPackage.flightBooking.FlightBookingTest">
         <methods>
+          <include name="testThatResultsAppearForAOneWayJourney"/>
           <include name="setUpSystem"/>
-          <include name="shouldThrowAnErrorIfSignInDetailsAreMissing"/>
           <include name="afterTest"/>
         </methods>
-      </class> <!-- testPackage.SignInTest.SignInTest -->
+      </class> <!-- testPackage.flightBooking.FlightBookingTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

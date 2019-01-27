@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="29317" started-at="2019-01-27T18:39:22Z" finished-at="2019-01-27T18:39:52Z">
+  <suite name="Default suite" duration-ms="27158" started-at="2019-01-27T19:33:13Z" finished-at="2019-01-27T19:33:40Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="29317" started-at="2019-01-27T18:39:22Z" finished-at="2019-01-27T18:39:52Z">
-      <class name="testPackage.SignInTest.SignInTest">
-        <test-method status="PASS" signature="setUpSystem()[pri:0, instance:testPackage.SignInTest.SignInTest@28feb3fa]" name="setUpSystem" is-config="true" duration-ms="4421" started-at="2019-01-28T00:09:18Z" finished-at="2019-01-28T00:09:22Z">
+    <test name="Default test" duration-ms="27158" started-at="2019-01-27T19:33:13Z" finished-at="2019-01-27T19:33:40Z">
+      <class name="testPackage.flightBooking.FlightBookingTest">
+        <test-method status="PASS" signature="setUpSystem()[pri:0, instance:testPackage.flightBooking.FlightBookingTest@28feb3fa]" name="setUpSystem" is-config="true" duration-ms="3853" started-at="2019-01-28T01:03:09Z" finished-at="2019-01-28T01:03:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSystem -->
-        <test-method status="PASS" signature="shouldThrowAnErrorIfSignInDetailsAreMissing()[pri:0, instance:testPackage.SignInTest.SignInTest@28feb3fa]" name="shouldThrowAnErrorIfSignInDetailsAreMissing" duration-ms="29298" started-at="2019-01-28T00:09:22Z" finished-at="2019-01-28T00:09:52Z">
+        <test-method status="PASS" signature="testThatResultsAppearForAOneWayJourney()[pri:0, instance:testPackage.flightBooking.FlightBookingTest@28feb3fa]" name="testThatResultsAppearForAOneWayJourney" duration-ms="27138" started-at="2019-01-28T01:03:13Z" finished-at="2019-01-28T01:03:40Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldThrowAnErrorIfSignInDetailsAreMissing -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:testPackage.SignInTest.SignInTest@28feb3fa]" name="afterTest" is-config="true" duration-ms="777" started-at="2019-01-28T00:09:52Z" finished-at="2019-01-28T00:09:53Z">
+        </test-method> <!-- testThatResultsAppearForAOneWayJourney -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:testPackage.flightBooking.FlightBookingTest@28feb3fa]" name="afterTest" is-config="true" duration-ms="734" started-at="2019-01-28T01:03:40Z" finished-at="2019-01-28T01:03:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- testPackage.SignInTest.SignInTest -->
+      </class> <!-- testPackage.flightBooking.FlightBookingTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

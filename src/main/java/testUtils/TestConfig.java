@@ -10,10 +10,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 
 import com.sun.javafx.PlatformUtil;
 
+@SuppressWarnings("restriction")
 public class TestConfig {
 	WebDriver driver;
 
@@ -30,7 +30,7 @@ public class TestConfig {
 		driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 	}
 
-	@SuppressWarnings("restriction")
+
 	@AfterSuite
 	public void afterTest() throws IOException {
 		System.out.println("Executing after suite");
@@ -47,7 +47,7 @@ public class TestConfig {
 
 	}
 
-	@SuppressWarnings("restriction")
+
 	private void setDriverPath() {
 		if (PlatformUtil.isMac()) {
 			System.setProperty("webdriver.chrome.driver", ".//chromedriver");
