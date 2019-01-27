@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite"  > 
+<!-- suite name="Suite Name" --> 
+
+
+             <test name="SignInTest" allow-return-values="true">
+                     <classes>
+                             <class name ="testPackage.SignInTest.SignInTest" />
+                     </classes>
+             </test>
+              <test name="HotelBookingTest" allow-return-values="true">
+                     <classes>
+                     <class name ="testPackage.hotelBooking.HotelBookingTest" />
+                     </classes>
+             </test>
+              <test name="FlightBookingTest" allow-return-values="true">
+                     <classes>
+                             <class name ="testPackage.flightBooking.FlightBookingTest" />
+                     </classes>
+             </test>
+
+
+</suite>

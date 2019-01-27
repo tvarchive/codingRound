@@ -48,6 +48,7 @@ public class HotelBookingPageObjects {
 	}
 	
 	public void serachHotelByLocality(String localityName) {
+		localityTextBox.clear();
 		localityTextBox.sendKeys(localityName);
 		autoCompleteOption.click();
 	}

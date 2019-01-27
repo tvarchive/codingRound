@@ -9,7 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 import com.sun.javafx.PlatformUtil;
 
@@ -17,9 +19,9 @@ import com.sun.javafx.PlatformUtil;
 public class TestConfig {
 	WebDriver driver;
 
-	@BeforeSuite
+	@BeforeTest
 	public void setUpSystem() {
-		System.out.println("Executing before suite");
+		System.out.println("Executing before Test");
 		ChromeOptions options = new ChromeOptions();
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		options.setExperimentalOption("prefs", prefs);
@@ -27,14 +29,14 @@ public class TestConfig {
 		options.addArguments("disable-infobars");
 		setDriverPath();
 		driver = new ChromeDriver(options);
-		driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 
 
-	@AfterSuite
+	@AfterTest
 	public void afterTest() throws IOException {
-		System.out.println("Executing after suite");
+		System.out.println("Executing after Test");
 		driver.quit();
 		if (PlatformUtil.isWindows()) {
 			Process process = Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe /T");
