@@ -1,0 +1,27 @@
+Following are the comments for code review:
+
+1. Driver version updated - ChromeDriver version has been updated to stable one.
+
+2. Created a new package test and moved all Tests to it.
+
+3. Created a new package utils and new class SeleniumUtils. To keep setDriverPath, waitFor, isElementPresent, 
+loadBrowser, tearDown in a class and can use it in another classes with inheritance.
+
+4. Added testng.xml file to run test cases as a test suite.
+
+Changes in tests:
+
+1. SignInTest : 
+
+a) extended class SeleniumUtils and then called necessary methods.
+b) added line 25 for moving focus to iframe "driver.switchTo().frame("modal_window");".
+
+2. FlightBookingTest :
+
+a) extended class SeleniumUtils and then called necessary methods.
+b) corrected lines 39 and 40 - "toTag" to "ToTag".
+
+3. HotelBookingTest :
+
+a) extended class SeleniumUtils and then called necessary methods.
+b) added line 36 for @FindBy elements - "PageFactory.initElements(driver, this);"
