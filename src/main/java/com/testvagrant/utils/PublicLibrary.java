@@ -16,6 +16,11 @@ import com.sun.javafx.PlatformUtil;
 
 public class PublicLibrary {
 	private WebDriver driver;
+	CustomLogger logger;
+
+	public PublicLibrary() {
+		logger = new CustomLogger();
+	}
 
 	/**
 	 * Initializes driver path
@@ -39,6 +44,7 @@ public class PublicLibrary {
 		if (driver != null) {
 			driver.quit();
 		}
+		logger.log("Closing browser");
 	}
 
 	/**
@@ -50,22 +56,27 @@ public class PublicLibrary {
 
 		setDriverPath();
 
-		if (driver != null) {
+		if (driver == null) {
 			switch (requiredBrowserName) {
-			case "chrome": {
+			case MiscConstants.BROWSER_CHROME: {
 				driver = new ChromeDriver();
+				break;
 			}
-			case "firefox": {
-				driver = new FirefoxDriver();
+			case MiscConstants.BROWSER_FIREFOX: {
+				// driver = new FirefoxDriver();
+				break;
 			}
-			case "ie": {
-				driver = new InternetExplorerDriver();
+			case MiscConstants.BROWSER_INTERNETEXPLORER: {
+				// driver = new InternetExplorerDriver();
+				break;
 			}
 			default: {
 				driver = new ChromeDriver();
 			}
 			}
 		}
+		driver.manage().window().maximize();
+		logger.log(requiredBrowserName + " opened and window maximized");
 	}
 
 	/**
@@ -75,7 +86,7 @@ public class PublicLibrary {
 	 */
 	public WebDriver getDriverInstance() {
 		if (driver == null) {
-			initialiseBrowser("chrome");
+			initialiseBrowser(MiscConstants.BROWSER_CHROME);
 		}
 		return driver;
 	}
@@ -86,11 +97,12 @@ public class PublicLibrary {
 	 * @param byLocater : By object of required element
 	 */
 	public void waitForElementToDisplay(By byLocater) {
+		logger.log("Waiting for element to be present...");
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.presenceOfElementLocated(byLocater));
 		wait.pollingEvery(1, TimeUnit.SECONDS);
 		wait.ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
-
+		logger.log("Found element in DOM...");
 	}
 
 	/**
@@ -101,7 +113,9 @@ public class PublicLibrary {
 	 */
 	public void waitFor(int durationInMilliSeconds) {
 		try {
+			logger.log("Waiting for... " + (durationInMilliSeconds / 1000) + " seconds");
 			Thread.sleep(durationInMilliSeconds);
+			logger.log("Wait completed...");
 		} catch (InterruptedException e) {
 			e.printStackTrace(); // To change body of catch statement use File | Settings | File Templates.
 		}
@@ -121,5 +135,30 @@ public class PublicLibrary {
 		} catch (NoSuchElementException e) {
 			return false;
 		}
+	}
+
+	/**
+	 * Getting By object dynamically from properties file.
+	 * @param objectKey : key name of locator
+	 * @return : By object of locator
+	 */
+	public By getByObject(String objectKey) {
+
+		String locValue = PropertFileManager.getPropertyFromFile(objectKey, MiscConstants.PROP_OR);
+		if (locValue.startsWith("By.id(")) {
+			locValue = locValue.split("\\(")[1];
+			return By.id(locValue);
+		} else if (locValue.startsWith("By.className(")) {
+			locValue = locValue.split("\\(")[1];
+			return By.className(locValue);
+		} else if (locValue.startsWith("By.xpath(")) {
+			locValue = locValue.split("\\(")[1];
+			return By.xpath(locValue);
+		} else if (locValue.startsWith("By.cssSelector(")) {
+			locValue = locValue.split("\\(")[1];
+			return By.cssSelector(locValue);
+		} else
+			return null;
+
 	}
 }
