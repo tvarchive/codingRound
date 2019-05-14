@@ -5,4 +5,5 @@ public class MiscConstants {
 	public final static String BROWSER_FIREFOX = "firefox";
 	public final static String BROWSER_INTERNETEXPLORER = "ie";
 	public final static String PROP_OR = "OR";
+	public final static String PROP_MISC = "MISC";
 }

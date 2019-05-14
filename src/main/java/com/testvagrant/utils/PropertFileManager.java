@@ -42,17 +42,20 @@ public class PropertFileManager {
 			case MiscConstants.PROP_OR:
 				propFile = new File(path + "\\FileUtils\\ObjectRepository.properties");
 				break;
+			case MiscConstants.PROP_MISC:
+				propFile = new File(path + "\\FileUtils\\MiscValues.properties");
+				break;
 
 			default:
 				propFile = new File(path + "\\FileUtils\\ObjectRepository.properties");
 				break;
 			}
-			propFile = new File(path + "\\FileUtils\\ObjectRepository.properties");
 			try {
 				prop.load(new FileInputStream(propFile));
 			} catch (Exception e) {
 				logger.logException(e);
 			}
+			propertyObjectPool.put(propertyFileName, prop);
 		}
 		return prop;
 	}

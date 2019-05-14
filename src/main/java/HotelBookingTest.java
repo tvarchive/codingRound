@@ -1,67 +1,51 @@
 import com.testvagrant.pageobjects.HotelBookingPage;
-import com.testvagrant.utils.ApplicationLibrary;
-import com.testvagrant.utils.CustomLogger;
-import com.testvagrant.utils.MiscConstants;
-import com.testvagrant.utils.PublicLibrary;
+import com.testvagrant.utils.TestCaseTemplate;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class HotelBookingTest {
-
-	WebDriver driver;
-	ApplicationLibrary library;
-	CustomLogger logger;
-
-	@BeforeTest
-	public void setUpTestObjects() {
-		logger = new CustomLogger();
-		logger.log("Executing test setup");
-		library = new ApplicationLibrary();
-		library.initialiseBrowser(MiscConstants.BROWSER_CHROME);
-		this.driver = library.getDriverInstance();
-	}
-
-	@AfterTest
-	public void closingBrowserWindow() {
-		logger.log("Executing test clean up");
-		library.closeWebBrowser();
-	}
+public class HotelBookingTest extends TestCaseTemplate {
 
 	@Test
 	public void shouldBeAbleToSearchForHotels() {
 		HotelBookingPage bookingpage = PageFactory.initElements(driver, HotelBookingPage.class);
 
-		driver.get("https://www.cleartrip.com/");
+		// Clicking on Hotels section link
+		logger.log("Clicking on Hotels section link");
 		bookingpage.hotelLink.click();
 
-		bookingpage.localityTextBox.sendKeys("Indiranagar, Bangalore");
-
-		By holtelLocationSuggestion = library.getByObject("holtelLocationSuggestion");
-		library.waitForElementToDisplay(holtelLocationSuggestion);
+		// Set text to Hotel location field
+		logger.log("Set text to Hotel location field");
+		bookingpage.localityTextBox.sendKeys(exceldata.get("HotelLocation"));
 
 		// select the first item from the hotel auto complete list
-		driver.findElement(holtelLocationSuggestion).click();
-		
+		logger.log("select the first item from the hotel auto complete list");
+		library.clickElement(library.getByObject("holtelLocationSuggestion"));
+
+		// Selecting a date which is 1 day after today as Check-In date
+		logger.log("Selecting a date which is 1 day after today as Check-In date");
 		library.selectDateInDatePicker(1);
+
+		// Selecting a date which is 2 days after today as Check-Out date
+		logger.log("Selecting a date which is 2 days after today as Check-Out date");
 		library.selectDateInDatePicker(2);
 
-		new Select(bookingpage.travellerSelection).selectByVisibleText("1 room, 2 adults");
+		// Selecting num of rooms and guests
+		logger.log("Selecting num of rooms and guests");
+		new Select(bookingpage.travellerSelection).selectByVisibleText(exceldata.get("RoomGuestsSpecification"));
+
+		// Clicking on search button after entering details
+		logger.log("Clicking on search button after entering details");
 		bookingpage.searchButton.click();
 
 		// verify that result appears for the provided journey search
+		logger.log("verify that result appears for the provided journey search");
 		By byLocSearchSummary = library.getByObject("searchSummary");
-		
+		library.waitForElementToDisplay(byLocSearchSummary);
 		Assert.assertTrue(library.isElementPresent(byLocSearchSummary));
-		System.out.println("manoj");
 	}
 
 }

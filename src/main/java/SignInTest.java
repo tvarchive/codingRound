@@ -1,54 +1,36 @@
-import com.testvagrant.utils.ApplicationLibrary;
-import com.testvagrant.utils.PublicLibrary;
+import com.testvagrant.utils.MiscConstants;
+import com.testvagrant.utils.PropertFileManager;
+import com.testvagrant.utils.TestCaseTemplate;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SignInTest {
-
-	WebDriver driver;
-	PublicLibrary library;
-
-	@BeforeTest
-	public void setUpTestObjects() {
-		library = new ApplicationLibrary();
-		library.initialiseBrowser("chrome");
-		this.driver = library.getDriverInstance();
-	}
-
-	@AfterTest
-	public void closingBrowserWindow() {
-		library.closeWebBrowser();
-	}
+public class SignInTest extends TestCaseTemplate {
 
 	@Test
 	public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
-		driver.get("https://www.cleartrip.com/");
-
 		// Navigating to signIn popup
-		By byLocYourTripsLink = library.getByObject("yourTrips");
-		library.waitForElementToDisplay(byLocYourTripsLink);
-		driver.findElement(byLocYourTripsLink).click();
-		driver.findElement(library.getByObject("signInLink")).click();
+		logger.log("Navigating to signIn popup");
+		library.clickElement(library.getByObject("yourTrips")); // Click on Your Trips link
+		library.clickElement(library.getByObject("signInLink")); // Click on Sign In link
 
 		// Switching to iframe in Login popup
-		By byLocLoginIframe = library.getByObject("loginFrame");
-		driver.switchTo().frame(driver.findElement(byLocLoginIframe));
+		logger.log("Switching to iframe in Login popup");
+		library.switchToFrame(library.getByObject("loginFrame"));
 
 		// CLick on Sign in button before entering login details for getting login error
-		By byLocSignInBtn = library.getByObject("signInBtn");
-		library.waitForElementToDisplay(byLocSignInBtn);
-		driver.findElement(byLocSignInBtn).click();
-		
-		// Verify Error message after login without credentialss
-		String errors1 = driver.findElement(library.getByObject("errorMsg")).getText();
-		Assert.assertTrue(errors1.contains("There were errors in your submission"));
+		logger.log("CLick on Sign in button before entering login details for getting login error");
+		library.clickElement(library.getByObject("signInBtn"));
+
+		// Verify Error message after login without credentials
+		logger.log("Verify Error message after login without credentials");
+		By byLocErrorPanel = library.getByObject("errorMsg");
+		library.waitForElementToDisplay(byLocErrorPanel);
+		String errorMessage = driver.findElement(byLocErrorPanel).getText();
+		Assert.assertTrue(errorMessage
+				.contains(PropertFileManager.getPropertyFromFile("loginErrorMessage", MiscConstants.PROP_MISC)));
 
 	}
-
 }

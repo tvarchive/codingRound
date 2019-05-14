@@ -12,6 +12,11 @@ public class CustomLogger {
 		System.out.println("\nLog: " + message);
 	}
 
+	/**
+	 * Loggs exception stacktrace to console
+	 * 
+	 * @param e : Exception
+	 */
 	public void logException(Exception e) {
 		System.out.println("\nError Log: " + e.getStackTrace());
 	}

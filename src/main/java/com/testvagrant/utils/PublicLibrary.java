@@ -6,11 +6,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -165,5 +162,39 @@ public class PublicLibrary {
 			return By.linkText(locValue);
 		} else
 			return null;
+	}
+
+	/**
+	 * Waits for an element to appear and Clicking on it
+	 * 
+	 * @param byLocator : By locator of the element
+	 */
+	public void clickElement(By byLocator) {
+		waitForElementToDisplay(byLocator);
+		driver.findElement(byLocator).click();
+	}
+
+	/**
+	 * Waits for an element to appear and setting text to the element. Sets empty
+	 * text if messageText is null or empty
+	 * 
+	 * @param byLocator   : By locator of the element
+	 * @param messageText : Text to be set to element
+	 */
+	public void setTextToElement(By byLocator, String messageText) {
+		waitForElementToDisplay(byLocator);
+		WebElement element = driver.findElement(byLocator);
+		element.clear();
+		element.sendKeys(messageText == null ? "" : messageText);
+	}
+
+	/**
+	 * Switching the driver to iframe
+	 * 
+	 * @param byLocatorOfFrame : By locater of iframe
+	 */
+	public void switchToFrame(By byLocatorOfFrame) {
+		waitForElementToDisplay(byLocatorOfFrame);
+		driver.switchTo().frame(driver.findElement(byLocatorOfFrame));
 	}
 }

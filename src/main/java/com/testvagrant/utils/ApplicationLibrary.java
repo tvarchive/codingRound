@@ -6,6 +6,11 @@ import org.openqa.selenium.By;
 
 public class ApplicationLibrary extends PublicLibrary {
 
+	/**
+	 * Selects a date after mentioned number of days in date picker
+	 * 
+	 * @param numOfDaysAfter : number of days from today
+	 */
 	public void selectDateInDatePicker(int numOfDaysAfter) {
 		LocalDate todayDate = LocalDate.now();
 		LocalDate targetdate = todayDate.plusDays(numOfDaysAfter);
