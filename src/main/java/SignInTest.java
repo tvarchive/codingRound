@@ -29,14 +29,24 @@ public class SignInTest {
 	public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
 		driver.get("https://www.cleartrip.com/");
-		library.waitFor(2000);
 
-		driver.findElement(By.linkText("Your trips")).click();
-		driver.findElement(By.id("SignIn")).click();
+		// Navigating to signIn popup
+		By byLocYourTripsLink = library.getByObject("yourTrips");
+		library.waitForElementToDisplay(byLocYourTripsLink);
+		driver.findElement(byLocYourTripsLink).click();
+		driver.findElement(library.getByObject("signInLink")).click();
 
-		driver.findElement(By.id("signInButton")).click();
+		// Switching to iframe in Login popup
+		By byLocLoginIframe = library.getByObject("loginFrame");
+		driver.switchTo().frame(driver.findElement(byLocLoginIframe));
 
-		String errors1 = driver.findElement(By.id("errors1")).getText();
+		// CLick on Sign in button before entering login details for getting login error
+		By byLocSignInBtn = library.getByObject("signInBtn");
+		library.waitForElementToDisplay(byLocSignInBtn);
+		driver.findElement(byLocSignInBtn).click();
+		
+		// Verify Error message after login without credentialss
+		String errors1 = driver.findElement(library.getByObject("errorMsg")).getText();
 		Assert.assertTrue(errors1.contains("There were errors in your submission"));
 
 	}

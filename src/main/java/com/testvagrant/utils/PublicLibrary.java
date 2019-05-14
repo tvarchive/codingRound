@@ -7,8 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -139,6 +141,7 @@ public class PublicLibrary {
 
 	/**
 	 * Getting By object dynamically from properties file.
+	 * 
 	 * @param objectKey : key name of locator
 	 * @return : By object of locator
 	 */
@@ -157,8 +160,10 @@ public class PublicLibrary {
 		} else if (locValue.startsWith("By.cssSelector(")) {
 			locValue = locValue.split("\\(")[1];
 			return By.cssSelector(locValue);
+		} else if (locValue.startsWith("By.linkText(")) {
+			locValue = locValue.split("\\(")[1];
+			return By.linkText(locValue);
 		} else
 			return null;
-
 	}
 }
