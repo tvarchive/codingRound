@@ -6,6 +6,13 @@ About the codebase:
 
 **Tech Stack:** *Java*  *Selenium* *TestNG*  *Gradle/Maven*
 
+**The parameters of evaluation**
+----------------------------------
+1. Naming Conventions & readability of code
+2. Modularization & Abstraction
+3. Demonstration of OO concepts & Design Patterns
+4. Etiquette of Version control
+
 Problem Statement
 ----------------------------------
 **Tasks:**
@@ -21,9 +28,3 @@ Problem Statement
 4. Make sure you make multiple check-ins in the process, we would love to see your progress bit by bit.
 5. Also check-in a separate file where you should list all your code review comments.
 6. Send us the link of your GitHub repo to **careers@testvagrant.com**. Also attach your **resume**.
-
-**The parameters of evaluation:**
-1. Naming Conventions & readability of code
-2. Modularization & Abstraction
-3. Demonstration of OO concepts & Design Patterns
-4. Etiquette of Version control
