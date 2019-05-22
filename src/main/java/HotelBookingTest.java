@@ -24,6 +24,8 @@ public class HotelBookingTest {
 
     @Test
     public void shouldBeAbleToSearchForHotels() {
+        
+        boolean testresult = false;
         setDriverPath();
 
         driver.get("https://www.cleartrip.com/");
@@ -34,6 +36,16 @@ public class HotelBookingTest {
         new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
         searchButton.click();
 
+         //Considering the search page appears in the list of rows showing hotels with locality...so using li tag for finding relevant xpath
+        String xpathHotelSearchPage = "//li[contains(text(),'Indiranagar')]";
+        
+        testresult = driver.findElement(By.xpath(xpathHotelSearchPage)).isDisplayed();
+        
+        if(testresult)
+            System.out.println("Hotels search page getting displayed successfully");
+        else
+            System.out.println("Test case failed!! Unable to show the result");
+        
         driver.quit();
 
     }
