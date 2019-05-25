@@ -36,8 +36,6 @@ public class SignIn extends TestBase {
 	    
 	    public  void Yourtripclick()
 	    {
-		   /* Actions actions = new Actions(driver);
-	    	actions.moveToElement(Yourtrips).click().build();*/
 	    	 Yourtrips.click();
 	    }
 	    
@@ -56,25 +54,9 @@ public class SignIn extends TestBase {
 	    {
 	    	return errors.getText();
 	    }
-	    
-	    
+	
 	    public void framename(String framename)
 	    {
 	    	driver.switchTo().frame(framename);
-	    }
-	 /*   public void countOfIframe()
-	    {
-	      int countframe = Iframe.size(); 
-	      System.out.println("number of Frame is:" + countframe);
-	      for (WebElement iframe : I) {
-	          if (iframe.getAttribute("id").equals(id)) 
-	          // TODO your stuff.
-	          }
-	      
-	    }*/
-
-		
-
-		
-	    
+	    }	    
 }
