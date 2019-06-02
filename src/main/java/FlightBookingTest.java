@@ -20,7 +20,9 @@ public class FlightBookingTest {
 
         setDriverPath();
         driver.get("https://www.cleartrip.com/");
-        waitFor(2000);
+        
+        //waitFor(2000);
+        driver.manage().timeouts().implicitlyWait(2,TimeUnit.MILISECOND) ;
         driver.findElement(By.id("OneWay")).click();
 
         driver.findElement(By.id("FromTag")).clear();
@@ -28,7 +30,8 @@ public class FlightBookingTest {
 
         //wait for the auto complete options to appear for the origin
 
-        waitFor(2000);
+        //waitFor(2000);
+         driver.manage().timeouts().implicitlyWait(2,TimeUnit.MILISECOND) ;
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
 
@@ -37,7 +40,8 @@ public class FlightBookingTest {
 
         //wait for the auto complete options to appear for the destination
 
-        waitFor(2000);
+        //waitFor(2000)
+        driver.manage().timeouts().implicitlyWait(2,TimeUnit.MILISECOND) ;
         //select the first item from the destination auto complete list
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
         destinationOptions.get(0).click();
@@ -47,7 +51,8 @@ public class FlightBookingTest {
         //all fields filled in. Now click on search
         driver.findElement(By.id("SearchBtn")).click();
 
-        waitFor(5000);
+        //waitFor(5000);
+        driver.manage().timeouts().implicitlyWait(5,TimeUnit.MILISECOND) ;
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
 
@@ -79,10 +84,10 @@ public class FlightBookingTest {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
-        if (PlatformUtil.isWindows()) {
+       else if (PlatformUtil.isWindows()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         }
-        if (PlatformUtil.isLinux()) {
+        else if (PlatformUtil.isLinux()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
     }
