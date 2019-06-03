@@ -21,10 +21,16 @@ public class HotelBookingTest {
 
     @FindBy(id = "travellersOnhome")
     private WebElement travellerSelection;
+    
+    @BeforeMethod
+    public void beforeMethod(){
+    
+        setDriverPath();
+    }
 
     @Test
     public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
+        //setDriverPath();
 
         driver.get("https://www.cleartrip.com/");
         hotelLink.click();
@@ -34,18 +40,23 @@ public class HotelBookingTest {
         new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
         searchButton.click();
 
-        driver.quit();
+        //driver.quit();
 
+    }
+    @AfterMethod
+    public void afterMethod()
+    {
+         driver.quit();
     }
 
     private void setDriverPath() {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
-        if (PlatformUtil.isWindows()) {
+     else if (PlatformUtil.isWindows()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         }
-        if (PlatformUtil.isLinux()) {
+        else if (PlatformUtil.isLinux()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
     }
