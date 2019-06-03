@@ -8,6 +8,12 @@ import org.testng.annotations.Test;
 public class SignInTest {
 
     WebDriver driver = new ChromeDriver();
+    
+    @BeforeMethod
+    public void beforeMethod()
+    {
+        setDriverPath();
+    }
 
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
@@ -24,6 +30,11 @@ public class SignInTest {
 
         String errors1 = driver.findElement(By.id("errors1")).getText();
         Assert.assertTrue(errors1.contains("There were errors in your submission"));
+        //driver.quit();
+    }
+    @AfterMethod
+    public void afterMethod()
+    {
         driver.quit();
     }
 
@@ -39,10 +50,10 @@ public class SignInTest {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
-        if (PlatformUtil.isWindows()) {
+        else if (PlatformUtil.isWindows()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         }
-        if (PlatformUtil.isLinux()) {
+       else if (PlatformUtil.isLinux()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
     }
