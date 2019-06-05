@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UFT-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" parallel="tests" thread-count="3" >
+    <test name="SignIn"   >
+        <classes>
+            <class name="SignInTest"/>
+        </classes>
+    </test>
+</suite>
