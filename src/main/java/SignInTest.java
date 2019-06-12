@@ -1,3 +1,4 @@
+package main.java;
 import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
