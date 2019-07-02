@@ -2,6 +2,7 @@ package com.codinground.driverutiils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.codinground.ioutils.PropertiesFileUtil;
@@ -10,7 +11,7 @@ import com.sun.javafx.PlatformUtil;
 public class DriverFactory {
 
 	    protected static WebDriver driver;
-
+        private static ChromeOptions options;
 
 	    public DriverFactory() {
 	        initialize();
@@ -39,14 +40,17 @@ public class DriverFactory {
 	             if (PlatformUtil.isLinux()) {
 	                 System.setProperty("webdriver.chrome.driver", driverPathLinux);
 	             }
-		            driver = new ChromeDriver();
+	                ChromeOptions options = new ChromeOptions();
+	                options.addArguments("--disable-notifications");
+		            driver = new ChromeDriver(options);
 	        }else
 	            System.out.println("can't read browser type");
 	        }
 	    
 	   public void launchUrl() {
 		 String url = new PropertiesFileUtil().readProperty("url");  
-		 driver.get(url);  
+		 driver.get(url);
+		 
 	   }
 	    public WebDriver getDriver() {
 	        return driver;

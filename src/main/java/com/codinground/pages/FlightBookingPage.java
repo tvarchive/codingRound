@@ -1,11 +1,9 @@
 package com.codinground.pages;
 
 
-import java.text.SimpleDateFormat;
-import java.util.List;
 
+import java.util.List;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,15 +16,17 @@ import com.codinground.uicommon.UiCommonLibrary;
     public class FlightBookingPage extends LoadableComponent<FlightBookingPage>{
 
     	
+    	private WebDriver driver;
+    	
     	
     	public FlightBookingPage(WebDriver driver) {
 			this.driver = driver;
-			objCommon = new UiCommonLibrary();
+			objCommon = new UiCommonLibrary(driver);
 		}
         
-    	public WebDriver driver;
+    	
 		private static UiCommonLibrary objCommon;
-		private static SimpleDateFormat formatter = new SimpleDateFormat("dd/mmmm/yyyy");
+		//private static SimpleDateFormat formatter = new SimpleDateFormat("dd/mmmm/yyyy");
 	    private static String delimiter = null;
 	    private static String day = null;
 	    private static String month = null;
@@ -36,151 +36,171 @@ import com.codinground.uicommon.UiCommonLibrary;
 	    private static String[] dateArr;
 	    
 	    
-		private static final String DATE_PICKER = "//*[@id='ui-datepicker-div']";
-		private static final String MONTH_FIRST_LAST = DATE_PICKER+"/child::div";
+		private static final String STR_DATE_PICKER = "//*[@id='ui-datepicker-div']";
+		private static final String STR_MONTH_FIRST_LAST = STR_DATE_PICKER+"/child::div";
 		
+		private static final By LOCATOR_BUTTON_ONEWAY = By.id("OneWay");
+		private static final By LOCATOR_INPUT_FROM = By.id("FromTag");
+		private static final By LOCATOR_INPUT_FROM_CHECK = By.id("From");
+		private static final By LOCATOR_INPUT_TO = By.id("ToTag");
+		private static final By LOCATOR_INPUT_TO_CKECK = By.id("To");
+		private static final By LOCATOR_BUTTON_SEARCH = By.id("SearchBtn");
+		private static final By LOCATOR_MONTH_FIRST_LAST = By.xpath(STR_MONTH_FIRST_LAST);
+		private static final By LOCATOR_LINK_FLIGHTS = By.linkText("Flights");
+		private static final By LOCATOR_LINK_HOTELS = By.linkText("Hotels");
+		private static final By LOCATOR_LIST_ORIGIN_OPT = By.xpath("//*[@id='ui-id-1']/li");
+		private static final By LOCATOR_LIST_DESTINATION_OPT = By.xpath("//*[@id='ui-id-2']/li");
+		private static final By LOCATOR_BUTTON_CALANDER_ICON = By.linkText("Cal");
 		
-        private WebElement btnOneWay =  driver.findElement(By.id("OneWay"));
-        private WebElement txtFrom = driver.findElement(By.id("FromTag"));
-        private WebElement txtFromCheck = driver.findElement(By.id("From"));
-        private List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
-        private WebElement txtTo =driver.findElement(By.id("ToTag"));
-        private WebElement txtToCheck = driver.findElement(By.id("To"));
-        private List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
-        private WebElement btnSearch =  driver.findElement(By.id("SearchBtn"));
-        //private driver.findElement(By.xpath(("//*[@id='ui-datepicker-div']/child::div[1]/table/tbody/tr[5]/td[7]/a"))).click();
-        private List <WebElement> monthFirstLast = driver.findElements(By.xpath(MONTH_FIRST_LAST));
-        private WebElement lnkFlights = driver.findElement(By.linkText("Flights"));
-        private WebElement lnkHotels = driver.findElement(By.linkText("Hotels"));
-        private List<WebElement> elemDayRows;
-        private List<WebElement> elemColumns;
-        private WebElement actualDay;
-        
-        
-        
-        
+        private static WebElement btnOneWay;
+        private static WebElement txtFrom;
+        private static WebElement txtTo;
+        private static WebElement btnSearch;
+        private static WebElement lnkFlights;
+        private static WebElement lnkHotels;
+        private static List<WebElement> elemDayRows;
+        private static List<WebElement> elemColumns;
+        private static WebElement actualDay;
+        private static WebElement txtFromCheck;
+        private static WebElement txtToCheck;      
+        private static List<WebElement> originOptions;
+        private static List<WebElement> destinationOptions;
+        private static List <WebElement> monthFirstLast;
+      
     public FlightBookingPage enterDepartFrom(String place) {
-    	
-    	try {
-    		
-    		txtFrom.clear();
-    		txtFrom.sendKeys(place);
-    		objCommon.waitFor(ExpectedConditions.visibilityOf(originOptions.get(0)),10);
-    		originOptions.get(0).click();
-    		
+    	for(int i =0; i<+3;i++) {
+    	try {	
+    		objCommon.sendKeysOneByOne(LOCATOR_INPUT_FROM,place);
+    		objCommon.waitFor(ExpectedConditions.presenceOfAllElementsLocatedBy(LOCATOR_LIST_ORIGIN_OPT),10);
+    		driver.findElements(LOCATOR_LIST_ORIGIN_OPT).get(0).click();
+    		break;
     	}catch(Exception e) {
     		e.printStackTrace();
+    	}
     	}
     	return this;
     }
     
     public boolean checkIfFromEntered(String excpected) {
-    	return objCommon.checkIfOptionEntered(txtFromCheck,excpected);
+    	
+    	return objCommon.checkIfOptionEntered(LOCATOR_INPUT_FROM_CHECK,excpected);
     	
     }
     
     public boolean checkIfToEntered(String excpected) {
-    	return objCommon.checkIfOptionEntered(txtToCheck,excpected);
+    	
+    	return objCommon.checkIfOptionEntered(LOCATOR_INPUT_TO_CKECK,excpected);
     	
     }
     
     public FlightBookingPage enterToArrive(String place) {
-        
-    	try {
-    		
-    		txtTo.clear();
-    		txtTo.sendKeys(place);
-    		objCommon.waitFor(ExpectedConditions.visibilityOf(destinationOptions.get(0)),10);
-    		originOptions.get(0).click();
-    		
-    	}catch(Exception e) {
-    		e.printStackTrace();
+    	for(int i =0; i<+3;i++) {
+    		try {
+        		objCommon.sendKeysOneByOne(LOCATOR_INPUT_TO,place);
+          		objCommon.waitFor(ExpectedConditions.presenceOfAllElementsLocatedBy(LOCATOR_LIST_DESTINATION_OPT),10);
+        		driver.findElements(LOCATOR_LIST_DESTINATION_OPT).get(0).click();
+        		break;
+        	}catch(Exception e) {
+        		e.printStackTrace();
+        	}	
     	}
+    	
     	return this;
     }
     
     public FlightBookingPage clickOneWay() {
-    	
-    	if(objCommon.isElementDisplayed(btnOneWay)) {
-    		
     	try {
-    		if(!btnOneWay.getAttribute("checked").equalsIgnoreCase("checked")) {
-    		btnOneWay.click();
-    		}
+    		if(objCommon.isElementDisplayed(LOCATOR_BUTTON_ONEWAY)) {
+    			if(!driver.findElement(LOCATOR_BUTTON_ONEWAY).getAttribute("checked").equals("true")) {
+    		     objCommon.clickElement(LOCATOR_BUTTON_ONEWAY);
+    		    }
+    	    }
     	}catch(Exception e) {
     		e.printStackTrace();
     	}
-       }
+       
     	return this;
     }
     
    public boolean chechIfOnWayClicked(String expected) {
 	   
-	   return objCommon.checkIfRadioButtonChecked(btnOneWay,expected);
+	   return objCommon.checkIfRadioButtonClicked(LOCATOR_BUTTON_ONEWAY,expected);
 	   
    }
     
     public SearchSummaryPage clickSearchBtn() {
-    	  
-    	if(objCommon.isElementDisplayed(btnSearch)) {
-    		btnSearch.click();
+    
+    	if(objCommon.isElementDisplayed(LOCATOR_BUTTON_SEARCH)) {
+    		objCommon.clickElement(LOCATOR_BUTTON_SEARCH);
     	}
-    	return new SearchSummaryPage(driver);
+    	return new SearchSummaryPage(driver).get();
     }
     
         
      public void pickFromDate(String date) {     	
-        	date = formatter.format(date);
-        	delimiter= "/";
+    	 
+			delimiter= "/";
         	dateArr = date.split(delimiter);
         	day = dateArr[0];
         	month = dateArr[1];
         	year = dateArr[2];
-        	
-    		for (int i=0; i<monthFirstLast.size();i++){
-    			strActualMonth = driver.findElement(By.xpath(MONTH_FIRST_LAST+"["+(i+1)+"]/div/div/span[1]")).getText();
-    			strActualYear = driver.findElement(By.xpath(MONTH_FIRST_LAST+"["+(i+2)+"]/div/div/span[2]")).getText();
+        	monthFirstLast = driver.findElements(LOCATOR_MONTH_FIRST_LAST);
+        	int i=0,j=0,k=0;
+    		for (i=0; i<monthFirstLast.size();i++){
+    			strActualMonth = driver.findElement(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/div/div/span[1]")).getText();
+    			strActualYear = driver.findElement(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+2)+"]/div/div/span[2]")).getText();
     			if(strActualMonth.equalsIgnoreCase(month)&&strActualYear.equalsIgnoreCase(year)){				   								
-    				elemDayRows = driver.findElements(By.xpath(MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr"));
-    				for (int j=0;i<elemDayRows.size();i++){
-    					elemColumns = driver.findElements(By.xpath(MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td"));
-    					for(int k=0;k<elemColumns.size();k++) {
-    						actualDay = driver.findElement(By.xpath(MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td["+(k+1)+"]/a"));
-    						if(actualDay.getText().equals(day)){
-        						actualDay.click();		
-        						//return;
-        					}	
+    				elemDayRows = driver.findElements(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr"));
+    				for (j=0;j<elemDayRows.size();j++){
+    					elemColumns = driver.findElements(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td"));
+    					for(k=0;k<elemColumns.size();k++) {
+    						if(!driver.findElement(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td["+(k+1)+"]")).getAttribute("class").contains("disabled")) {
+    						actualDay=driver.findElement(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td["+(k+1)+"]/a"));
+    						   if(actualDay.getText().equals(day)){
+        						actualDay.click();
+    							   if(actualDay.isDisplayed())
+    								objCommon.actionOperationHandler(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td["+(k+1)+"]/a"), "mouse hover and click");
+    							   //objCommon.jsClickElement(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td["+(k+1)+"]/a"));
+        						 i=monthFirstLast.size();
+        						 j=elemDayRows.size();
+        						 k=elemColumns.size();
+        					   }
+    						
+    						}
+    						
     					}
-    				}								
-    				
+       				}								
+    				break;	
     			}			
-    					
+    			driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div[2]/div/a")).click();
+    	 		pickFromDate(date);
+    	 		break;
     		}
-    		driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div[2]/div/a")).click();
-    		pickFromDate(date);	
+    		} 
     		
-    	}
-
+			
+     	 	
+        	
 		@Override
 		protected void load() {
-			// TODO Auto-generated method stub
-			objCommon.waitFor(ExpectedConditions.visibilityOf(btnOneWay), 10);
-			objCommon.waitFor(ExpectedConditions.visibilityOf(txtFrom), 10);
-			objCommon.waitFor(ExpectedConditions.visibilityOf(txtTo), 10);
-			objCommon.waitFor(ExpectedConditions.visibilityOf(btnSearch), 10);
-			objCommon.waitFor(ExpectedConditions.visibilityOf(lnkFlights), 10);
-			objCommon.waitFor(ExpectedConditions.visibilityOf(lnkHotels), 10);
 			
+			 btnOneWay =  driver.findElement(LOCATOR_BUTTON_ONEWAY);
+	         txtFrom = driver.findElement(LOCATOR_INPUT_FROM);
+	         txtTo =driver.findElement(LOCATOR_INPUT_TO);
+	         btnSearch =  driver.findElement(LOCATOR_BUTTON_SEARCH);
+	         lnkFlights = driver.findElement(LOCATOR_LINK_FLIGHTS);
+	         lnkHotels = driver.findElement(LOCATOR_LINK_HOTELS);
+	        
 		}
 
 		@Override
 		protected void isLoaded() throws Error {
-		        Assert.assertTrue(btnOneWay.isDisplayed());
-		        Assert.assertTrue(txtFrom.isDisplayed());
-		        Assert.assertTrue(txtTo.isDisplayed());
-		        Assert.assertTrue(btnSearch.isDisplayed());
-		        Assert.assertTrue(lnkFlights.isDisplayed());
-		        Assert.assertTrue(lnkHotels.isDisplayed());
+		        Assert.assertTrue(driver.findElement(LOCATOR_BUTTON_ONEWAY).isDisplayed());
+		        Assert.assertTrue(driver.findElement(LOCATOR_INPUT_FROM).isDisplayed());
+		        Assert.assertTrue(driver.findElement(LOCATOR_INPUT_TO).isDisplayed());
+		        Assert.assertTrue(driver.findElement(LOCATOR_BUTTON_SEARCH).isDisplayed());
+		        Assert.assertTrue(driver.findElement(LOCATOR_LINK_FLIGHTS).isDisplayed());
+		        Assert.assertTrue(driver.findElement(LOCATOR_LINK_HOTELS).isDisplayed());
 		        
 			
 		}

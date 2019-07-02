@@ -5,7 +5,10 @@ package com.codinground.uicommon;
 	import java.util.List;
 	import java.util.concurrent.TimeUnit;
 
-	import org.openqa.selenium.By;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
@@ -25,49 +28,124 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 
 
-	public class UiCommonLibrary extends DriverFactory {
+	public class UiCommonLibrary {
 		
-		
+		private WebDriver driver;
 		private Actions action;
+		private Alert alert;
+		private Select select;
+		private JavascriptExecutor js;
 		
-		public UiCommonLibrary(){
-			
+		public UiCommonLibrary(WebDriver driver){
+			 this.driver=driver;
 			 action = new Actions(driver);
+			 js = (JavascriptExecutor)driver;
+		}				
+			
+ 
 		
+		
+		public void backspace(By xpath) {
+			
+			driver.findElement(xpath).sendKeys(Keys.BACK_SPACE);
+			
+		}
+		
+		public void actionOperationHandler(By xpath, String operation) {
+			
+			switch(operation) {
+			
+			case"mouse hover":
+				action.moveToElement(driver.findElement(xpath)).perform();
+			case"mouse hover and click":
+				action.moveToElement(driver.findElement(xpath)).click().perform();
+			
+			}
+			
 		}
 
-		public void waitFor(ExpectedCondition<WebElement> expectedConditions,int timeOut) {
+		public void sendKeysElem(By xpath, String value) {
+			
+			driver.findElement(xpath).clear();
+			driver.findElement(xpath).sendKeys(value);
+				
+		}
+		
+		public void jsClickElement(By xpath) {
+			
+			js.executeScript("arguments[0].click", driver.findElement(xpath));
+			
+		}
+		
+		public void sendKeysOneByOne(By xpath, String value) {
+			
+			
+				try {
+					driver.findElement(xpath).clear();
+					for(int i = 0; i<value.length();i++) {
+						String sb = new StringBuilder().append(value.charAt(i)).toString();
+						driver.findElement(xpath).sendKeys(sb);
+					    Thread.sleep(2000);
+					}
+				} catch (Exception e) {
+					
+					e.printStackTrace();
+				}
+				
+			}
+
+		public <T> void waitFor(ExpectedCondition<T> expectedConditions,int timeOut) {
 
 			new WebDriverWait(driver, timeOut).until(expectedConditions);
 
 		}
-
-		public boolean isElementDisplayed(WebElement element) {
-			boolean state= false; 
-			try {
-        	  state = element.isDisplayed(); 
-          }catch(NoSuchElementException e) {
-        	e.printStackTrace();  
-          }
+		
+		public String alertHandler(String operation) {
 			
-			return state;
+			alert = driver.switchTo().alert();
+			String strToReturn = null; 
+			
+			switch(operation) {
+			case"dissmis":
+				alert.dismiss();
+				 strToReturn = alert.getText()+": Alert Dissmissed";
+			case"accept":
+				alert.accept();
+				strToReturn = alert.getText()+": Alert Accepted";
+			case"getText":
+				alert.getText();
+				strToReturn = "Alert Text: "+alert.getText();
+			}
+		  return strToReturn;
+		}
+		
+		public void clickElement(By xpath) {
+			
+			driver.findElement(xpath).click();
+			
 		}
 
-		public void implictWaitOn(WebDriver driver) {
+		public boolean isElementDisplayed(By xpath) {
+			boolean state= false; 
+			  state = driver.findElement(xpath).isDisplayed(); 
+         		return state;
+		}
 
-			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		public void implictWaitOn() {
+
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		}
 
-		public void implicitWaitOff(WebDriver driver) {
+		public void implicitWaitOff() {
 
 			driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
 		}
 
-		public void selectValue(WebElement element, String value, String method) {
+		public void selectValue(By xpath, String value, String method) {
 
-			Select select = new Select(element);
+			 select = new Select(driver.findElement(xpath));
 
 			switch (method) {
 
@@ -85,19 +163,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 			}
 		}
 
-		public boolean checkIfOptionEntered(WebElement elem, String expected) {
+		public boolean checkIfOptionEntered(By xpath, String expected) {
 	    	boolean flag=false;
-	    	waitFor(ExpectedConditions.visibilityOf(elem), 10);
-	    	if(elem.getAttribute("value").equalsIgnoreCase(expected)) {
+	    	waitFor(ExpectedConditions.presenceOfElementLocated(xpath), 10);
+	    	if(driver.findElement(xpath).getAttribute("value").equalsIgnoreCase(expected)) {
 	    		flag=true;
 	    	}
 	    	return flag;
 	    }
 		
-		public boolean checkIfRadioButtonChecked(WebElement elem, String expected) {
+		public boolean checkIfRadioButtonClicked(By xpath, String expected) {
 	    	boolean flag=false;
-	    	waitFor(ExpectedConditions.visibilityOf(elem), 10);
-	    	if(elem.getAttribute("checked").equalsIgnoreCase(expected)) {
+	    	waitFor(ExpectedConditions.presenceOfElementLocated(xpath), 10);
+	    	if(driver.findElement(xpath).getAttribute("checked").equalsIgnoreCase(expected)) {
 	    		flag=true;
 	    	}
 	    	return flag;
