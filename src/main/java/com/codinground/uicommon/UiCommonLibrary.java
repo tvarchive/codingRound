@@ -49,7 +49,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 			
 		}
 		
-		public void actionOperationHandler(By xpath, String operation) {
+		/*public void actionOperationHandler(By xpath, String operation) {
 			
 			switch(operation) {
 			
@@ -60,6 +60,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 			
 			}
 			
+		}*/
+		
+		public void moveToElementClick(By xpath) {
+			action.moveToElement(driver.findElement(xpath)).click().perform();
 		}
 
 		public void sendKeysElem(By xpath, String value) {
@@ -155,7 +159,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 		}
 
-		public void selectValue(By xpath, String value, String method) {
+		/*public void selectValue(By xpath, String value, String method) {
 
 			 select = new Select(driver.findElement(xpath));
 
@@ -173,6 +177,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 				select.selectByVisibleText(value);
 			}
+		}*/
+		
+		public void selectByValue(By xpath, String value) {
+			
+			select = new Select(driver.findElement(xpath));
+			select.selectByVisibleText(value);
 		}
 
 		public boolean checkIfOptionEntered(By xpath, String expected) {
