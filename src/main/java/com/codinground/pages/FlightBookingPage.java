@@ -18,13 +18,6 @@ import com.codinground.uicommon.UiCommonLibrary;
     	
     	private WebDriver driver;
     	
-    	
-    	public FlightBookingPage(WebDriver driver) {
-			this.driver = driver;
-			objCommon = new UiCommonLibrary(driver);
-		}
-        
-    	
 		private static UiCommonLibrary objCommon;
 		//private static SimpleDateFormat formatter = new SimpleDateFormat("dd/mmmm/yyyy");
 	    private static String delimiter = null;
@@ -34,7 +27,6 @@ import com.codinground.uicommon.UiCommonLibrary;
 	    private static String strActualMonth = null;
 	    private static String strActualYear = null;
 	    private static String[] dateArr;
-	    
 	    
 		private static final String STR_DATE_PICKER = "//*[@id='ui-datepicker-div']";
 		private static final String STR_MONTH_FIRST_LAST = STR_DATE_PICKER+"/child::div";
@@ -67,7 +59,13 @@ import com.codinground.uicommon.UiCommonLibrary;
         private static List<WebElement> destinationOptions;
         private static List <WebElement> monthFirstLast;
       
-    public FlightBookingPage enterDepartFrom(String place) {
+        public FlightBookingPage(WebDriver driver) {
+			this.driver = driver;
+			objCommon = new UiCommonLibrary(driver);
+		}
+    
+        
+        public FlightBookingPage enterDepartFrom(String place) {
     	for(int i =0; i<+3;i++) {
     	try {	
     		objCommon.sendKeysOneByOne(LOCATOR_INPUT_FROM,place);
@@ -135,6 +133,12 @@ import com.codinground.uicommon.UiCommonLibrary;
     	}
     	return new SearchSummaryPage(driver).get();
     }
+    
+public HotelBookingPage clickHotelLnk() {
+		
+		objCommon.clickElement(LOCATOR_LINK_HOTELS);;
+		return new HotelBookingPage(driver).get();
+	}
     
         
      public void pickFromDate(String date) {     	

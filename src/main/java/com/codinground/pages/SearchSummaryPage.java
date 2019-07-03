@@ -28,6 +28,15 @@ public class SearchSummaryPage extends LoadableComponent<SearchSummaryPage>{
 		
 		return flag;
 	}
+		
+		public boolean verifyIfRelevant(String place) {
+			boolean flag = false;
+			if(driver.findElement(LOCATOR_TXT_FROMTO_SEARCH_RESULTS).getText().contains(place)) {
+				flag = true;
+			}
+			
+			return flag;
+		}
 
 	@Override
 	protected void load() {

@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.codinground.tests.FlightBookingTest">
+      <class name="com.codinground.tests.HotelBookingTest">
         <methods>
-          <include name="after"/>
+          <include name="shouldBeAbleToSearchForHotels"/>
           <include name="before"/>
-          <include name="testThatResultsAppearForAOneWayJourney"/>
+          <include name="after"/>
         </methods>
-      </class> <!-- com.codinground.tests.FlightBookingTest -->
+      </class> <!-- com.codinground.tests.HotelBookingTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

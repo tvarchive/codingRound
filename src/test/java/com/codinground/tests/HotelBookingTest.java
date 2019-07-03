@@ -1,5 +1,12 @@
 package com.codinground.tests;
+import com.codinground.driverutiils.DriverFactory;
+import com.codinground.pages.FlightBookingPage;
+import com.codinground.pages.HotelBookingPage;
+import com.codinground.pages.SearchSummaryPage;
+import com.codinground.uicommon.UiCommonLibrary;
 import com.sun.javafx.PlatformUtil;
+
+
 
 import java.util.List;
 
@@ -11,14 +18,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class HotelBookingTest extends LoadableComponent<HotelBookingTest> {
+public class HotelBookingTest {
 
-	  WebDriver driver;
+	  private WebDriver driver;
    
 
-    @FindBy(linkText = "Hotels")
+    /*@FindBy(linkText = "Hotels")
     private WebElement hotelLink;
 
     @FindBy(id = "Tags")
@@ -28,63 +38,41 @@ public class HotelBookingTest extends LoadableComponent<HotelBookingTest> {
     private WebElement searchButton;
 
     @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
-
+    private WebElement travellerSelection;*/
+    
+    private static HotelBookingPage objHotelPage;
+    private static DriverFactory objDriverFactory;
+    private static UiCommonLibrary objCommonLib; 
+    private static SearchSummaryPage objSearchSummaryPage;
+    private static FlightBookingPage objFlightPage;
+ @BeforeTest
+   public void before() {
+ 	objDriverFactory = new DriverFactory();
+ 	objDriverFactory.launchUrl();
+ 	driver = objDriverFactory.getDriver();
+ 	objCommonLib = new UiCommonLibrary(driver);
+   }
     @Test
     public void shouldBeAbleToSearchForHotels() throws InterruptedException {
-        setDriverPath();
-        
-        driver = new ChromeDriver();
-        driver.get("https://www.cleartrip.com/");
-        PageFactory.initElements(driver, this);
-     
-        
-        hotelLink.click();
-        //driver.findElement(By.linkText("Hotels")).click();
-String place = "Indiranagar, Bangalore";
-for(int i = 0; i<place.length();i++) {
-	String sb = new StringBuilder().append(place.charAt(i)).toString();
-	localityTextBox.sendKeys(sb);	
-}
-       
-        Thread.sleep(6000);
-       List <WebElement> opt= driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
-       opt.get(1).click();
-       
-       driver.findElement(By.xpath(("//*[@id='ui-datepicker-div']/child::div[1]/table/tbody/tr[5]/td[7]/a"))).click();
-       Thread.sleep(3000);
-       driver.findElement(By.xpath(("//*[@id='ui-datepicker-div']/child::div[1]/table/tbody/tr[1]/td[1]/a"))).click();
-       Thread.sleep(3000);
-        new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
-        searchButton.click();
 
-        driver.quit();
-
+    	objFlightPage = new FlightBookingPage(driver).get();
+    	objHotelPage = objFlightPage.clickHotelLnk();
+    	objHotelPage = objHotelPage.enterLocationTxt("Indiranagar, Bangalore");
+    	objHotelPage.pickDate("3/july/2019");
+    	objHotelPage.pickDate("4/july/2019");
+    	objHotelPage = objHotelPage.selectTravellers("1 room, 2 adults");
+    	objSearchSummaryPage = objHotelPage.clickSearchBtn();
+    	Assert.assertTrue(objSearchSummaryPage.verifyIfRelevant("Bangalore"));
+    
     }
 
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
+   
+    @AfterTest
+    public void after() {
+    	
+    	driver.quit();
+    	
     }
-
-	@Override
-	protected void load() {
-		// TODO Auto-generated method stub
-		
-		
-	}
-
-	@Override
-	protected void isLoaded() throws Error {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
