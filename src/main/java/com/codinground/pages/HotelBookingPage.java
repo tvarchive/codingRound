@@ -76,7 +76,7 @@ public class HotelBookingPage extends LoadableComponent<HotelBookingPage>{
 	
 	public HotelBookingPage selectTravellers(String text) {
 		objCommon.waitFor(ExpectedConditions.visibilityOf(driver.findElement(By.id("travellersOnhome"))), 10);
-		objCommon.selectValue(By.id("travellersOnhome"), text,"byVisibleText" );
+		objCommon.selectByValue(By.id("travellersOnhome"),text);
 		return this;
 	}
 	

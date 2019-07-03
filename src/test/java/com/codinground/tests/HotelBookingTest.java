@@ -32,7 +32,8 @@ public class HotelBookingTest extends ReportListener{
  	objDriverFactory = new DriverFactory();
  	objDriverFactory.launchUrl();
  	driver = objDriverFactory.getDriver();
-   }
+ 	driver.manage().window().maximize();
+    }
     @Test
     public void shouldBeAbleToSearchForHotels() throws InterruptedException {
 

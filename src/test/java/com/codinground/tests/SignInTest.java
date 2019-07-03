@@ -29,7 +29,7 @@ public class SignInTest extends ReportListener{
     	objDriverFactory.launchUrl();
     	driver = objDriverFactory.getDriver();
     	objSignInPage = new SignInPage(driver);
-    	
+    	driver.manage().window().maximize();
     }
     
     @Test
