@@ -2,6 +2,7 @@ package com.codinground.tests;
 import com.codinground.driverutiils.DriverFactory;
 import com.codinground.pages.FlightBookingPage;
 import com.codinground.pages.SearchSummaryPage;
+import com.codinground.reportutils.ReportListener;
 import com.codinground.uicommon.ModelTypeUi;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -11,19 +12,23 @@ import org.testng.annotations.Test;
 
 
 
-public class FlightBookingTest {
+public class FlightBookingTest extends ReportListener {
     
 	
+   
+
    private WebDriver driver;
    private static FlightBookingPage objFlightPage;
    private static DriverFactory objDriverFactory; 
    private static SearchSummaryPage objSearchSummaryPage;
+   private static ReportListener objReportListener;
     
   @BeforeTest
   public void before() {
 	objDriverFactory = new DriverFactory();
 	objDriverFactory.launchUrl();
 	driver = objDriverFactory.getDriver();
+	//objReportListener = new ReportListener(driver);
   }
 
     @Test

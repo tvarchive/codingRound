@@ -3,6 +3,7 @@
 <suite name="Suite">
    <listeners>
      <listener class-name="com.codinground.testrunutils.AddAnnotations"/>
+     <listener class-name="com.codinground.reportutils.ReportListener"/>
    </listeners>
   <test  name="HotelBookingTest">
     <classes>

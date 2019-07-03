@@ -3,6 +3,7 @@ import com.codinground.driverutiils.DriverFactory;
 import com.codinground.pages.FlightBookingPage;
 import com.codinground.pages.HotelBookingPage;
 import com.codinground.pages.SearchSummaryPage;
+import com.codinground.reportutils.ReportListener;
 import com.codinground.uicommon.UiCommonLibrary;
 
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class HotelBookingTest {
+public class HotelBookingTest extends ReportListener{
 
 	  private WebDriver driver;
   
