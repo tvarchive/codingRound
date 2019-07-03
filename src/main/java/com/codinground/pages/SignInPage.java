@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
 import com.codinground.uicommon.UiCommonLibrary;
+import com.codinground.uicommon.UiConstants;
 
 public class SignInPage extends LoadableComponent<SignInPage>{
 	
@@ -34,7 +35,7 @@ public class SignInPage extends LoadableComponent<SignInPage>{
 	public boolean verifyErrorMsg() {
 		
 		boolean flag = false;
-		if(driver.findElement(LOCATOR_ERRORS).getText().contains("There were errors in your submission")) {
+		if(driver.findElement(LOCATOR_ERRORS).getText().contains(UiConstants.SIGN_IN_ERROR)) {
 			flag = true;
 		}
 		return flag;

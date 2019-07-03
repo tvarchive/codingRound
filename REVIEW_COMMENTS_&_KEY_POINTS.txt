@@ -1,0 +1,109 @@
+Review Points And Comments:
+
+Review Comments and Key points on the fixes and framework created are Oredered as follows:
+
+
+(1) Common and Test Class Level Review on design and errors.
+(2) Framework design pattern, files placing, reusability, reporting. 
+
+
+    1. Test Class Level Review on design and errors.
+
+	(i) Common Issues:
+
+	(a). set the path for driver before initialize the same.
+
+	(b). create a common utility to launch driver and set chrome driver path.
+
+	(c). create property file to input test configuration values i.e browser name, driver path other common configuration needs before test.
+
+	(d). it is better to have test case executed via testNG xml while using testNG, hence it should be configured right.
+
+	(e). Should try to keep the implementation for tests abstract/ hidden and reusable and add provision for further updates of the same
+	     which would assure maintainability.
+
+	(f). Assert every validation and report with screenshot for failed step/every step if possible. Since, html results
+	     can be easily edited and hence for show casing tests to client is one step ahead if the tests have proper
+	     evidences.
+ 
+	(g). Must avoid using thread.sleep (hard wait of any type). Instead use explicit waits.
+
+	(h). should follow a proper design pattern across the tests for efficient testing i.e page factory for example.
+
+	(i). Always the tests must NOT be placed/developed in the main src folder, it should be placed in the test src folder
+	     the main should only have common utils.
+
+	(j) The classes should not be developed in "default package" it should be developed in a properly created
+	    package with correct naming conventions.
+
+	(k) The drivers can be placed in a separate relevant folder which can make the framework presentable.
+
+	(l) Important of all a framework or automation is about reusabilty which requires reusable library for all
+	    the tests.
+	
+
+(ii)FlightBookingTest:
+
+	(a).Use explicit waits. 
+
+	(b).Update the chrome driver to latest for supporting latest chrome versions. It can cause errors during execution.
+	    such that the chrome driver which was already there caused exception when sending text to 'from' text box
+	    which got fixed after updating the chrome driver.
+
+	(c).Xpath Id for the To(destination) text box was not correct i.e the actual value for the attribute id is 'ToTag'
+	    but in script the vale was'toTag' hence it throws 'NoSuchElementException.
+
+	(d).The date picker xpath is hard coded to pick a date and not flexible which is not good for a locator. Should change the
+ 	    xpath in such a way that it can take any date from the user. write a common method.
+
+	(e).Assesrtion should be done specifically whether Bangalore to New Delhi flights are shown and not just 'searchSummary' text
+	    so that what gets Asserted will completley validate the scenario.
+
+
+(ii)HotelBookingtest:
+
+	(a). This class has pagefactory pattern implemented for finding elements which was missing "PageFactory.initElements()" this method
+	     will implicitly call the findElement method from behind without which the script fails.
+
+	(b). Date picker must be automated for any inputs from the user and should be reusable.
+
+
+(iii)SignInTest:
+
+	(a). Identify whether an element is within a frame i.e "SignIn" button is an element located within a frame
+	     because of which the element cannot be identified unless switched to that frame.
+
+
+
+Key Points of the framework developed and fixed
+
+      2 Framework design pattern, files placing, reusability, reporting.
+
+		(a). An automation framework must follow a design pattern with correct usage of OOP's concepts
+	     	for better understanding, readability and reusability.
+     	    
+     	    The fixes made to the task does not only resolve the issues but also follows a strong "Page Abstraction/Page Factory Pattern" 
+	     	with "LoadableComponent" implemented for every page i.e "FlightBookingPage.class", "HotelBookingPage.class", 
+	    	"SearchSummaryPage.class", "SignInPage.class".
+         
+         
+	    (b). Common Reusable Library "UiCommons" is used which was not present.
+
+		(c). "DriverFactory"class is implemented for initializing driver and closing the same which can be used across
+	          tests.
+
+		(d). Input/output utilities created to read test configuration properties from ".properties" file.
+
+		(e). Listener class implemented for running failed tests again, the number of times as user specified.
+
+		(f). Listener class implemented for intuitive reporting with html that has screenshots attached within the html report page.
+ 
+		(g). TestNG xml included for running as TestNG suite.
+	
+		(h). Proper assertion done for validation.
+		
+    
+
+
+
+ 
