@@ -14,12 +14,12 @@ import org.testng.annotations.Test;
 public class FlightBookingTest {
     
 	
-   private static WebDriver driver;
+   private WebDriver driver;
    private static FlightBookingPage objFlightPage;
    private static DriverFactory objDriverFactory; 
    private static SearchSummaryPage objSearchSummaryPage;
     
-@BeforeTest
+  @BeforeTest
   public void before() {
 	objDriverFactory = new DriverFactory();
 	objDriverFactory.launchUrl();
@@ -46,8 +46,8 @@ public class FlightBookingTest {
  @AfterTest
  public void after() {
 	
-	driver.quit();
-	
+	 objDriverFactory.destroyDriver();
+	 
  }
   
 }

@@ -43,6 +43,8 @@ import com.codinground.uicommon.UiCommonLibrary;
 		private static final By LOCATOR_LIST_ORIGIN_OPT = By.xpath("//*[@id='ui-id-1']/li");
 		private static final By LOCATOR_LIST_DESTINATION_OPT = By.xpath("//*[@id='ui-id-2']/li");
 		private static final By LOCATOR_BUTTON_CALANDER_ICON = By.linkText("Cal");
+		private static final By LOCATOR_LINK_YOUR_TRIPS = By.linkText("Your trips");
+		private static final By LOCATOR_BUTTON_SIGNIN = By.id("SignIn");
 		
         private static WebElement btnOneWay;
         private static WebElement txtFrom;
@@ -50,6 +52,7 @@ import com.codinground.uicommon.UiCommonLibrary;
         private static WebElement btnSearch;
         private static WebElement lnkFlights;
         private static WebElement lnkHotels;
+        private static WebElement lnkYourTrips;
         private static List<WebElement> elemDayRows;
         private static List<WebElement> elemColumns;
         private static WebElement actualDay;
@@ -125,6 +128,22 @@ import com.codinground.uicommon.UiCommonLibrary;
 	   return objCommon.checkIfRadioButtonClicked(LOCATOR_BUTTON_ONEWAY,expected);
 	   
    }
+   
+   public void clickYourTrips() {
+	   
+	   objCommon.clickElement(LOCATOR_LINK_YOUR_TRIPS);
+	  
+   }
+   
+   public SignInPage clickSignInBtn(String name) {
+	
+	   objCommon.clickElement(LOCATOR_BUTTON_SIGNIN);
+	   //objCommon.switchToFrameByIndex(frameIndex);
+	   objCommon.switchToFrameByNameOrId(name);
+	   
+	   return new SignInPage(driver).get();
+	   
+   }
     
     public SearchSummaryPage clickSearchBtn() {
     
@@ -194,7 +213,7 @@ public HotelBookingPage clickHotelLnk() {
 	         btnSearch =  driver.findElement(LOCATOR_BUTTON_SEARCH);
 	         lnkFlights = driver.findElement(LOCATOR_LINK_FLIGHTS);
 	         lnkHotels = driver.findElement(LOCATOR_LINK_HOTELS);
-	        
+	         lnkYourTrips = driver.findElement(LOCATOR_LINK_YOUR_TRIPS);
 		}
 
 		@Override
@@ -205,7 +224,7 @@ public HotelBookingPage clickHotelLnk() {
 		        Assert.assertTrue(driver.findElement(LOCATOR_BUTTON_SEARCH).isDisplayed());
 		        Assert.assertTrue(driver.findElement(LOCATOR_LINK_FLIGHTS).isDisplayed());
 		        Assert.assertTrue(driver.findElement(LOCATOR_LINK_HOTELS).isDisplayed());
-		        
+		        Assert.assertTrue(driver.findElement(LOCATOR_LINK_YOUR_TRIPS).isDisplayed()); 
 			
 		}
 

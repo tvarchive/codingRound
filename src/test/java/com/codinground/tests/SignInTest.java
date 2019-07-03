@@ -29,7 +29,7 @@ public class SignInTest {
         
         objFlightPage = new FlightBookingPage(driver).get();
         objFlightPage.clickYourTrips();
-        objSignInPage = objFlightPage.clickSignInBtn(1);
+        objSignInPage = objFlightPage.clickSignInBtn("modal_window");
         objSignInPage.clickSignIn();
         Assert.assertTrue(objSignInPage.verifyErrorMsg());
         
@@ -37,8 +37,8 @@ public class SignInTest {
     
     @AfterTest
     public void afterTest() {
+    	objDriverFactory.destroyDriver();
     	
-    	this.driver.quit();
     }
 
 }

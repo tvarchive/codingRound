@@ -3,6 +3,7 @@ package com.codinground.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
@@ -25,7 +26,7 @@ public class SignInPage extends LoadableComponent<SignInPage>{
 	}
 	
 	public SignInPage clickSignIn() {
-		
+		objCommon.waitFor(ExpectedConditions.visibilityOf(driver.findElement(LOCATOR_SIGNIN_BUTTON)), 10);
 		objCommon.clickElement(LOCATOR_SIGNIN_BUTTON);
 		return this;
 	}
@@ -33,7 +34,7 @@ public class SignInPage extends LoadableComponent<SignInPage>{
 	public boolean verifyErrorMsg() {
 		
 		boolean flag = false;
-		if(driver.findElement(By.id("errors1")).getText().contains("There were errors in your submission")) {
+		if(driver.findElement(LOCATOR_ERRORS).getText().contains("There were errors in your submission")) {
 			flag = true;
 		}
 		return flag;
@@ -41,14 +42,14 @@ public class SignInPage extends LoadableComponent<SignInPage>{
 
 	@Override
 	protected void load() {
-		signInBtn =driver.findElement(By.id("signInButton")); 
+		signInBtn =driver.findElement(LOCATOR_SIGNIN_BUTTON); 
 		
 	}
 
 	@Override
 	protected void isLoaded() throws Error {
-		
-		Assert.assertTrue(driver.findElement(By.id("signInButton")).isDisplayed());
+		objCommon.waitFor(ExpectedConditions.visibilityOf(driver.findElement(LOCATOR_SIGNIN_BUTTON)), 10);
+		Assert.assertTrue(driver.findElement(LOCATOR_SIGNIN_BUTTON).isDisplayed());
 		
 	}
 

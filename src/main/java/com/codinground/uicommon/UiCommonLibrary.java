@@ -77,6 +77,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 			driver.switchTo().parentFrame();
 		}
 		
+		public void switchToFrameByNameOrId(String frameName) {
+			
+			driver.switchTo().frame(frameName);
+			
+		}
+		
 		public void jsClickElement(By xpath) {
 			
 			js.executeScript("arguments[0].click", driver.findElement(xpath));

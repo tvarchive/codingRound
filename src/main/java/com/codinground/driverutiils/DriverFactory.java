@@ -18,7 +18,8 @@ public class DriverFactory {
 	    }
 
 	    public void initialize() {
-	        if (driver == null)
+	    	
+	    	if (driver == null)
 	            createNewDriverInstance();
 	    }
 
@@ -40,7 +41,7 @@ public class DriverFactory {
 	             if (PlatformUtil.isLinux()) {
 	                 System.setProperty("webdriver.chrome.driver", driverPathLinux);
 	             }
-	                ChromeOptions options = new ChromeOptions();
+	                options = new ChromeOptions();
 	                options.addArguments("--disable-notifications");
 		            driver = new ChromeDriver(options);
 	        }else
