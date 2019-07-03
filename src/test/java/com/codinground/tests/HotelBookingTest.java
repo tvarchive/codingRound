@@ -45,7 +45,7 @@ public class HotelBookingTest {
     @AfterTest
     public void after() {
     	
-    	driver.quit();
+    	this.driver.quit();
     	
     }
 	
