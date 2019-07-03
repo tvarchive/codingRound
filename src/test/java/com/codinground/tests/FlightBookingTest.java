@@ -4,6 +4,10 @@ import com.codinground.pages.FlightBookingPage;
 import com.codinground.pages.SearchSummaryPage;
 import com.codinground.reportutils.ReportListener;
 import com.codinground.uicommon.ModelTypeUi;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -43,7 +47,7 @@ public class FlightBookingTest extends ReportListener {
         objFlightPage = objFlightPage.enterToArrive("New Delhi");
         Assert.assertTrue(objFlightPage.checkIfToEntered(ModelTypeUi.NEW_DELHI));
         objFlightPage = new FlightBookingPage(driver).get();
-        objFlightPage.pickFromDate("3/july/2019");
+        objFlightPage.pickFromDate(new SimpleDateFormat("d/MMMM/yyyy").format(new Date()));
         objSearchSummaryPage = objFlightPage.clickSearchBtn();
         Assert.assertTrue(objSearchSummaryPage.verifyIfRelevant("Bangalore", "New Delhi"));
     }
