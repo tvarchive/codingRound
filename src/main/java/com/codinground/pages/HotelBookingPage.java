@@ -109,9 +109,6 @@ public class HotelBookingPage extends LoadableComponent<HotelBookingPage>{
 						actualDay=driver.findElement(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td["+(k+1)+"]/a"));
 						   if(actualDay.getText().equals(day)){
     						actualDay.click();
-							   //if(actualDay.isDisplayed())
-								//objCommon.actionOperationHandler(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td["+(k+1)+"]/a"), "mouse hover and click");
-							   //objCommon.jsClickElement(By.xpath(STR_MONTH_FIRST_LAST+"["+(i+1)+"]/table/tbody/tr["+(j+1)+"]/td["+(k+1)+"]/a"));
     						 i=monthFirstLast.size();
     						 j=elemDayRows.size();
     						 k=elemColumns.size();
