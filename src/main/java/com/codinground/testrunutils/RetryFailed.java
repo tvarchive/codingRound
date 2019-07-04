@@ -11,7 +11,6 @@ public class RetryFailed implements IRetryAnalyzer{
 	private int counter =0;
 	private String retriesLimiter = objProperty.readProperty("numberOfRetriesFailed");
 	
-	@Override
 	public boolean retry(ITestResult result) {
 		//&&(!result.isSuccess())
 		
