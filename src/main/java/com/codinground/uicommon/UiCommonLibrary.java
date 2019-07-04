@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 	
 /**
- * Common ui methods extends DriverFactory class
+ * Common ui methods
  * can be reused across pages
  * can be extended
  * 
