@@ -104,6 +104,6 @@ Key Points of the framework developed and fixed
 		
     
 **Run the tests using TestNg.xml present as suite to generate reports and retry failed.  
-
+**The results will be generated in "ExtentReports" folder within the project
 
  

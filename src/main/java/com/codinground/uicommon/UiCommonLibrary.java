@@ -116,7 +116,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 		}
 		
-		public String alertHandler(String operation) {
+		/*public String alertHandler(String operation) {
 			
 			alert = driver.switchTo().alert();
 			String strToReturn = null; 
@@ -133,7 +133,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 				strToReturn = "Alert Text: "+alert.getText();
 			}
 		  return strToReturn;
-		}
+		}*/
 		
 		public void clickElement(By xpath) {
 			
