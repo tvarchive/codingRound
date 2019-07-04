@@ -64,8 +64,8 @@ public class ReportListener implements ITestListener {
 		   FileUtils.copyFile(src, new File(System.getProperty("user.dir") + "\\ExtentReports\\"+context.getName()+"_"+new SimpleDateFormat("yyyy-MM-dd").format(new Date())+"_failed.png"));
 		   String file = test.addScreenCapture(System.getProperty("user.dir") + "\\ExtentReports\\"+context.getName()+"_"+new SimpleDateFormat("yyyy-MM-dd").format(new Date())+"_failed.png");
 		   System.out.println("**********************************=======================================************************************************");
-		   test.log(LogStatus.FAIL, result.getMethod().getMethodName() + "test passed", file);
-		   test.log(LogStatus.FAIL, result.getMethod().getMethodName() + "test passed", result.getThrowable().getMessage());
+		   test.log(LogStatus.FAIL, result.getMethod().getMethodName() + "test failed", file);
+		   test.log(LogStatus.FAIL, result.getMethod().getMethodName() + "test failed", result.getThrowable().getMessage());
 		  } catch (IOException e) {
 	   e.printStackTrace();
 	  }
