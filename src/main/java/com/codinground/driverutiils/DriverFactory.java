@@ -44,8 +44,7 @@ public class DriverFactory {
 	                options = new ChromeOptions();
 	                options.addArguments("--disable-notifications");
 		            driver = new ChromeDriver(options);
-	        }else
-	            System.out.println("can't read browser type");
+	             }
 	        }
 	    
 	   public void launchUrl() {
