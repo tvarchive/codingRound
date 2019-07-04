@@ -9,9 +9,6 @@ import com.codinground.driverutiils.DriverFactory;
 import com.codinground.pages.FlightBookingPage;
 import com.codinground.pages.SignInPage;
 import com.codinground.reportutils.ReportListener;
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class SignInTest extends ReportListener{
 
@@ -19,9 +16,7 @@ public class SignInTest extends ReportListener{
     private static DriverFactory objDriverFactory;
     private static FlightBookingPage objFlightPage;
     private static SignInPage objSignInPage;
-    private static ReportListener objReportListener;
-    private static ExtentReports reports;
-    private static ExtentTest test;
+    
     
     @BeforeTest
     public void beforeTest() {
