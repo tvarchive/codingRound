@@ -45,6 +45,7 @@ public class DriverFactory {
 	                options.addArguments("--disable-notifications");
 		            driver = new ChromeDriver(options);
 	             }
+	        
 	        }
 	    
 	   public void launchUrl() {
