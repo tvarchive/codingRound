@@ -103,7 +103,7 @@ Key Points of the framework developed and fixed
 		(h). Proper assertion done for validation.
 		
     
-
+**Run the tests using TestNg.xml present as suite to generate reports and retry failed.  
 
 
  
