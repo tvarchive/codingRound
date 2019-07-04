@@ -9,7 +9,7 @@ Review Comments and Key points on the fixes and framework created are Oredered a
 
     1. Test Class Level Review on design and errors.
 
-	(i) Common Issues:
+(i) Common Issues:
 
 	(a). set the path for driver before initialize the same.
 
