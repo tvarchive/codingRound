@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+   <listeners>
+     <listener class-name="com.codinground.testrunutils.AddAnnotations"/>
+     <listener class-name="com.codinground.reportutils.ReportListener"/>
+   </listeners>
+  <test  name="HotelBookingTest">
+    <classes>
+      <class name="com.codinground.tests.HotelBookingTest"/>
+    </classes>
+   </test>
+   <test  name="SignInTest">
+     <classes>
+      <class name="com.codinground.tests.SignInTest"/>
+      </classes>
+  </test>
+  <test  name="FlightBookingTest">
+     <classes>
+      <class name="com.codinground.tests.FlightBookingTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
