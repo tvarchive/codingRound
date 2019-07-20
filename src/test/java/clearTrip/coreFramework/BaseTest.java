@@ -19,7 +19,7 @@ public class BaseTest extends Utility {
 	public WebDriver driver;
 
 	@BeforeMethod
-	public void setupBrowser() {
+	public void setDriver() {
 
 		// to accomodate other browsers in future, presently we are working with just
 		// chrome
@@ -31,13 +31,13 @@ public class BaseTest extends Utility {
 	// launch URL as it's same across all our test cases here, we can parameterize
 	// if multiple URL's are to be hit
 
-	@BeforeMethod(dependsOnMethods = "setupBrowser")
+	@BeforeMethod(dependsOnMethods = "setDriver")
 	public void launchWebsite() {
 		driver.get("https://www.cleartrip.com/");
 	}
 
 	@AfterMethod
-	public void stripDown() {
+	public void tearDown() {
 		driver.quit();
 
 	}

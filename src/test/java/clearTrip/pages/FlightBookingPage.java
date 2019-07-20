@@ -8,11 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import clearTrip.coreFramework.BaseTest;
 import clearTrip.coreFramework.Utility;
 
-public class FlightBookingPage {
-
-	private WebDriver driver;
+public class FlightBookingPage extends BaseTest {
 
 	private By tripType = By.id("OneWay");
 //	private WebElement tripType = driver.findElement(By.id("OneWay"));

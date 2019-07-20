@@ -31,6 +31,9 @@ public class HotelBookingPage {
 	@FindBy(className = "subTitle")
 	private WebElement subTitleHotelsAd;
 
+	@FindBy(xpath = "//h5[contains(text(),'Traveller rating')]")
+	private WebElement nextPAgeTravellerRating;
+
 	public HotelBookingPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		this.driver = driver;
@@ -69,6 +72,13 @@ public class HotelBookingPage {
 	public void clickSearch() {
 		// TODO Auto-generated method stub
 		searchButton.click();
+		Utility.waitUntilExpectedConditions(ExpectedConditions.visibilityOf(getNextPageTravellerRating()),
+				"Can't find element in 20 seconds");
+//		By.xpath("//h5[contains(text(),'Traveller rating')]")
+	}
+
+	public WebElement getNextPageTravellerRating() {
+		return nextPAgeTravellerRating;
 	}
 
 }

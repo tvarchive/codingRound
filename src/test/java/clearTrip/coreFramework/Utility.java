@@ -1,5 +1,6 @@
 package clearTrip.coreFramework;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -50,12 +51,12 @@ public class Utility {
 		}
 	}
 
-	public String getValueFromJson(String key, String jsonFileName) {
+	public static String getValueFromJson(String key, String jsonFileName) {
 
 		String value = null;
 		Object obj;
 		try {
-			obj = new JSONParser().parse(new FileReader(jsonFileName + ".json"));
+			obj = new JSONParser().parse(new FileReader(System.getProperty("user.dir")+File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"clearTrip.data"+File.separator+jsonFileName + ".json"));
 			JSONObject jo = (JSONObject) obj;
 			value = (String) jo.get(key);
 		} catch (FileNotFoundException e) {
