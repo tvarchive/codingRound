@@ -74,7 +74,6 @@ public class HotelBookingPage {
 		searchButton.click();
 		Utility.waitUntilExpectedConditions(ExpectedConditions.visibilityOf(getNextPageTravellerRating()),
 				"Can't find element in 20 seconds");
-//		By.xpath("//h5[contains(text(),'Traveller rating')]")
 	}
 
 	public WebElement getNextPageTravellerRating() {
