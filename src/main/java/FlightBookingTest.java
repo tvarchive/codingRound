@@ -1,23 +1,27 @@
-import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import java.util.List;
+
 
 public class FlightBookingTest {
 
     WebDriver driver;
+    WebDriverManager webDriverManager;
+    
+    @BeforeTest
+	public void setup()
+	{
+		webDriverManager = new WebDriverManager();
+		driver = webDriverManager.getDriver();
+	}
     
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
-
-        setDriverPath();
-        driver = new ChromeDriver();
+    	        
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
         driver.manage().window().maximize();
@@ -40,10 +44,16 @@ public class FlightBookingTest {
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
 
-        //close the browser
-        driver.quit();
+        
 
     }
+    
+    @AfterTest
+	public void tearDown()
+	{
+		
+    	webDriverManager.closeDriver();
+	}
 
 
     private void waitFor(int durationInMilliSeconds) {
@@ -64,15 +74,5 @@ public class FlightBookingTest {
         }
     }
 
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
-    }
+    
 }
