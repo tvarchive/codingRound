@@ -4,6 +4,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -12,7 +14,32 @@ import java.util.List;
 
 public class FlightBookingTest {
 
-    WebDriver driver = new ChromeDriver();
+   static WebDriver driver = new ChromeDriver();
+    
+    @FindBy(id = "OneWay")
+	private WebElement radio_oneWay;
+	
+	@FindBy(id = "FromTag")
+	private WebElement txtbox_from;
+	
+	@FindBy(css = "ul#ui-id-1>li.list>a")
+	private List<WebElement> lnk_autoSuggestionsOriginTxtBx;
+	
+	@FindBy(css = "ul#ui-id-2>li.list>a")
+	private List<WebElement> lnk_autoSuggestionsDestinationTxtBx;
+	
+	@FindBy(id = "ToTag")
+	private WebElement txtbox_to;
+	
+	
+	@FindBy(id = "DepartDate")
+	private WebElement txt_departCalendar;
+	
+	@FindBy(id = "SearchBtn")
+	private WebElement btn_searchFlight;
+	
+	@FindBy(className = "searchSummary")
+	private WebElement str_searchSummary;
 
 
     @Test
@@ -20,40 +47,49 @@ public class FlightBookingTest {
 
         setDriverPath();
         driver.get("https://www.cleartrip.com/");
+        PageFactory.initElements(driver, this);
         waitFor(2000);
-        driver.findElement(By.id("OneWay")).click();
+        radio_oneWay.click();
 
-        driver.findElement(By.id("FromTag")).clear();
-        driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
+        txtbox_from.clear();
+        txtbox_from.sendKeys("Bangalore");
 
         //wait for the auto complete options to appear for the origin
 
-        waitFor(2000);
-        List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
-        originOptions.get(0).click();
+        HotelBookingTest.explicitWait_till_ElementsVisibility(lnk_autoSuggestionsOriginTxtBx);
+        select_autosuggestion_value_by_index(lnk_autoSuggestionsOriginTxtBx , 0);
 
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        txtbox_to.clear();
+        txtbox_to.sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
 
-        waitFor(2000);
+        HotelBookingTest.explicitWait_till_ElementsVisibility(lnk_autoSuggestionsDestinationTxtBx);
         //select the first item from the destination auto complete list
-        List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
-        destinationOptions.get(0).click();
-
-        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
+        select_autosuggestion_value_by_index(lnk_autoSuggestionsDestinationTxtBx , 0);
+        
+        txt_departCalendar.click();
+        
+        selectdate(txt_departCalendar,29,9,2019);
 
         //all fields filled in. Now click on search
-        driver.findElement(By.id("SearchBtn")).click();
+        btn_searchFlight.click();
 
-        waitFor(5000);
+        SignInTest.explicitWaitTillElementVisibility(str_searchSummary);
+        
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
 
         //close the browser
         driver.quit();
 
+    }
+    
+    private void selectdate(WebElement element,int date,int month,int year) {
+    	String reqDate=date+"";
+    	String reqMonth=month+"";
+    	String reqYear=year+"";
+    	element.sendKeys(reqDate+"/"+reqMonth+"/"+reqYear);
     }
 
 
@@ -73,6 +109,15 @@ public class FlightBookingTest {
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+    
+    public void select_autosuggestion_value_by_index(List<WebElement> elements,int indx) {
+    	try {
+    		elements.get(indx).click();
+    	}
+    	catch(Exception e) {
+    		System.out.println(e);
+    	}
     }
 
     private void setDriverPath() {
