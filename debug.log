@@ -1,1 +1,4 @@
 [0823/151130.386:ERROR:crash_report_database_win.cc(558)] GetFileAttributes C:\Users\JSURES~1\AppData\Local\Temp\scoped_dir28880_12348\Crashpad: The system cannot find the file specified. (0x2)
+[0823/160852.017:ERROR:crash_report_database_win.cc(558)] GetFileAttributes C:\Users\JSURES~1\AppData\Local\Temp\scoped_dir1168_23865\Crashpad: The system cannot find the file specified. (0x2)
+[0823/160919.897:ERROR:crash_report_database_win.cc(558)] GetFileAttributes C:\Users\JSURES~1\AppData\Local\Temp\scoped_dir39564_26215\Crashpad: The system cannot find the file specified. (0x2)
+[0823/160948.888:ERROR:crash_report_database_win.cc(558)] GetFileAttributes C:\Users\JSURES~1\AppData\Local\Temp\scoped_dir35864_18572\Crashpad: The system cannot find the file specified. (0x2)

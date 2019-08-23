@@ -3,9 +3,10 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-   	  <!-- <class name="FlightBookingTest"/> -->
-     <!--  <class name="HotelBookingTest"/> -->
+   	  <class name="FlightBookingTest"/>
+      <class name="HotelBookingTest"/>
       <class name="SignInTest"/>
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

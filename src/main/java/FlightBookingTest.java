@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -16,7 +18,7 @@ public class FlightBookingTest {
 
 	WebDriver driver;
 	
-	@BeforeTest
+	@BeforeClass
 	public void driverInitialization() {
 	setDriverPath();
 	driver = new ChromeDriver();
@@ -88,7 +90,7 @@ public class FlightBookingTest {
         }
     }
     
-    @AfterTest
+    @AfterClass
     public void quit() {
     	//close the browser
         driver.quit();
