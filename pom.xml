@@ -24,5 +24,14 @@
       <version>6.11</version>
       <scope>compile</scope>
     </dependency>
+    
+    <dependency>
+    	<groupId>org.openjfx</groupId>
+    	<artifactId>javafx-controls</artifactId>
+    	<version>12.0.2</version>
+	</dependency>
+    
+    
+    
   </dependencies>
 </project>
