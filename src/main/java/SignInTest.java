@@ -3,12 +3,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class SignInTest {
 
-    WebDriver driver = new ChromeDriver();
-
+	 WebDriver driver;
+	    
+	@BeforeTest
+	public void driverInitialization() {
+		setDriverPath();
+		driver = new ChromeDriver();
+	}
+	
+	
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
