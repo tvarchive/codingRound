@@ -4,8 +4,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -13,15 +14,18 @@ import java.util.concurrent.TimeUnit;
 
 public class FlightBookingTest {
 
-    WebDriver driver = new ChromeDriver();
-
-
+	WebDriver driver;
+	
+	@BeforeTest
+	public void driverInitialization() {
+	setDriverPath();
+	driver = new ChromeDriver();
+	}
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
 
-        setDriverPath();
-        driver.get("https://www.cleartrip.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("https://www.cleartrip.com/");
         waitFor(2000);
         driver.findElement(By.id("OneWay")).click();
         driver.findElement(By.id("FromTag")).clear();
@@ -32,8 +36,8 @@ public class FlightBookingTest {
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("a"));
         originOptions.get(0).click();
 
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        driver.findElement(By.id("ToTag")).clear();
+        driver.findElement(By.id("ToTag")).sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
         waitFor(2000);
@@ -42,7 +46,7 @@ public class FlightBookingTest {
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("a"));
         destinationOptions.get(0).click();
 
-        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
+        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[4]/td[7]")).click();
 
         //all fields filled in. Now click on search
         driver.findElement(By.id("SearchBtn")).click();
@@ -50,9 +54,6 @@ public class FlightBookingTest {
         waitFor(5000);
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
-
-        //close the browser
-        driver.quit();
 
     }
 
@@ -65,7 +66,6 @@ public class FlightBookingTest {
         }
     }
 
-
     private boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
@@ -76,6 +76,7 @@ public class FlightBookingTest {
     }
 
     private void setDriverPath() {
+    	
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
@@ -86,4 +87,12 @@ public class FlightBookingTest {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
     }
+    
+    @AfterTest
+    public void quit() {
+    	//close the browser
+        driver.quit();
+    }
+    
+    
 }
