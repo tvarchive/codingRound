@@ -29,7 +29,7 @@ public class FlightBookingTest {
 
         //wait for the auto complete options to appear for the origin
         waitFor(5000);
-        List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
+        List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("a"));
         originOptions.get(0).click();
 
         driver.findElement(By.id("toTag")).clear();
@@ -39,7 +39,7 @@ public class FlightBookingTest {
         waitFor(2000);
         
         //select the first item from the destination auto complete list
-        List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
+        List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("a"));
         destinationOptions.get(0).click();
 
         driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
