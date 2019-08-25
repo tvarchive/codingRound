@@ -71,10 +71,7 @@ public class HotelBookingPage extends PageBase {
 	public boolean verifyHotelResultsPageIsDisplayed() {
 		waitForElement(div_SearchSummary, 20);
 		
-		if(isElementPresent(div_SearchSummary))
-			return true;
-		else 
-		return false;
+		return isElementPresent(div_SearchSummary);
 	}
 
 }

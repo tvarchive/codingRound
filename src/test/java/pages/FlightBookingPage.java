@@ -78,10 +78,7 @@ public class FlightBookingPage extends PageBase {
 	public boolean verifySummaryPageIsDisplayed() {
 		waitForElement(div_SearchSummary, 2000);
 		
-		if(isElementPresent(div_SearchSummary))
-			return true;
-		else 
-		return false;
+		return isElementPresent(div_SearchSummary);
 	}
 	
 }
