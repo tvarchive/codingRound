@@ -1,3 +1,4 @@
+package tests;
 import supportlibraries.ScriptHelper;
 import supportlibraries.TestBase;
 import org.openqa.selenium.WebDriver;
