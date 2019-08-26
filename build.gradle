@@ -16,5 +16,8 @@ dependencies {
 }
 
 test {
-    useTestNG()
+       useTestNG() {
+       useDefaultListeners = true 
+       suites 'clearTrip.xml'
+   }
 }

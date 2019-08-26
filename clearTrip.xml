@@ -2,9 +2,9 @@
 <suite name="Regression Suite" verbose="1">
 	<test thread-count="1" name="Test">
 		<classes>
-			<class name="FlightBookingTest" />
-			<class name="HotelBookingTest" />
-			
+			<class name="tests.FlightBookingTest" />
+			<class name="tests.HotelBookingTest" />
+			<class name="tests.SignInTest" />
 		</classes>
 	</test>
 </suite>

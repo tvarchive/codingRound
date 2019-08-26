@@ -19,13 +19,14 @@ public abstract class TestBase {
 
 	protected ScriptHelper scriptHelper;
 
-	protected static String globalSettingsPath = "settings.gradle";
+	private static String driverPath = System.getProperty("user.dir")
+			+ "\\src\\test\\resources\\";
+	private static String propertySettingsPath = "gradle.properties";
 
 	// initialize the driver
 	@BeforeClass(alwaysRun = true)
 	public void testClassSetup() {
-		System.out.println("before class");
-		// properties = getPropInstance();
+		properties = getPropInstance();
 		initializeDriver();
 		initializeTestScript();
 	}
@@ -50,8 +51,8 @@ public abstract class TestBase {
 	}
 
 	public void launchURl() {
-		// properties = getPropInstance();
-		String uriStr = "https://www.cleartrip.com/";
+		properties = getPropInstance();
+		String uriStr = properties.getProperty("env.url");
 		driver.get(uriStr);
 	}
 
@@ -67,7 +68,7 @@ public abstract class TestBase {
 
 		Properties properties = new Properties();
 		try {
-			properties.load(new FileInputStream(globalSettingsPath));
+			properties.load(new FileInputStream(driverPath + propertySettingsPath));
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
