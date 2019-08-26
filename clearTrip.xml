@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Regression Suite" verbose="1">
+	<test thread-count="1" name="Test">
+		<classes>
+			<class name="tests.FlightBookingTest" />
+			<class name="tests.HotelBookingTest" />
+			<class name="tests.SignInTest" />
+		</classes>
+	</test>
+</suite>
