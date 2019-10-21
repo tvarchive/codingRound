@@ -4,58 +4,91 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.text.ParseException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class FlightBookingTest {
 
-    WebDriver driver = new ChromeDriver();
-
-
+    WebDriver driver ;
+    FlightBookingTestElements fbte ;
+    WebDriverWait wait;
+    String srcCity = "Bangalore";
+    String destCity = "Delhi";
+    String day = "27";
+    String month = "October";
+    String year = "2020";
+    
+    @BeforeTest
+    public void beforeTest() {
+    	setDriverPath();
+    	ChromeOptions options = new ChromeOptions();
+    	options.addArguments("--disable-notifications");
+    	driver = new ChromeDriver(options);
+    	fbte = new FlightBookingTestElements(driver);
+    	wait = new WebDriverWait(driver, 10);
+    	
+    }
     @Test
-    public void testThatResultsAppearForAOneWayJourney() {
+    public void testThatResultsAppearForAOneWayJourney() throws ParseException {
 
-        setDriverPath();
+//        setDriverPath();
+    	driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.get("https://www.cleartrip.com/");
-        waitFor(2000);
-        driver.findElement(By.id("OneWay")).click();
+        driver.manage().window().fullscreen();
+//        waitFor(2000);
+        fbte.oneWayElement().click();
 
-        driver.findElement(By.id("FromTag")).clear();
-        driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
+        fbte.srcElement().clear();
+        fbte.srcElement().sendKeys(srcCity);
+        wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(fbte.sourceOptions, fbte.liTag));
+        
 
-        //wait for the auto complete options to appear for the origin
-
-        waitFor(2000);
-        List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
+//        waitFor(5000);
+        List<WebElement> originOptions = fbte.srcOptions();
         originOptions.get(0).click();
+        
+        waitFor(1000);
+        
+        fbte.destElement().clear();
+        fbte.destElement().sendKeys(destCity);
 
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
-
+        wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(fbte.destOptions, fbte.liTag));
         //wait for the auto complete options to appear for the destination
 
-        waitFor(2000);
+        //waitFor(5000);
         //select the first item from the destination auto complete list
-        List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
+        List<WebElement> destinationOptions = fbte.destOptions();
         destinationOptions.get(0).click();
 
-        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
-
+//        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[4]/td[7]/a")).click();
+        fbte.selectDate(year, month, day);
         //all fields filled in. Now click on search
-        driver.findElement(By.id("SearchBtn")).click();
+        System.out.println(driver.findElement(fbte.calendar).getText());
+        if(fbte.searchElement().isEnabled() && fbte.srcElement().getText()!=null && fbte.destElement()!=null && driver.findElement(fbte.calendar).getText()!=null )
+        fbte.searchElement().click();
 
-        waitFor(5000);
+//        waitFor(5000);
         //verify that result appears for the provided journey search
-        Assert.assertTrue(isElementPresent(By.className("searchSummary")));
-
-        //close the browser
-        driver.quit();
-
+        
+        Assert.assertTrue(isElementPresent(fbte.seachSummary));
     }
 
+    @AfterTest
+    public void afterTest()
+    {
+    	driver.close();
+    	driver.quit();
+    }
 
     private void waitFor(int durationInMilliSeconds) {
         try {
@@ -68,7 +101,7 @@ public class FlightBookingTest {
 
     private boolean isElementPresent(By by) {
         try {
-            driver.findElement(by);
+        	wait.until(ExpectedConditions.presenceOfElementLocated(by));
             return true;
         } catch (NoSuchElementException e) {
             return false;
@@ -77,7 +110,7 @@ public class FlightBookingTest {
 
     private void setDriverPath() {
         if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
+            System.setProperty("webdriver.chrome.driver", "/Users/ramyakesh/Desktop/chromedriver");
         }
         if (PlatformUtil.isWindows()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
