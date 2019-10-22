@@ -1,15 +1,22 @@
 import com.sun.javafx.PlatformUtil;
+
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class HotelBookingTest {
 
-    WebDriver driver = new ChromeDriver();
-
+    WebDriver driver ;
+    
     @FindBy(linkText = "Hotels")
     private WebElement hotelLink;
 
@@ -21,12 +28,25 @@ public class HotelBookingTest {
 
     @FindBy(id = "travellersOnhome")
     private WebElement travellerSelection;
+    
+    @BeforeTest
+    public void beforeTest() {
+    	setDriverPath();
+    	ChromeOptions options = new ChromeOptions();
+    	options.addArguments("--disable-notifications");
+    	driver = new ChromeDriver(options);
+ 
+    	PageFactory.initElements(driver, this);
+    }
 
     @Test
     public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
-
+       // setDriverPath();
+        
+    	driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         driver.get("https://www.cleartrip.com/");
+        driver.manage().window().fullscreen();
+        
         hotelLink.click();
 
         localityTextBox.sendKeys("Indiranagar, Bangalore");
@@ -34,10 +54,15 @@ public class HotelBookingTest {
         new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
         searchButton.click();
 
-        driver.quit();
-
     }
 
+    @AfterTest
+    public void afterTest()
+    {
+    	driver.close();
+    	driver.quit();
+    }
+    
     private void setDriverPath() {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
