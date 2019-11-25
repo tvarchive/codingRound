@@ -1,53 +1,62 @@
-import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class FlightBookingTest {
+public class FlightBookingTest extends TestBase {
 
-    WebDriver driver = new ChromeDriver();
 
 
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
 
-        setDriverPath();
+
         driver.get("https://www.cleartrip.com/");
-        waitFor(2000);
+
+
         driver.findElement(By.id("OneWay")).click();
 
         driver.findElement(By.id("FromTag")).clear();
         driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
 
-        //wait for the auto complete options to appear for the origin
-
-        waitFor(2000);
+        explicitWait(By.xpath("//li[@class='list']"));
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
+
         originOptions.get(0).click();
 
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        driver.findElement(By.id("ToTag")).clear();
+        driver.findElement(By.id("ToTag")).sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
 
-        waitFor(2000);
+        //  waitFor(5000);
         //select the first item from the destination auto complete list
+        explicitWait(By.xpath("//*[@id=\"ui-id-2\"]"));
+
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
+        //waitFor(5000);
+
+
         destinationOptions.get(0).click();
 
-        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
+        //  driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
+        // WebElement element = driver.findElement(By.xpath("//a[contains(@class,'ui-state-default ui-state-highlight ui-state-active')]"));
+        //   element.sendKeys("25/11/2019");
+        WebElement element1 = driver.findElement(By.xpath("//*[@id=\"DepartDate\"]"));
+        element1.sendKeys("26/11/2019");
+
+        // String date = "25/11/2019";
+        //  element.click();
 
         //all fields filled in. Now click on search
         driver.findElement(By.id("SearchBtn")).click();
 
-        waitFor(5000);
+        // waitFor(5000);
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
 
@@ -75,15 +84,5 @@ public class FlightBookingTest {
         }
     }
 
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
-    }
+
 }
