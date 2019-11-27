@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="ClearTripTestSuite" thread-count="1" parallel="classes">
+
+
+    <test name="HotelBooking">
+        <classes>
+
+            <class name="SignInTest"></class>
+            <class name="HotelBookingTest"></class>
+            <class name="FlightBookingTest"></class>
+        </classes>
+    </test>
+</suite>
