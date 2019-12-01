@@ -101,7 +101,7 @@ public class CommonFunctionsLib {
 		}
 
 		public boolean compareString(String expected, String actual, boolean ignorecase) {
-			if ((Boolean.TRUE.equals(ignorecase) && expected.trim().equalsIgnoreCase(actual.trim())) || expected.trim().equals(actual.trim())) {
+			if ((ignorecase && expected.trim().equalsIgnoreCase(actual.trim())) || expected.trim().equals(actual.trim())) {
 				return true;
 			} else {
 				return false;
