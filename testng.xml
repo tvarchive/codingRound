@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test Suite for cleartrip tests">
+<!--  <suite name="Test Suite for New CMS" thread-count="2" parallel="classes"> -->
+<listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+</listeners>
+<test name="Test Cases Story" >
+    <classes>
+        <class name="codingRound.cleartrip.FlightBookingTest"/>
+        <class name="codingRound.cleartrip.HotelBookingTest"/>
+        <class name="codingRound.cleartrip.SignInTest"/>
+    </classes>
+</test>
+</suite>
