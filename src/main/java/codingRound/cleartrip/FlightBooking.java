@@ -1,6 +1,4 @@
 package codingRound.cleartrip;
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -75,7 +73,7 @@ public class FlightBooking {
 	}
 	
 	public void isResultAppeared(Configurations testConfig, CommonFunctionsLib common) {
-		if(common.checkPresenceOfElement(searchSummary, driver));
-		common.softAssert("Verify the search result"," search summary should be present","Search summary is displayed", true, logger);
+		if(common.checkPresenceOfElement(searchSummary, driver))
+			common.softAssert("Verify the search result"," search summary should be present","Search summary is displayed", true, logger);
 	}
 }

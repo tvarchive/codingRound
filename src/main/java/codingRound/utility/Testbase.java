@@ -54,17 +54,8 @@ public class Testbase {
 			@Optional String platformName, @Optional String os, @Optional String sharedDirectory,
 			@Optional String resultsdir,
 			@Optional String tomail) throws IOException {
-		
-		Configurations.BrowserName = browser;
-		Configurations.Environment = environment;
-		Configurations.PlatformName = platformName;
-		Configurations.os = os;
-		Configurations.SharedDirectory = sharedDirectory;
-		Configurations.ResultsDir = resultsdir;
-		Configurations.tomail = tomail;
 
-
-		testConfig = new Configurations(logger);
+		testConfig = new Configurations(browser,environment,platformName,os,sharedDirectory,resultsdir,tomail,logger);
 		reqBrowser = testConfig.getRunTimeProperty("browser");
 
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd-HH_mm_ss_SSS");

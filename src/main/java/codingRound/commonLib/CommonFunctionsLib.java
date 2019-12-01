@@ -34,9 +34,6 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class CommonFunctionsLib {
-	
-
-	
 
 		public void waitForPageLoaded(WebDriver driver, ExtentTest logger) {
 			ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
@@ -104,19 +101,12 @@ public class CommonFunctionsLib {
 		}
 
 		public boolean compareString(String expected, String actual, boolean ignorecase) {
-			if (Boolean.TRUE.equals(ignorecase)) {
-				if (expected.trim().equalsIgnoreCase(actual.trim())) {
-					return true;
-				} else {
-					return false;
-				}
-
+			if (Boolean.TRUE.equals(ignorecase) && expected.trim().equalsIgnoreCase(actual.trim())) {
+				return true;
+			} else if (expected.trim().equals(actual.trim())) {
+				return true;
 			} else {
-				if (expected.trim().equals(actual.trim())) {
-					return true;
-				} else {
-					return false;
-				}
+				return false;
 			}
 		}
 

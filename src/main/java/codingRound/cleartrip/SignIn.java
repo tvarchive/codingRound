@@ -45,7 +45,6 @@ public class SignIn {
 			common.waitToBeClickable(signInButton, driver);
 			signInButton.click();
 			String signInError=errorText.getText();
-			;
 			common.softAssert("Validating for invalid login", expectedErrorMsg, signInError, 
 					common.compareString(expectedErrorMsg, signInError, true), logger);
 			

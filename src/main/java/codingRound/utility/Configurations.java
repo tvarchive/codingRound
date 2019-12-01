@@ -11,74 +11,81 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class Configurations {
 	
-	public static String BrowserName;
-	public static String Environment;
-	public static String PlatformName;
-	public static String os;
-	public static String SharedDirectory;
-	public static String ResultsDir;
-	public static String fileSeparator = File.separator;
-	public static String tomail;
+	private static String fileSeparator = File.separator;
+	
+	private static final String Environment = "environment";
+	private static final String Browser = "browser";
+	private static final String Platform_Name = "platformname";
+	private static final String OS = "os";
+	private static final String TO_MAIL = "tomail";
+	private static final String Results_Dir= "ResultsDir";
+	private static final String Shared_Directory = "sharedDirectory";
+	private static final String Resources ="resources";
+	private static final String Resource_Dir = "resourceDir";
+	
 	Properties runtimeProperties;
 
 	public Configurations() {
 
 	}
 
-	public Configurations(ExtentTest logger) {
+	public Configurations(String browser, String environment, String platformName, String os, String sharedDirectory,
+			String resultsdir, String tomail, ExtentTest logger) {
 		try {
 			// Read the config file
-			Properties property = new Properties();
+			this.runtimeProperties = new Properties();
 			String path = System.getProperty("user.dir") + fileSeparator + "config.properties";
 			FileInputStream fn = new FileInputStream(path);
-			property.load(fn);
+			runtimeProperties.load(fn);
 			fn.close();
-
-			this.runtimeProperties = new Properties();
-			Enumeration<Object> em = property.keys();
-			while (em.hasMoreElements()) {
-				String str = (String) em.nextElement();
-				putRunTimeProperty(str, (String) property.get(str));
-			}
-
-			// override the environment value if passed through mvn command line
-			if (!(Environment == null || Environment.isEmpty()))
-				putRunTimeProperty("Environment", Environment.toLowerCase());
-
-			if (!(BrowserName == null || BrowserName.isEmpty()))
-				putRunTimeProperty("Browser", BrowserName);
-
-			if (!(PlatformName == null || PlatformName.isEmpty()))
-				putRunTimeProperty("PlatformName", PlatformName);
-
-			if (!(os == null || os.isEmpty()))
-				putRunTimeProperty("os", os);
-
-			if (!(tomail == null || tomail.isEmpty()))
-				putRunTimeProperty("tomail", tomail);
-
-			if (!(ResultsDir == null || ResultsDir.isEmpty())) {
-				putRunTimeProperty("ResultsDir", ResultsDir);
-			} else {
-				String resultsDir = System.getProperty("user.dir") + fileSeparator + getRunTimeProperty("ResultsDir");
-				putRunTimeProperty("ResultsDir", resultsDir);
-			}
-			if (!(SharedDirectory == null || SharedDirectory.isEmpty()))
-				putRunTimeProperty("SharedDirectory", SharedDirectory);
-			else {
-				String sharedDir = System.getProperty("user.dir") + fileSeparator
-						+ getRunTimeProperty("shareddirectory");
-				putRunTimeProperty("SharedDirectory", sharedDir);
-			}
-
+			
 			putRunTimeProperty("fileSeparator", fileSeparator);
-			String resourceDir = System.getProperty("user.dir") + fileSeparator + getRunTimeProperty("Resources");
-			putRunTimeProperty("ResourceDir", resourceDir);
+			String resourceDir = System.getProperty("user.dir") + fileSeparator + getRunTimeProperty(Resources);
+			putRunTimeProperty(Resource_Dir, resourceDir);
+			
+			overrideDefaultConfig(browser, environment, platformName, os, sharedDirectory,resultsdir, tomail);
 
 		} catch (IOException e) {
 			logger.log(LogStatus.FAIL, "Error while loading configurations", e);
 		}
 
+	}
+
+	private void overrideDefaultConfig(String browser, String environment, String platformName, String os, String sharedDirectory,
+	String resultsdir, String tomail) {
+		// override the environment value if passed through mvn command line
+					if (isNotBlank (environment))
+						putRunTimeProperty(Environment, environment.toLowerCase());
+					
+					if (isNotBlank(browser))
+						putRunTimeProperty(Browser, browser);
+
+					if (isNotBlank(platformName))
+						putRunTimeProperty(Platform_Name, platformName);
+
+					if (isNotBlank(os))
+						putRunTimeProperty(OS, os);
+
+					if (isNotBlank(tomail))
+						putRunTimeProperty(TO_MAIL, tomail);
+
+					if (isNotBlank(resultsdir)) {
+						putRunTimeProperty(Results_Dir, resultsdir);
+					} else {
+						String resultsDir = System.getProperty("user.dir") + fileSeparator + getRunTimeProperty(Results_Dir);
+						putRunTimeProperty(Results_Dir, resultsDir);
+					}
+					if (isNotBlank(sharedDirectory))
+						putRunTimeProperty(Shared_Directory, sharedDirectory);
+					else {
+						String sharedDir = System.getProperty("user.dir") + fileSeparator
+								+ getRunTimeProperty(Shared_Directory);
+						putRunTimeProperty(Shared_Directory, sharedDir);
+					}
+	}
+	
+	private boolean isNotBlank(String str) {
+		return str != null && !str.equals("") && !str.equals(" ") && str.length()!=0;
 	}
 
 	public void putRunTimeProperty(String key, String value) {
