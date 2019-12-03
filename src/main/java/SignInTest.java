@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pom.HomePageElements;
 
 public class SignInTest extends BaseTest{
 
@@ -10,18 +11,21 @@ public class SignInTest extends BaseTest{
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
-        oUtility.setDriverPath();
+        driver.get(BASE_URL);
 
-        driver.get("https://www.cleartrip.com/");
-        oUtility.waitFor(2000);
+        oUtility.waitForElementToBeVisible(HomePageElements.your_trips());
 
-        driver.findElement(By.linkText("Your trips")).click();
-        driver.findElement(By.id("SignIn")).click();
+        actions.clickElement(HomePageElements.your_trips());
 
-        driver.findElement(By.id("signInButton")).click();
+        actions.clickElement(HomePageElements.sign_in());
 
-        String errors1 = driver.findElement(By.id("errors1")).getText();
-        Assert.assertTrue(errors1.contains("There were errors in your submission"));
-        driver.quit();
+        actions.switchToFrameByWebElement(HomePageElements.frame_for_sign_in_modal());
+        oUtility.waitForElementToBeVisible(HomePageElements.sign_in_button());
+        actions.clickElement(HomePageElements.sign_in_button());
+
+
+        String text = actions.getElementText(HomePageElements.sign_in_error1());
+        Assert.assertTrue(text.contains(text));
+
     }
 }

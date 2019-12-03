@@ -1,7 +1,9 @@
-import javafx.application.Platform;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,14 +13,16 @@ import java.util.Properties;
 
 public class Utility {
 
+    //BaseTest oBaseTest;
     private FileInputStream fileInput = null;
     Properties properties = null;
     WebDriver driver;
     File file = null;
+    WebDriverWait wait;
 
-    public Utility(WebDriver driver)
-    {
+    public Utility(WebDriver driver) {
         this.driver = driver;
+        //oBaseTest = new BaseTest();
     }
 
 
@@ -38,19 +42,19 @@ public class Utility {
         Properties properties = new Properties();
 
         try {
-            file = new File("."
+            file = new File("src"
                     + File.separator
                     + "main"
                     + File.separator
                     + "resources"
                     + File.separator
-                    + System.getProperty("env") + "_property.properties");
-
+                    + "propertyFiles"
+                    + File.separator
+                    + env.toLowerCase() + "_property.properties");
             fileInput = new FileInputStream(file);
             properties.load(fileInput);
             //fileInput.close();
-        }
-         catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,5 +79,16 @@ public class Utility {
             return false;
         }
     }
+
+    public void waitForElementToBeVisible(By selector) {
+        wait = new WebDriverWait(driver, 45);
+        WebElement element = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(selector));
+    }
+
+    public WebElement getWebElement(By selector) {
+        return driver.findElement(selector);
+    }
+
 }
 
