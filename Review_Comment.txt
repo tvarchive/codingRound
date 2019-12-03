@@ -1,0 +1,15 @@
+THIS FILE LISTS ALL THE REVIEW COMMENTS/ NEW CHANGES ON THE CURRENT FRAMEWORK
+ALSO I HAVE IMPLEMENTED MOST OF THE REVIEW COMMENTS
+
+=> Each test can be executed and is passing right now.
+=> The thread.sleep is a hard pause, removed that to introduce dynamic waits.
+=> Having selectors local to every test case is code repetition and hard to manage,
+hence introduced POM framework.
+=> Added surefire plugin to be able to get variables at runtime.
+=> Action methods like click, sendKeys have been segregated to a new class "ActionSupport"
+=> Added testng.xml file
+=> Added BaseTest class to have framework level data initialization globally and
+using inheritance to avail it throughout the classes.
+=> Updated chromedriver to latest version to support latest chrome version.
+=> Introduced property file which is also environment specific to store constants like URL.
+=> Utility class to have the common methods like property initialization, getting web elements

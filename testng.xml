@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Sanity Suite" verbose="1">
+    <test name="Check basic tests">
+        <classes>
+            <class name="FlightBookingTest"/>
+            <class name="HotelBookingTest"/>
+            <class name="SignInTest"/>
+        </classes>
+    </test>
+</suite>
