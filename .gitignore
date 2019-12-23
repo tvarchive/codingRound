@@ -5,3 +5,4 @@ gradle/
 codoingRound.iml
 target/
 CodeReviewComments.md
+chromedriver.log
