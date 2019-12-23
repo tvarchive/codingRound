@@ -1,5 +1,6 @@
 build
 .idea
 .gradle
+gradle/
 codoingRound.iml
 target/
