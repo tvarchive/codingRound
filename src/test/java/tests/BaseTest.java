@@ -7,7 +7,7 @@ import application.App;
 public class BaseTest {
     private App app;
 
-    public BaseTest() {
+    BaseTest() {
         this.app = App.getInstance();
     }
 
@@ -21,7 +21,7 @@ public class BaseTest {
         app.close();
     }
 
-    protected App getApp() {
+    App getApp() {
         return app;
     }
 }
