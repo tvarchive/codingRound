@@ -40,6 +40,7 @@ public class HomePage extends BasePage {
     private List<WebElement> destinationOptions;
 
     @FindBy(xpath = "//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")
+//    @FindBy(xpath = "//*[@id='ui-datepicker-div']/div[2]/table/tbody/tr[3]/td[7]/a")
     private WebElement datePickerText;
 
     @FindBy(linkText = "Your trips")
@@ -86,7 +87,7 @@ public class HomePage extends BasePage {
     public void openSignInForm() {
         signInLink.click();
         switchToFrame(signInFormFrame);
-        waitForElementVisibility(signInForm, 2);
+        waitForElementVisibility(signInForm, 5);
     }
 
     public void openUserAccountMenu() {
@@ -132,7 +133,7 @@ public class HomePage extends BasePage {
     }
 
     private void selectFirstAutoCompleteOption(List<WebElement> options) {
-        waitForElementsVisibility(options, 2);
+        waitForElementsVisibility(options, 10);
         options.get(0).click();
     }
 }
