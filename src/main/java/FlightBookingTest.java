@@ -56,6 +56,27 @@ public class FlightBookingTest {
 
     }
 
+    @Test
+    public void testThatResultsAppearForRecentSearches() {
+
+        setDriverPath();
+        driver.get("https://www.cleartrip.com/");
+        waitFor(2000);
+
+        //results for all recent searches
+        List<WebElement> recentSearches = driver.findElements(By.cssSelector("#RecentSearch li"));
+
+        //Click on the first recent search
+        recentSearches.get(0).click();
+
+        waitFor(5000);
+        //verify that result appears for the provided journey search
+        Assert.assertTrue(isElementPresent(By.className("searchSummary")));
+
+        //close the browser
+        driver.quit();
+    }
+
 
     private void waitFor(int durationInMilliSeconds) {
         try {

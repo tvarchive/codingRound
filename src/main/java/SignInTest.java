@@ -7,7 +7,8 @@ import org.testng.annotations.Test;
 
 public class SignInTest {
 
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver;
+    Credentials creds;
 
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
@@ -19,6 +20,29 @@ public class SignInTest {
 
         driver.findElement(By.linkText("Your trips")).click();
         driver.findElement(By.id("SignIn")).click();
+
+        driver.findElement(By.id("signInButton")).click();
+
+        String errors1 = driver.findElement(By.id("errors1")).getText();
+        Assert.assertTrue(errors1.contains("There were errors in your submission"));
+        driver.quit();
+    }
+
+    @Test
+    public void shouldThrowAnErrorIfSignInWithInvalidCredentials() {
+
+        setDriverPath();
+        driver.get("https://www.cleartrip.com/");
+        waitFor(2000);
+
+        driver.findElement(By.linkText("Your trips")).click();
+        waitFor(2000);
+        driver.findElement(By.id("SignIn")).click();
+
+        waitFor(3000);
+
+        driver.findElement(By.id("email")).sendKeys(creds.getUsername());
+        driver.findElement(By.id("password")).sendKeys(creds.getPassword());
 
         driver.findElement(By.id("signInButton")).click();
 
