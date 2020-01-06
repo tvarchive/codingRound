@@ -1,6 +1,7 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pagesObjects.HomePage;
 import pagesObjects.ResultsPage;
@@ -9,7 +10,9 @@ public class FlightBookingTest extends BaseTest {
     private HomePage homePage;
     private ResultsPage resultsPage;
 
-    public FlightBookingTest() {
+    @BeforeClass
+    public void setupPages() {
+        System.out.println("Inside BeforeClass of FlightBookingTest");
         homePage = new HomePage(driver);
         resultsPage = new ResultsPage(driver);
     }
@@ -21,9 +24,7 @@ public class FlightBookingTest extends BaseTest {
         homePage.enterDestination("Delhi");
         homePage.selectRandomDepartureDate();
         homePage.searchFlights();
-        homePage.waitForPageDisplay(driver);
+        resultsPage.waitForPageDisplay(driver);
         Assert.assertTrue(resultsPage.isSearchSummaryPresent());
     }
-
-
 }

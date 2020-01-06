@@ -5,9 +5,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 import utils.PropertyUtils;
 
 import java.io.File;
@@ -20,15 +18,21 @@ public class BaseTest {
 
     @BeforeSuite
     public void setUp() {
+        System.out.println("Inside BeforeSuite of BaseTest");
         setDriverPath();
-//        createLogForChromeDriver();
-        driver = new ChromeDriver(getChromeOptions());
     }
 
-    @BeforeMethod
+    @BeforeTest
     public void setUpApp() {
-        driver.get(PropertyUtils.getProperty("website_url"));
+        System.out.println("Inside BeforeTest of BaseTest");
+    }
+
+    @BeforeClass
+    public void beforeCLassOfBaseTest() {
+        System.out.println("Inside BeforeClass Of BaseTest");
+        driver = new ChromeDriver(getChromeOptions());
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driver.get(PropertyUtils.getProperty("website_url"));
     }
 
     private void setDriverPath() {
@@ -61,8 +65,10 @@ public class BaseTest {
         return options;
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
+
+        System.out.println("Inside AfterClass of BaseTest");
         driver.quit();
     }
 }

@@ -17,7 +17,7 @@ public abstract class BasePage {
 
     BasePage(WebDriver driver) {
         this.driver = driver;
-//        initElements();
+        initElements();
         this.waitUtils = new WaitUtils();
     }
 
