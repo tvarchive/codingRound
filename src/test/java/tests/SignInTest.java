@@ -2,13 +2,13 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePage;
+import pagesObjects.HomePage;
 
 public class SignInTest extends BaseTest {
     private HomePage homePage;
 
     public SignInTest() {
-        homePage = new HomePage(getApp());
+        homePage = new HomePage(driver);
     }
 
     @Test
