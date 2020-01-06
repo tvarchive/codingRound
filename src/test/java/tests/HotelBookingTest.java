@@ -24,16 +24,4 @@ public class HotelBookingTest extends BaseTest {
         hotelsPage.selectTravellers("1 room, 2 adults");
         hotelsPage.searchHotels();
     }
-
-    @Test(enabled = false)
-    public void testFlakyBehaviour() {
-        int x = new Random().nextInt() % 2;
-        Assert.assertTrue(x == 0);
-    }
-
-    @Test(enabled = false)
-    public void testFlakyBehaviour2() {
-        int x = new Random().nextInt() % 2;
-        Assert.assertTrue(x == 0);
-    }
 }
