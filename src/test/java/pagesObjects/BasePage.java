@@ -56,7 +56,7 @@ public abstract class BasePage {
     }
 
     public static void selectFirstAutoCompleteOption(List<WebElement> options, WebDriver driver) {
-        waitUtils.waitForElementsVisibility(options, 10, driver);
+        waitUtils.waitForElementsVisibility(options, 30, driver);
         options.get(0).click();
     }
 
