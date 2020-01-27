@@ -1,10 +1,14 @@
 package tests;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pagesObjects.HomePage;
 import utils.*;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class SignInTest extends BaseTest {
 
@@ -30,5 +34,19 @@ public class SignInTest extends BaseTest {
         Assert.assertTrue(true);
             }
         });
+    }
+
+    @Test
+    public void testWithRemoteWebDriverForChrome() throws MalformedURLException {
+        RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
+        driver.get(PropertyUtils.getProperty("website_url"));
+        System.out.println(driver.getTitle());
+    }
+
+    @Test
+    public void testWithRemoteWebDriverForFirefox() throws MalformedURLException {
+        RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.firefox());
+        driver.get(PropertyUtils.getProperty("website_url"));
+        System.out.println(driver.getTitle());
     }
 }
