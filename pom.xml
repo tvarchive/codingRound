@@ -6,7 +6,21 @@
   <artifactId>codoingRound</artifactId>
   <version>1.0-SNAPSHOT</version>
   <build>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
     <plugins>
+      <!-- Following plugin executes the testng tests -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M4</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
+      <!-- Compiler plugin configures the java version to be usedfor compiling
+                the code -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

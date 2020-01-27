@@ -4,7 +4,7 @@
     <test verbose="2" name="/Users/dhanavarshathaker/IdeaProjects/codingRound" parallel="classes" thread-count="3"
           group-by-instances="false">
         <classes>
-            <class name="tests.FlightBookingTest"/>
+            <class name="tests.FlightBookingTest"></class>
             <class name="tests.HotelBookingTest"/>
             <class name="tests.SignInTest">
                 <methods>
