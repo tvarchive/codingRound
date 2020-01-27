@@ -1,50 +1,39 @@
 package tests;
 
 import com.sun.javafx.PlatformUtil;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
-import utils.PropertyUtils;
+import utils.DriverManager;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class BaseTest {
-    WebDriver driver;
 
     @BeforeSuite
-    public void setUp() {
-        System.out.println("Inside BeforeSuite of BaseTest");
+    public void setUp(ITestContext context) {
         setDriverPath();
-    }
-
-    @BeforeTest
-    public void setUpApp() {
-        System.out.println("Inside BeforeTest of BaseTest");
-    }
-
-    @BeforeClass
-    public void beforeCLassOfBaseTest() {
-        System.out.println("Inside BeforeClass Of BaseTest");
-        driver = new ChromeDriver(getChromeOptions());
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.get(PropertyUtils.getProperty("website_url"));
     }
 
     private void setDriverPath() {
         if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "src/main/drivers/chromedriver");
+            setDriverExecutablePath("chromedriver", "geckodriver");
+        } else if (PlatformUtil.isWindows()) {
+            setDriverExecutablePath("chromedriver.exe", "geckodriver.exe");
+        } else if (PlatformUtil.isLinux()) {
+            setDriverExecutablePath("chromedriver_linux", "geckodriver 2");
+        } else {
+            throw new RuntimeException("Platform not supported");
         }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "src/main/drivers/chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "src/main/drivers/chromedriver_linux");
-        }
+    }
+
+    private void setDriverExecutablePath(String chromedriver, String geckodriver) {
+        Path chromeCommonPath = Paths.get("src","main","drivers", "chromedriver");
+        Path firefoxCommonPath = Paths.get("src","main","drivers", "firefox");
+
+        System.setProperty("webdriver.chrome.driver", chromeCommonPath.resolve(chromedriver).toString());
+        System.setProperty("webdriver.gecko.driver", firefoxCommonPath.resolve(geckodriver).toString());
     }
 
     private void createLogForChromeDriver() {
