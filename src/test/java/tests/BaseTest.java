@@ -1,13 +1,15 @@
 package tests;
 
-import com.sun.javafx.PlatformUtil;
 import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import utils.DriverManager;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static tests.PlatformUtil.getOS;
 
 public class BaseTest {
 
@@ -17,11 +19,11 @@ public class BaseTest {
     }
 
     private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
+        if (getOS().equals("darwin")) {
             setDriverExecutablePath("chromedriver", "geckodriver");
-        } else if (PlatformUtil.isWindows()) {
+        } else if (getOS().equals("win32")) {
             setDriverExecutablePath("chromedriver.exe", "geckodriver.exe");
-        } else if (PlatformUtil.isLinux()) {
+        } else if (getOS().equals("linux")) {
             setDriverExecutablePath("chromedriver_linux", "geckodriver 2");
         } else {
             throw new RuntimeException("Platform not supported");

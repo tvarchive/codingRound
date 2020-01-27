@@ -1,6 +1,5 @@
 package tests;
 
-import com.sun.javafx.PlatformUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -10,16 +9,18 @@ import utils.PropertyUtils;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static tests.PlatformUtil.getOS;
+
 @DriverTest
 public class DynamicTestDemo {
 
     @BeforeEach
     public void setUp() {
-        if (PlatformUtil.isMac()) {
+        if (getOS().equals("darwin")) {
             setDriverExecutablePath("chromedriver", "geckodriver");
-        } else if (PlatformUtil.isWindows()) {
+        } else if (getOS().equals("win32")) {
             setDriverExecutablePath("chromedriver.exe", "geckodriver.exe");
-        } else if (PlatformUtil.isLinux()) {
+        } else if (getOS().equals("linux")) {
             setDriverExecutablePath("chromedriver_linux", "geckodriver 2");
         } else {
             throw new RuntimeException("Platform not supported");
