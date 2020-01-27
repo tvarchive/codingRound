@@ -20,6 +20,7 @@ public class HotelBookingTest extends BaseTest {
 
         HotelsPage hotelsPage = homePage.openHotelsSearch();
         hotelsPage.enterLocality("Indiranagar, Bangalore");
+        hotelsPage.enterDateDetails();
         hotelsPage.selectTravellers("1 room, 2 adults");
         ResultsPage resultsPage = hotelsPage.searchHotels();
         boolean areResultsDisplayed = resultsPage.areHotelResultsDisplayed();

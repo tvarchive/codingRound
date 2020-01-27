@@ -1,7 +1,5 @@
 package pagesObjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -41,14 +39,16 @@ public class HotelsPage extends BasePage {
     public void enterLocality(String s) {
         locationTextBox.sendKeys(s);
         selectFirstAutoCompleteOption(locationSuggestions, driver);
+    }
+
+    public void enterDateDetails() {
         fromDate.click();
         try {
-            Thread.sleep(500);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         toDate.click();
-
     }
 
     public void selectTravellers(String s) {
