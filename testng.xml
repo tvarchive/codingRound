@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="/Users/dhanavarshathaker/IdeaProjects/codingRound" parallel="classes" thread-count="3">
+    <test verbose="2" name="/Users/dhanavarshathaker/IdeaProjects/codingRound" parallel="classes" thread-count="3"
+          group-by-instances="false">
         <classes>
-            <class name="tests.FlightBookingTest">
-                <methods>
-                    <include name="testThatResultsAppearForAOneWayJourney"/>
-                </methods>
-            </class>
-            <class name="tests.HotelBookingTest">
-                <methods>
-                    <include name="shouldBeAbleToSearchForHotels"/>
-                </methods>
-            </class>
+            <class name="tests.FlightBookingTest"/>
+            <class name="tests.HotelBookingTest"/>
             <class name="tests.SignInTest">
                 <methods>
                     <include name="shouldThrowAnErrorIfSignInDetailsAreMissing"/>
+                    <include name="testWithTwoDrivers"/>
+<!--                    <include name="testWithRemoteWebDriverForChrome"/>-->
+<!--                    <include name="testWithRemoteWebDriverForFirefox"/>-->
                 </methods>
             </class>
         </classes>

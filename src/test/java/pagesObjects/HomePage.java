@@ -38,9 +38,10 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//ul[@id='ui-id-2']/li/a")
     private List<WebElement> destinationOptions;
 
-    @FindBy(xpath = "//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")
+    @FindBy(xpath = "//*[@id='ui-datepicker-div']/div[2]/table/tbody/tr[3]/td[3]/a")
 //    @FindBy(xpath = "//*[@id='ui-datepicker-div']/div[2]/table/tbody/tr[3]/td[7]/a")
     private WebElement datePickerText;
+
 
     @FindBy(linkText = "Your trips")
     private WebElement userAccountMenu;
@@ -84,26 +85,28 @@ public class HomePage extends BasePage {
     public void openSignInForm() {
         signInLink.click();
         switchToFrame(signInFormFrame);
-        waitUtils.waitForElementVisibility(signInForm, 5, driver);
+        waitUtils.waitForElementVisibility(signInForm, 10, driver);
     }
 
     public void openUserAccountMenu() {
         userAccountMenu.click();
     }
 
-    public void searchFlights() {
+    public ResultsPage searchFlights() {
         searchButton.click();
+        return createPageAndWaitForDisplay(driver, ResultsPage.class);
     }
 
     public void selectRandomDepartureDate() {
         datePickerText.click();
     }
 
-    public void openHotelsSearch() {
+    public HotelsPage openHotelsSearch() {
         hotelLink.click();
+        return createPageAndWaitForDisplay(driver, HotelsPage.class);
     }
 
-    public void selectTripType(TripType tripType) {
+    public void selectTripType(HomePage.TripType tripType) {
         switch (tripType) {
             case ONE_WAY:
                 oneWayRadioButton.click();
@@ -120,17 +123,14 @@ public class HomePage extends BasePage {
     public void enterOrigin(String origin) {
         fromTextBox.clear();
         fromTextBox.sendKeys(origin);
-        selectFirstAutoCompleteOption(originOptions);
+        selectFirstAutoCompleteOption(originOptions, driver);
     }
 
     public void enterDestination(String destination) {
         toTextBox.clear();
         toTextBox.sendKeys(destination);
-        selectFirstAutoCompleteOption(destinationOptions);
+        selectFirstAutoCompleteOption(destinationOptions, driver);
     }
 
-    private void selectFirstAutoCompleteOption(List<WebElement> options) {
-        waitUtils.waitForElementsVisibility(options, 10, driver);
-        options.get(0).click();
-    }
+
 }

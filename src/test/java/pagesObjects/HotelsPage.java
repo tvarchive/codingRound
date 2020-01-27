@@ -1,14 +1,18 @@
 package pagesObjects;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class HotelsPage extends BasePage {
 
     @FindBy(id = "Tags")
-    private WebElement localityTextBox;
+    private WebElement locationTextBox;
 
     @FindBy(id = "SearchHotelsButton")
     private WebElement searchButton;
@@ -16,24 +20,43 @@ public class HotelsPage extends BasePage {
     @FindBy(id = "travellersOnhome")
     private WebElement travellerSelection;
 
+    @FindBy(xpath = "//ul[@id='ui-id-1']/li/a")
+    private List<WebElement> locationSuggestions;
+
+    @FindBy(xpath = "//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[5]/td[5]/a")
+    private WebElement fromDate;
+
+    @FindBy(xpath = "//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[3]/a")
+    private WebElement toDate;
+
     public HotelsPage(WebDriver driver) {
         super(driver);
     }
 
     @Override
     WebElement uniquePageIdentifier() {
-        return localityTextBox;
+        return locationTextBox;
     }
 
     public void enterLocality(String s) {
-        localityTextBox.sendKeys(s);
+        locationTextBox.sendKeys(s);
+        selectFirstAutoCompleteOption(locationSuggestions, driver);
+        fromDate.click();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        toDate.click();
+
     }
 
     public void selectTravellers(String s) {
         new Select(travellerSelection).selectByVisibleText(s);
     }
 
-    public void searchHotels() {
+    public ResultsPage searchHotels() {
         searchButton.click();
+        return createPageAndWaitForDisplay(driver, ResultsPage.class);
     }
 }

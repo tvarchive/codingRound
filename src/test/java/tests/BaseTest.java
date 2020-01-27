@@ -56,19 +56,8 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.verboseLogging", "true");
     }
 
-    private Capabilities getChromeOptions() {
-        ChromeOptions options = new ChromeOptions();
-        Map<String, Object> prefs = new HashMap<String, Object>();
-        prefs.put("profile.default_content_setting_values.notifications", 2);
-        options.setExperimentalOption("prefs", prefs);
-        options.addArguments("--start-maximized");
-        return options;
-    }
-
-    @AfterClass(alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
     public void tearDown() {
-
-        System.out.println("Inside AfterClass of BaseTest");
-        driver.quit();
+        DriverManager.quitAllDrivers();
     }
 }
